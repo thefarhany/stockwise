@@ -1,0 +1,34 @@
+# Dokumen & proses development (tidak ikut ke server)
+/docs/
+/tools/
+/.obsidian/
+TASKS.md
+HELP.md
+
+# File AI / agent
+.claude/
+.agents/
+.codex/
+.gemini/
+.copilot/
+CLAUDE.md
+AGENTS.md
+GEMINI.md
+skills-lock.json
+.caveman/
+
+# Rahasia & environment
+.env
+.env.*
+!.env.example
+
+# OS & editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Frontend
+node_modules/
+.next/
+out/

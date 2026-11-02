@@ -1,0 +1,16 @@
+services:
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: stockwise
+      MYSQL_USER: stockwise
+      MYSQL_PASSWORD: stockwise
+      MYSQL_ROOT_PASSWORD: root
+      TZ: UTC
+    ports:
+      - "3307:3306" # 3306 sering dipakai MySQL lokal
+    volumes:
+      - stockwise-db:/var/lib/mysql
+
+volumes:
+  stockwise-db:
