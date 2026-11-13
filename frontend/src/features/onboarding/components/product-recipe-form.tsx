@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { useFormat } from "@/i18n/format";
 import { useState, type FormEvent, type ReactNode } from "react";
 import { FormProvider, useForm, useFormContext, useWatch } from "react-hook-form";
 import { useCurrency, useMoney } from "@/components/currency";
@@ -45,6 +46,7 @@ export function ProductRecipeForm({
   const money = useMoney();
   const currency = useCurrency();
   const t = useTranslations("products");
+  const f = useFormat();
   const to = useTranslations("onboarding");
   const tc = useTranslations("common");
   const { register, control, getValues, setValue, reset, setFocus, handleSubmit, setError, formState: { errors, isSubmitting } } =
@@ -62,7 +64,7 @@ export function ProductRecipeForm({
 
   const save = handleSubmit(async (input, event) => {
     // Backend menyimpan jumlah resep dalam satuan stok bahan.
-    const recipe = toRecipeRequest(input.items, stockItems, setError, (unit) => t("tooPrecise", { unit }));
+    const recipe = toRecipeRequest(input.items, stockItems, setError, (unit) => t("tooPrecise", { unit: f.unit(unit) }));
     if (!recipe) return;
 
     const product = { name: input.name, category: input.category || null, price: input.price };

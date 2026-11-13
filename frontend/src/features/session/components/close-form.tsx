@@ -5,7 +5,6 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useMoney } from "@/components/currency";
 import type { StockItem } from "@/features/catalog/types";
-import { stockUnits } from "@/features/catalog/units";
 import { closeSession } from "@/features/session/api/sessions";
 import type { SessionStock } from "@/features/session/types";
 import { useFormat } from "@/i18n/format";
@@ -112,10 +111,10 @@ export function CloseForm({
               <thead className="max-sm:hidden border-y border-base-300 bg-base-200/40 text-xs uppercase tracking-widest text-base-content/70">
                 <tr>
                   <th className="py-3 pr-3 pl-6 font-normal">{t("colIngredient")}</th>
-                  <th className="px-3 py-3 font-normal">{t("colRecorded")}</th>
-                  <th className="px-3 py-3 font-normal">{t("colCounted")}</th>
-                  <th className="px-3 py-3 font-normal">{t("colDifference")}</th>
-                  <th className="py-3 pr-6 pl-3 font-normal">{t("colAction")}</th>
+                  <th className="px-3 py-3 text-center font-normal">{t("colRecorded")}</th>
+                  <th className="px-3 py-3 text-center font-normal">{t("colCounted")}</th>
+                  <th className="px-3 py-3 text-center font-normal">{t("colDifference")}</th>
+                  <th className="py-3 pr-6 pl-3 text-center font-normal">{t("colAction")}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-base-300 max-sm:block">
@@ -129,13 +128,13 @@ export function CloseForm({
                         {s.name}
                         {s.isPrimary && <span className="ml-2 whitespace-nowrap rounded-full bg-base-200 px-2 py-0.5 text-xs">{t("mainItem")}</span>}
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 max-sm:p-0">
+                      <td className="whitespace-nowrap px-3 py-4 sm:text-center max-sm:p-0">
                         <span aria-hidden className="mb-1 block text-xs text-base-content/60 sm:hidden">{t("colRecorded")}</span>
                         {f.quantity(recorded(s), s.unit)}
                       </td>
-                      <td className="px-3 py-3 max-sm:p-0">
+                      <td className="px-3 py-3 sm:text-center max-sm:p-0">
                         <span aria-hidden className="mb-1 block text-xs text-base-content/60 sm:hidden">{t("colCounted")}</span>
-                        <label className="flex w-28 items-center rounded-field border border-base-300 bg-white px-3 has-[:invalid]:border-error has-aria-invalid:border-error">
+                        <label className="flex w-28 items-center sm:mx-auto rounded-field border border-base-300 bg-white px-3 has-[:invalid]:border-error has-aria-invalid:border-error">
                           <span className="sr-only">{t("countedName", { name: s.name })}</span>
                           <input
                             inputMode="decimal"
@@ -145,16 +144,16 @@ export function CloseForm({
                             value={counted[id] ?? ""}
                             onChange={(e) => setCounted((c) => ({ ...c, [id]: e.target.value }))}
                           />
-                          <span className="text-xs text-base-content/60">{stockUnits[s.unit].short}</span>
+                          <span className="text-xs text-base-content/60">{f.unit(s.unit)}</span>
                         </label>
                         {qty === null && <p className="mt-1 text-xs text-error">{t("countInvalid")}</p>}
                         {diff !== null && diff < 0 && <p className="mt-1 text-xs text-base-content/60">{t("spoiled", { qty: f.quantity(-diff, s.unit) })}</p>}
                       </td>
-                      <td className={`px-3 py-4 max-sm:p-0 ${diff !== null && diff !== 0 ? "font-semibold text-error" : "text-base-content/70"}`}>
+                      <td className={`px-3 py-4 sm:text-center max-sm:p-0 ${diff !== null && diff !== 0 ? "font-semibold text-error" : "text-base-content/70"}`}>
                         <span aria-hidden className="mb-1 block text-xs text-base-content/60 sm:hidden">{t("colDifference")}</span>
                         {diff === null ? "–" : diff === 0 ? "0" : `${diff > 0 ? "+" : "−"}${f.quantity(Math.abs(diff), s.unit)}`}
                       </td>
-                      <td className="py-3 pr-6 pl-3 max-sm:p-0">
+                      <td className="py-3 pr-6 pl-3 sm:text-center max-sm:p-0">
                         <span aria-hidden className="mb-1 block text-xs text-base-content/60 sm:hidden">{t("colAction")}</span>
                         <div role="group" aria-label={t("actionFor", { name: s.name })} className="inline-flex rounded-field bg-base-200 p-1">
                           <button type="button" aria-pressed={action[id] === "keep"} disabled={!keepAllowed} className={segment(action[id] === "keep")} onClick={() => setAction((a) => ({ ...a, [id]: "keep" }))}>

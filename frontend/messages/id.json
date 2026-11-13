@@ -176,34 +176,16 @@
       "package": "Kemasan"
     },
     "names": {
-      "GRAM": "Gram",
-      "ONS": "Ons (100 g)",
-      "KG": "Kilogram",
-      "ML": "Mililiter",
-      "SDT": "Sendok teh (sdt, 5 ml)",
-      "SDM": "Sendok makan (sdm, 15 ml)",
-      "CUP": "Cangkir (240 ml)",
+      "GRAM": "Gram (g)",
+      "KG": "Kilogram (kg)",
+      "ML": "Mililiter (ml)",
       "LITER": "Liter",
       "PCS": "Pcs (biji)",
-      "BUTIR": "Butir (telur, bola)",
-      "BUAH": "Buah (utuh)",
-      "LUSIN": "Lusin (12)",
-      "KODI": "Kodi (20)",
-      "TRAY": "Tray (30)",
-      "SIUNG": "Siung",
-      "IKAT": "Ikat",
-      "BATANG": "Batang",
-      "LEMBAR": "Lembar (daun, kertas)",
-      "EKOR": "Ekor (ayam, ikan utuh)",
-      "POTONG": "Potong",
-      "SISIR": "Sisir (pisang)",
-      "PORSI": "Porsi",
-      "BUNGKUS": "Bungkus",
-      "PACK": "Pack",
+      "TRAY": "Tray (30 butir)",
       "BOTOL": "Botol",
-      "KALENG": "Kaleng",
-      "GALON": "Galon",
-      "JERIGEN": "Jerigen"
+      "PACK": "Pack (bungkus)",
+      "DUS": "Dus (kardus)",
+      "RENCENG": "Renceng (sachet)"
     }
   },
   "catalog": {
@@ -218,7 +200,7 @@
     "unit": "Satuan",
     "unitLocked": "Terkunci, sudah dipakai di sesi.",
     "estimatedPrice": "Perkiraan harga per {unit}",
-    "unitHint": "Pilih satuan saat kamu membeli, misalnya kilogram atau liter. Resep tetap bisa memakai gram atau ml. Harga ini hanya dipakai sampai ada belanja tercatat; setelah itu HPP memakai harga beli rata-rata.",
+    "unitHint": "Pilih satuan saat kamu membeli: kg, liter, pcs, atau tray untuk telur. Resep otomatis memakai gram, ml, atau pcs. Kemasan (botol, pack, dus, renceng) dihitung per kemasan dan tidak dikonversi. Harga ini hanya dipakai sampai ada belanja tercatat; setelah itu HPP memakai harga beli rata-rata.",
     "shelfLife": "Umur simpan (hari)",
     "dayLess": "Kurangi satu hari",
     "dayMore": "Tambah satu hari",
@@ -272,7 +254,10 @@
     "deactivateTitle": "Nonaktifkan {name}?",
     "deactivateText": "Bahan ini hilang dari belanja dan resep. Sesi dan laporan lama tetap menyimpannya, dan kamu bisa mengaktifkannya lagi kapan saja.",
     "deactivating": "Menonaktifkan…",
-    "deactivate": "Nonaktifkan"
+    "deactivate": "Nonaktifkan",
+    "colStock": "Stok",
+    "stockNoteOpen": "Stok berkurang otomatis setiap ada penjualan selama lapak buka.",
+    "stockNoteClosed": "Lapak sedang tutup: stok adalah sisa dari tutup lapak terakhir."
   },
   "products": {
     "categories": {
@@ -1653,6 +1638,7 @@
       }
     ],
     "ctaTitle": "Sudah siap mencoba?",
-    "ctaText": "Daftar gratis, lalu ikuti panduan ini dari langkah pertama."
+    "ctaText": "Daftar gratis, lalu ikuti panduan ini dari langkah pertama.",
+    "appTitle": "Panduan"
   }
 }

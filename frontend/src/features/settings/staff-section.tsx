@@ -67,8 +67,8 @@ export function StaffSection({ users, meId }: { users: User[]; meId: string }) {
           <thead className="border-y border-base-300 bg-base-200/40 text-xs uppercase tracking-widest text-base-content/70">
             <tr>
               <th className="px-7 py-3 font-normal">{t("colName")}</th>
-              <th className="px-3 py-3 font-normal">{t("colRole")}</th>
-              <th className="px-3 py-3 font-normal">{t("colStatus")}</th>
+              <th className="px-3 py-3 text-center font-normal">{t("colRole")}</th>
+              <th className="px-3 py-3 text-center font-normal">{t("colStatus")}</th>
               <th className="px-7 py-3"><span className="sr-only">{t("colActions")}</span></th>
             </tr>
           </thead>
@@ -84,14 +84,14 @@ export function StaffSection({ users, meId }: { users: User[]; meId: string }) {
                     </span>
                   </span>
                 </td>
-                <td className="px-3 py-3">{u.role === "OWNER" ? t("owner") : t("cashier")}</td>
-                <td className="px-3 py-3">
+                <td className="px-3 py-3 text-center">{u.role === "OWNER" ? t("owner") : t("cashier")}</td>
+                <td className="px-3 py-3 text-center">
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-base-200 px-2.5 py-0.5 text-xs">
                     <span aria-hidden className={`size-1.5 rounded-full ${u.active ? "bg-success" : "bg-base-content/40"}`} />
                     {u.active ? t("active") : t("inactive")}
                   </span>
                 </td>
-                <td className="px-7 py-3 text-right">
+                <td className="px-7 py-3 text-center">
                   {u.id === meId ? (
                     <span className="text-base-content/60">{tc("you")}</span>
                   ) : (

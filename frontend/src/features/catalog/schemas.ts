@@ -2,7 +2,7 @@
 // Skema dibuat per bahasa: berikan t = useTranslations("validation").
 import { z } from "zod";
 import type { ValidationT } from "@/i18n/validation";
-import { quantityUnitKeys, stockUnitKeys } from "./units";
+import { stockUnitKeys } from "./units";
 
 // Batas sama dengan backend dto/catalog/StockItemRequest (Money.MAX_UNIT_PRICE). Uang dalam satuan terkecil (lib/currency).
 export const stockItemSchema = (t: ValidationT) =>
@@ -32,7 +32,7 @@ export const productRecipeSchema = (t: ValidationT) =>
       .array(
         z.object({
           stockItemId: z.string().min(1, t("chooseIngredient")),
-          unit: z.enum(quantityUnitKeys),
+          unit: z.enum(stockUnitKeys),
           quantity: z
             .number({ error: t("amountAboveZero") })
             .gt(0, t("amountAboveZero"))

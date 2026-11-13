@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { LuPencil, LuRotateCcw, LuTrash2, LuX } from "react-icons/lu";
@@ -13,7 +13,7 @@ import { createStockItem, deactivateStockItem, updateStockItem } from "@/feature
 import { StockItemFields, stockItemDefaults } from "@/features/catalog/components/stock-item-fields";
 import { stockItemSchema, type StockItemInput } from "@/features/catalog/schemas";
 import type { StockItem } from "@/features/catalog/types";
-import { stockUnits } from "@/features/catalog/units";
+import { formatQuantity, unitLabel } from "@/features/catalog/units";
 import { ApiError, errorMessage } from "@/lib/api-client";
 
 const FORM_ID = "stock-item-form";
@@ -30,8 +30,18 @@ const toInput = (i: StockItem): StockItemInput => ({
 
 
 /** Tabel bahan dengan pencarian, tambah/ubah lewat modal, dan nonaktifkan/aktifkan kembali. */
-export function IngredientsManager({ items }: { items: StockItem[] }) {
+export function IngredientsManager({
+  items,
+  stock,
+  stallOpen,
+}: {
+  items: StockItem[];
+  /** Jumlah stok per id bahan, dalam satuan stok bahan; bahan yang tidak ada berarti 0. */
+  stock: Record<string, number>;
+  stallOpen: boolean;
+}) {
   const money = useMoney();
+  const locale = useLocale();
   const t = useTranslations("ingredients");
   const tc = useTranslations("catalog");
   const router = useRouter();
@@ -91,12 +101,13 @@ export function IngredientsManager({ items }: { items: StockItem[] }) {
           <thead className="border-b border-base-300 bg-base-200/40 text-xs uppercase tracking-widest text-base-content/70">
             <tr>
               <th className="px-5 py-3 font-normal">{t("colName")}</th>
-              <th className="px-3 py-3 font-normal">{t("colType")}</th>
-              <th className="px-3 py-3 font-normal">{t("colUnit")}</th>
-              <th className="px-3 py-3 text-right font-normal">{t("colPrice")}</th>
-              <th className="px-3 py-3 text-right font-normal">{t("colShelfLife")}</th>
+              <th className="px-3 py-3 text-center font-normal">{t("colType")}</th>
+              <th className="px-3 py-3 text-center font-normal">{t("colUnit")}</th>
+              <th className="px-3 py-3 text-center font-normal">{t("colStock")}</th>
+              <th className="px-3 py-3 text-center font-normal">{t("colPrice")}</th>
+              <th className="px-3 py-3 text-center font-normal">{t("colShelfLife")}</th>
               <th className="px-3 py-3 text-center font-normal">{t("colCarryOver")}</th>
-              <th className="px-5 py-3 text-right font-normal">{t("colActions")}</th>
+              <th className="px-5 py-3 text-center font-normal">{t("colActions")}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-base-300">
@@ -107,13 +118,16 @@ export function IngredientsManager({ items }: { items: StockItem[] }) {
                   {i.isPrimary && <span className="ml-2 rounded-full bg-base-content px-2 py-0.5 text-xs font-normal text-base-100">{t("mainItem")}</span>}
                   {!i.active && <span className="ml-2 rounded-full bg-base-200 px-2 py-0.5 text-xs font-normal">{t("inactive")}</span>}
                 </td>
-                <td className="px-3 py-3">{tc(`kind.${i.kind}`)}</td>
-                <td className="px-3 py-3">{stockUnits[i.unit].short}</td>
-                <td className="px-3 py-3 text-right">{money(i.unitCost ?? 0)} / {stockUnits[i.unit].short}</td>
-                <td className="px-3 py-3 text-right">{t("days", { count: i.shelfLifeDays })}</td>
+                <td className="px-3 py-3 text-center">{tc(`kind.${i.kind}`)}</td>
+                <td className="px-3 py-3 text-center">{unitLabel(i.unit, locale)}</td>
+                <td className={`whitespace-nowrap px-3 py-3 text-center ${stock[i.id] ? "font-semibold" : "text-base-content/60"}`}>
+                  {formatQuantity(stock[i.id] ?? 0, i.unit, locale)}
+                </td>
+                <td className="px-3 py-3 text-center">{money(i.unitCost ?? 0)} / {unitLabel(i.unit, locale)}</td>
+                <td className="px-3 py-3 text-center">{t("days", { count: i.shelfLifeDays })}</td>
                 <td className={`px-3 py-3 text-center ${i.carryOverAllowed ? "" : "text-base-content/60"}`}>{i.carryOverAllowed ? t("yes") : t("no")}</td>
                 <td className="px-5 py-3">
-                  <span className="flex justify-end gap-1">
+                  <span className="flex justify-center gap-1">
                     {i.active ? (
                       <>
                         <button type="button" className="btn btn-ghost btn-sm btn-square" aria-label={t("editName", { name: i.name })} onClick={() => setEditing(i)}>
@@ -133,13 +147,13 @@ export function IngredientsManager({ items }: { items: StockItem[] }) {
               </tr>
             ))}
             {shown.length === 0 && (
-              <tr><td colSpan={7} className="px-5 py-10 text-center text-base-content/70">{t("noMatch")}</td></tr>
+              <tr><td colSpan={8} className="px-5 py-10 text-center text-base-content/70">{t("noMatch")}</td></tr>
             )}
           </tbody>
         </table>
       </div>
       <p className="mt-4 text-xs text-base-content/70">
-        {t("estimateNote")}
+        {stallOpen ? t("stockNoteOpen") : t("stockNoteClosed")} {t("estimateNote")}
       </p>
 
       <Modal open={editing !== undefined} onClose={() => setEditing(undefined)} labelledBy="stock-item-title" className="max-w-4xl">
@@ -194,6 +208,7 @@ function StockItemDialog({
   const tc = useTranslations("common");
   const tu = useTranslations("units");
   const tv = useTranslations("validation");
+  const locale = useLocale();
   const form = useForm<StockItemInput>({ resolver: zodResolver(stockItemSchema(tv)), defaultValues: item ? toInput(item) : stockItemDefaults });
   const { handleSubmit, setError, setValue, formState: { errors, isSubmitting } } = form;
   // Backend tidak memberi tahu di awal; satuan baru terkunci setelah ditolak karena bahan sudah dipakai di sesi.
@@ -225,7 +240,7 @@ function StockItemDialog({
       <div className="flex items-start justify-between gap-4 border-b border-base-300 px-6 py-5">
         <div>
           <h2 id="stock-item-title" className="text-xl font-semibold">{item ? t("editTitle") : t("add")}</h2>
-          {item && <p className="text-xs text-base-content/70">{[item.name, item.isPrimary && t("mainItemLower"), stockUnits[item.unit].short].filter(Boolean).join(" · ")}</p>}
+          {item && <p className="text-xs text-base-content/70">{[item.name, item.isPrimary && t("mainItemLower"), unitLabel(item.unit, locale)].filter(Boolean).join(" · ")}</p>}
         </div>
         <button type="button" className="btn btn-ghost btn-sm btn-square" aria-label={tc("close")} onClick={onCancel}>
           <LuX className="size-5" aria-hidden />

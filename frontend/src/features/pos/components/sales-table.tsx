@@ -109,12 +109,12 @@ export function SalesTable({
           <thead className="text-xs uppercase tracking-widest text-base-content/70">
             <tr className="border-b border-base-300">
               <th className="px-5 py-3 font-normal">{t("colNo")}</th>
-              <th className="px-3 py-3 font-normal">{t("colTime")}</th>
-              <th className="px-3 py-3 font-normal">{t("colCashier")}</th>
-              <th className="px-3 py-3 text-right font-normal">{t("colPortions")}</th>
-              <th className="px-3 py-3 font-normal">{t("colPayment")}</th>
-              <th className="px-3 py-3 text-right font-normal">{t("colTotal")}</th>
-              <th className="px-5 py-3 font-normal">{t("colStatus")}</th>
+              <th className="px-3 py-3 text-center font-normal">{t("colTime")}</th>
+              <th className="px-3 py-3 text-center font-normal">{t("colCashier")}</th>
+              <th className="px-3 py-3 text-center font-normal">{t("colPortions")}</th>
+              <th className="px-3 py-3 text-center font-normal">{t("colPayment")}</th>
+              <th className="px-3 py-3 text-center font-normal">{t("colTotal")}</th>
+              <th className="px-5 py-3 text-center font-normal">{t("colStatus")}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-base-300">
@@ -132,14 +132,14 @@ export function SalesTable({
                       {receiptNo(s.receiptNo)}
                     </button>
                   </td>
-                  <td className="px-3 py-3">{formatClock(s.soldAt, timeZone)}</td>
-                  <td className="px-3 py-3">{s.cashierName}</td>
-                  <td className="px-3 py-3 text-right">{s.itemCount}</td>
-                  <td className="px-3 py-3">{tp(s.paymentMethod)}</td>
-                  <td className={`px-3 py-3 text-right font-semibold ${isVoid ? "line-through" : ""}`}>
+                  <td className="px-3 py-3 text-center">{formatClock(s.soldAt, timeZone)}</td>
+                  <td className="px-3 py-3 text-center">{s.cashierName}</td>
+                  <td className="px-3 py-3 text-center">{s.itemCount}</td>
+                  <td className="px-3 py-3 text-center">{tp(s.paymentMethod)}</td>
+                  <td className={`px-3 py-3 text-center font-semibold ${isVoid ? "line-through" : ""}`}>
                     {money(s.totalAmount)}
                   </td>
-                  <td className="px-5 py-3"><StatusChip voided={isVoid} /></td>
+                  <td className="px-5 py-3 text-center"><StatusChip voided={isVoid} /></td>
                 </tr>
               );
             })}

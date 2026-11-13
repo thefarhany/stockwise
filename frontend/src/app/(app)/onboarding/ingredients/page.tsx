@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { LuCheck, LuLightbulb, LuPlus } from "react-icons/lu";
 import type { StockItem } from "@/features/catalog/types";
-import { stockUnits } from "@/features/catalog/units";
+import { unitLabel } from "@/features/catalog/units";
 import { IngredientForm } from "@/features/onboarding";
 import type { Outlet } from "@/features/onboarding/types";
 import { formatMoney } from "@/lib/currency";
@@ -21,6 +21,7 @@ export default async function IngredientsPage() {
   if (!outlet?.success || !items?.success) redirect("/login");
   if (!outlet.data.setupCompleted) redirect("/onboarding");
   const t = await getTranslations("onboarding");
+  const locale = await getLocale();
 
   return (
     <OnboardingShell
@@ -44,7 +45,7 @@ export default async function IngredientsPage() {
                   <span className="min-w-0 flex-1">
                     <span className="block truncate">{item.name}</span>
                     <span className="text-xs text-base-content/60">
-                      {stockUnits[item.unit].short} · {formatMoney(item.unitCost ?? 0, outlet.data.currency)}
+                      {unitLabel(item.unit, locale)} · {formatMoney(item.unitCost ?? 0, outlet.data.currency)}
                     </span>
                   </span>
                   {item.isPrimary && (

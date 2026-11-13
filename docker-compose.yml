@@ -1,0 +1,51 @@
+# Production: docker compose up -d --build   (secret di file .env sebelah file ini; contoh di .env.example)
+# Hanya frontend yang dibuka, dan hanya ke 127.0.0.1: akses dari luar lewat reverse proxy/tunnel HTTPS,
+# karena cookie login bertanda Secure dan ditolak browser lewat HTTP biasa (kecuali localhost).
+services:
+  db:
+    image: mysql:8.4
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: stockwise
+      MYSQL_USER: stockwise
+      MYSQL_PASSWORD: ${DB_PASSWORD:?isi DB_PASSWORD di .env}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?isi DB_ROOT_PASSWORD di .env}
+      TZ: UTC
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p\"$$MYSQL_ROOT_PASSWORD\" --silent"]
+      interval: 10s
+      retries: 12
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_URL: jdbc:mysql://db:3306/stockwise
+      DB_USER: stockwise
+      DB_PASSWORD: ${DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET:?isi JWT_SECRET di .env}
+      OLLAMA_URL: ${OLLAMA_URL:-http://host.docker.internal:11434}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-}
+      OLLAMA_API_KEY: ${OLLAMA_API_KEY:-}
+      MAPBOX_ACCESS_TOKEN: ${MAPBOX_ACCESS_TOKEN:-}
+    # Ollama yang jalan langsung di host bisa dicapai lewat host.docker.internal
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    environment:
+      CORE_API_URL: http://backend:8080/api/v1
+    ports:
+      - "${APP_PORT:-127.0.0.1:3000}:3000"
+
+volumes:
+  db-data:

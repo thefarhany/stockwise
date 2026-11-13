@@ -6,15 +6,13 @@ package com.thefarhany.stockwise.model.catalog;
  */
 public enum StockUnit {
 	// Berat, dasar gram.
-	GRAM(Family.MASS, 1), ONS(Family.MASS, 100), KG(Family.MASS, 1000),
-	// Volume, dasar ml. Cup dikunci 240 ml.
-	ML(Family.VOLUME, 1), SDT(Family.VOLUME, 5), SDM(Family.VOLUME, 15), CUP(Family.VOLUME, 240), LITER(Family.VOLUME, 1000),
-	// Hitungan berisi tetap, dasar pcs.
-	PCS(Family.COUNT, 1), BUTIR(Family.COUNT, 1), BUAH(Family.COUNT, 1), LUSIN(Family.COUNT, 12), KODI(Family.COUNT, 20),
-	TRAY(Family.COUNT, 30),
-	// Hitungan bebas dan kemasan: isinya beda per barang, jadi tidak dikonversi.
-	SIUNG, IKAT, BATANG, LEMBAR, EKOR, POTONG, SISIR, PORSI,
-	BUNGKUS, PACK, BOTOL, KALENG, GALON, JERIGEN;
+	GRAM(Family.MASS, 1), KG(Family.MASS, 1000),
+	// Volume, dasar ml.
+	ML(Family.VOLUME, 1), LITER(Family.VOLUME, 1000),
+	// Hitungan, dasar pcs. Tray dikunci 30 (tray telur).
+	PCS(Family.COUNT, 1), TRAY(Family.COUNT, 30),
+	// Kemasan: isinya beda per barang, jadi tidak dikonversi.
+	BOTOL, PACK, DUS, RENCENG;
 
 	public enum Family {
 		MASS, VOLUME, COUNT

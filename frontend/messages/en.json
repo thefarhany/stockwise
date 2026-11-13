@@ -176,34 +176,16 @@
       "package": "Package"
     },
     "names": {
-      "GRAM": "Gram",
-      "ONS": "Ons (100 g)",
-      "KG": "Kilogram",
-      "ML": "Milliliter",
-      "SDT": "Teaspoon (sdt, 5 ml)",
-      "SDM": "Tablespoon (sdm, 15 ml)",
-      "CUP": "Cup (240 ml)",
+      "GRAM": "Gram (g)",
+      "KG": "Kilogram (kg)",
+      "ML": "Milliliter (ml)",
       "LITER": "Liter",
-      "PCS": "Pieces",
-      "BUTIR": "Butir (egg, ball)",
-      "BUAH": "Buah (fruit, whole)",
-      "LUSIN": "Lusin (dozen, 12)",
-      "KODI": "Kodi (20)",
-      "TRAY": "Tray (30)",
-      "SIUNG": "Siung (clove)",
-      "IKAT": "Ikat (bunch)",
-      "BATANG": "Batang (stalk)",
-      "LEMBAR": "Lembar (sheet, leaf)",
-      "EKOR": "Ekor (whole chicken, fish)",
-      "POTONG": "Potong (cut, slice)",
-      "SISIR": "Sisir (hand of bananas)",
-      "PORSI": "Porsi (portion)",
-      "BUNGKUS": "Bungkus (packet)",
+      "PCS": "Pieces (pcs)",
+      "TRAY": "Tray (30 eggs)",
+      "BOTOL": "Bottle",
       "PACK": "Pack",
-      "BOTOL": "Botol (bottle)",
-      "KALENG": "Kaleng (can)",
-      "GALON": "Galon (gallon)",
-      "JERIGEN": "Jerigen (jerry can)"
+      "DUS": "Box",
+      "RENCENG": "Strip (sachets)"
     }
   },
   "catalog": {
@@ -218,7 +200,7 @@
     "unit": "Unit",
     "unitLocked": "Locked, already used in a session.",
     "estimatedPrice": "Estimated price per {unit}",
-    "unitHint": "Pick the unit you buy in, such as kilogram or liter. Recipes can still use gram or ml. The price is only used until a purchase is recorded; after that, HPP uses the average purchase price.",
+    "unitHint": "Pick the unit you buy in: kg, liter, pcs, or tray for eggs. Recipes use gram, ml, or pcs automatically. Packages (bottle, pack, box, strip) are counted per package and not converted. The price is only used until a purchase is recorded; after that, HPP uses the average purchase price.",
     "shelfLife": "Shelf life (days)",
     "dayLess": "One day less",
     "dayMore": "One day more",
@@ -272,7 +254,10 @@
     "deactivateTitle": "Deactivate {name}?",
     "deactivateText": "It disappears from purchases and recipes. Past sessions and reports keep it, and you can reactivate it anytime.",
     "deactivating": "Deactivating…",
-    "deactivate": "Deactivate"
+    "deactivate": "Deactivate",
+    "colStock": "Stock",
+    "stockNoteOpen": "Stock goes down automatically with every sale while the stall is open.",
+    "stockNoteClosed": "The stall is closed: stock is what was left at the last close."
   },
   "products": {
     "categories": {
@@ -1653,6 +1638,7 @@
       }
     ],
     "ctaTitle": "Ready to try it?",
-    "ctaText": "Sign up for free, then follow this guide from step one."
+    "ctaText": "Sign up for free, then follow this guide from step one.",
+    "appTitle": "Guide"
   }
 }

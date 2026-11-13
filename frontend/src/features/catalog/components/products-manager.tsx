@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { useFormat } from "@/i18n/format";
 import { useState } from "react";
 import { FormProvider, useForm, useWatch } from "react-hook-form";
 import { LuPencil, LuRotateCcw, LuTrash2, LuX } from "react-icons/lu";
@@ -241,6 +242,7 @@ function ProductDialog({
 }) {
   const router = useRouter();
   const t = useTranslations("products");
+  const f = useFormat();
   const tc = useTranslations("common");
   const tv = useTranslations("validation");
   const form = useForm<ProductRecipeInput>({
@@ -256,7 +258,7 @@ function ProductDialog({
   const [createdId, setCreatedId] = useState<string | null>(null);
 
   const save = handleSubmit(async (input) => {
-    const recipe = toRecipeRequest(input.items, stockItems, setError, (unit) => t("tooPrecise", { unit }));
+    const recipe = toRecipeRequest(input.items, stockItems, setError, (unit) => t("tooPrecise", { unit: f.unit(unit) }));
     if (!recipe) return;
     const body = { name: input.name, category: input.category || null, price: input.price, stockMode: product?.stockMode };
     try {

@@ -1,13 +1,13 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import type { ComponentProps } from "react";
 import { Controller, useWatch, type UseFormReturn } from "react-hook-form";
 import { LuMinus, LuPlus } from "react-icons/lu";
 import { Field } from "@/components/ui/field";
 import { MoneyField } from "@/components/ui/money-field";
 import type { StockItemInput } from "@/features/catalog/schemas";
-import { stockUnitKeys, stockUnits } from "@/features/catalog/units";
+import { stockUnitKeys, stockUnits, unitLabel } from "@/features/catalog/units";
 
 export const stockItemDefaults: StockItemInput = {
   name: "",
@@ -46,6 +46,7 @@ export function StockItemFields({
 }) {
   const t = useTranslations("catalog");
   const tu = useTranslations("units");
+  const locale = useLocale();
   const { register, control, formState: { errors } } = form;
   const unit = useWatch({ control, name: "unit" });
 
@@ -115,7 +116,7 @@ export function StockItemFields({
             name="unitCost"
             // Harga perkiraan boleh kosong; kosong disimpan sebagai 0.
             emptyValue={0}
-            label={t("estimatedPrice", { unit: stockUnits[unit].short })}
+            label={t("estimatedPrice", { unit: unitLabel(unit, locale) })}
             error={errors.unitCost?.message}
           />
         </div>

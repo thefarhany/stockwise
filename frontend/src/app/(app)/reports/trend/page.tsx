@@ -152,12 +152,12 @@ export default async function TrendPage({ searchParams }: PageProps<"/reports/tr
                 <thead>
                   <tr>
                     <th>{t("period")}</th>
-                    <th className="text-right">{t("sessions")}</th>
-                    <th className="text-right">{t("portions")}</th>
-                    <th className="text-right">{r("revenue")}</th>
-                    <th className="text-right">{r("cogs")}</th>
-                    <th className="text-right">{r("wasted")}</th>
-                    <th className="text-right">{r("profit")}</th>
+                    <th className="text-center">{t("sessions")}</th>
+                    <th className="text-center">{t("portions")}</th>
+                    <th className="text-center">{r("revenue")}</th>
+                    <th className="text-center">{r("cogs")}</th>
+                    <th className="text-center">{r("wasted")}</th>
+                    <th className="text-center">{r("profit")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -170,12 +170,12 @@ export default async function TrendPage({ searchParams }: PageProps<"/reports/tr
                           periodLabel(p.period)
                         )}
                       </td>
-                      <td className="text-right">{f.number(p.sessions)}</td>
-                      <td className="text-right">{f.number(p.itemsSold)}</td>
-                      <td className="text-right">{money(p.revenue)}</td>
-                      <td className="text-right">{money(p.cogs)}</td>
-                      <td className="text-right">{money(p.wasteCost)}</td>
-                      <td className={`text-right font-semibold ${p.netProfit < 0 ? "text-error" : ""}`}>{money(p.netProfit)}</td>
+                      <td className="text-center">{f.number(p.sessions)}</td>
+                      <td className="text-center">{f.number(p.itemsSold)}</td>
+                      <td className="text-center">{money(p.revenue)}</td>
+                      <td className="text-center">{money(p.cogs)}</td>
+                      <td className="text-center">{money(p.wasteCost)}</td>
+                      <td className={`text-center font-semibold ${p.netProfit < 0 ? "text-error" : ""}`}>{money(p.netProfit)}</td>
                     </tr>
                   ))}
                 </tbody>

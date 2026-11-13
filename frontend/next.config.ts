@@ -5,6 +5,8 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Image Docker hanya menyalin server minimal (.next/standalone), bukan seluruh node_modules.
+  output: "standalone",
   // Header keamanan untuk semua halaman. HSTS dipasang di reverse proxy (HTTPS), bukan di sini.
   async headers() {
     return [

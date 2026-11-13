@@ -6,8 +6,8 @@ import { LuPlus, LuTrash2 } from "react-icons/lu";
 import { useMoney } from "@/components/currency";
 import { lineCost, recipeCost } from "@/features/catalog/recipe-cost";
 import type { ProductRecipeInput } from "@/features/catalog/schemas";
-import type { StockItem } from "@/features/catalog/types";
-import { defaultQuantityUnit, quantityUnitLabel, quantityUnitsFor, toStockQuantity } from "@/features/catalog/units";
+import type { StockItem, StockUnit } from "@/features/catalog/types";
+import { defaultQuantityUnit, quantityUnitsFor, toStockQuantity, unitLabel } from "@/features/catalog/units";
 
 // unit diganti otomatis begitu bahan dipilih.
 export const emptyRecipeRow = { stockItemId: "", unit: "GRAM", quantity: Number.NaN } as const;
@@ -15,7 +15,8 @@ export const emptyRecipeRow = { stockItemId: "", unit: "GRAM", quantity: Number.
 /** HPP per porsi dari baris resep yang sudah lengkap, dengan harga perkiraan bahan. */
 export function useRecipeCost(stockItems: StockItem[]) {
   const { control } = useFormContext<ProductRecipeInput>();
-  const quantityFormat = new Intl.NumberFormat(useLocale(), { maximumFractionDigits: 3 });
+  const locale = useLocale();
+  const quantityFormat = new Intl.NumberFormat(locale, { maximumFractionDigits: 3 });
   const rows = useWatch({ control, name: "items" }) ?? [];
   const byId = new Map(stockItems.map((s) => [s.id, s]));
   const lines = rows.flatMap((r) => {
@@ -23,7 +24,7 @@ export function useRecipeCost(stockItems: StockItem[]) {
     // Harga per satuan stok, jadi biaya dihitung dari jumlah dalam satuan stok.
     const quantity = item && Number.isFinite(r.quantity) && r.quantity > 0 ? toStockQuantity(r.quantity, r.unit, item.unit) : null;
     return item && quantity !== null
-      ? [{ id: r.stockItemId, name: item.name, label: `${quantityFormat.format(r.quantity)} ${quantityUnitLabel(r.unit)}`, quantity, unitCost: item.unitCost ?? 0 }]
+      ? [{ id: r.stockItemId, name: item.name, label: `${quantityFormat.format(r.quantity)} ${unitLabel(r.unit, locale)}`, quantity, unitCost: item.unitCost ?? 0 }]
       : [];
   });
   return { lines, hpp: recipeCost(lines) };
@@ -37,7 +38,7 @@ export function toRecipeRequest(
   items: ProductRecipeInput["items"],
   stockItems: StockItem[],
   setError: UseFormSetError<ProductRecipeInput>,
-  tooPrecise: (unit: string) => string,
+  tooPrecise: (unit: StockUnit) => string,
 ) {
   const unitOf = new Map(stockItems.map((s) => [s.id, s.unit]));
   const out: { stockItemId: string; quantity: number }[] = [];
@@ -45,7 +46,7 @@ export function toRecipeRequest(
     const stock = unitOf.get(r.stockItemId)!;
     const quantity = toStockQuantity(r.quantity, r.unit, stock);
     if (quantity === null) {
-      setError(`items.${i}.quantity`, { message: tooPrecise(quantityUnitLabel(stock)) }, { shouldFocus: true });
+      setError(`items.${i}.quantity`, { message: tooPrecise(stock) }, { shouldFocus: true });
       return null;
     }
     out.push({ stockItemId: r.stockItemId, quantity });
@@ -56,6 +57,7 @@ export function toRecipeRequest(
 /** Daftar bahan resep per porsi: bahan, jumlah, satuan, dan (opsional) biaya per baris. */
 export function RecipeRows({ stockItems, showCost = false }: { stockItems: StockItem[]; showCost?: boolean }) {
   const money = useMoney();
+  const locale = useLocale();
   const t = useTranslations("products");
   const { register, control, setValue, formState: { errors } } = useFormContext<ProductRecipeInput>();
   const { fields, append, remove } = useFieldArray({ control, name: "items" });
@@ -121,7 +123,7 @@ export function RecipeRows({ stockItems, showCost = false }: { stockItems: Stock
                   {...register(`items.${i}.unit`)}
                 >
                   {unitOptions.length === 0 && <option value={row?.unit}>–</option>}
-                  {unitOptions.map((u) => <option key={u} value={u}>{quantityUnitLabel(u)}</option>)}
+                  {unitOptions.map((u) => <option key={u} value={u}>{unitLabel(u, locale)}</option>)}
                 </select>
                 {showCost && (
                   <span className="text-right text-sm">

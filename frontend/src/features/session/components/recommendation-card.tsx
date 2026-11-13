@@ -130,9 +130,9 @@ export function RecommendationCard({
           <thead className="text-xs uppercase tracking-widest text-neutral-content/70">
             <tr className="border-b border-neutral-content/30">
               <th className="py-3 font-normal">{t("colIngredient")}</th>
-              <th className="py-3 font-normal">{t("colAmount")}</th>
-              <th className="py-3 font-normal">{t("colRange")}</th>
-              {showCost && <th className="py-3 font-normal">{t("colCost")}</th>}
+              <th className="py-3 text-center font-normal">{t("colAmount")}</th>
+              <th className="py-3 text-center font-normal">{t("colRange")}</th>
+              {showCost && <th className="py-3 text-center font-normal">{t("colCost")}</th>}
             </tr>
           </thead>
           <tbody>
@@ -144,11 +144,11 @@ export function RecommendationCard({
                     <span className="ml-2 rounded-full bg-neutral-content px-2 py-0.5 text-xs text-neutral">{t("mainItem")}</span>
                   )}
                 </td>
-                <td className="py-3">{f.quantity(i.recommendedQty, i.unit)}</td>
-                <td className="py-3 text-xs text-neutral-content/70">
-                  {f.number(i.lowerQty)} – {f.quantity(i.upperQty, i.unit)}
+                <td className="py-3 text-center">{f.quantity(i.recommendedQty, i.unit)}</td>
+                <td className="py-3 text-center text-xs text-neutral-content/70">
+                  {f.quantity(i.lowerQty, i.unit)} – {f.quantity(i.upperQty, i.unit)}
                 </td>
-                {showCost && <td className="py-3">{i.estimatedCost === null ? "–" : money(i.estimatedCost)}</td>}
+                {showCost && <td className="py-3 text-center">{i.estimatedCost === null ? "–" : money(i.estimatedCost)}</td>}
               </tr>
             ))}
           </tbody>

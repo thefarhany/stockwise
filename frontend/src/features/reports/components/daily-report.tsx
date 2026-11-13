@@ -125,7 +125,7 @@ export function NotesCard({
       label: t("suggestionFor", { day: f.weekday(nextDate) }),
       value: `${nextRec.name} ${f.quantity(nextRec.recommendedQty, nextRec.unit)}`,
       detail:
-        t("range", { lower: f.number(nextRec.lowerQty), upper: f.quantity(nextRec.upperQty, nextRec.unit) }) +
+        t("range", { lower: f.quantity(nextRec.lowerQty, nextRec.unit), upper: f.quantity(nextRec.upperQty, nextRec.unit) }) +
         (nextRec.estimatedCost !== null ? t("estimated", { amount: money(nextRec.estimatedCost) }) : ""),
     });
   }
@@ -267,9 +267,9 @@ export function ProductTable({ rows, currency }: { rows: DailyReport["byProduct"
           <thead className="border-y border-base-300 bg-base-200/40 text-xs uppercase tracking-widest text-base-content/70">
             <tr>
               <th className="px-7 py-3 font-normal">{t("colProduct")}</th>
-              <th className="px-3 py-3 text-right font-normal">{t("colPortions")}</th>
-              <th className="px-3 py-3 text-right font-normal">{t("colRevenue")}</th>
-              <th className="w-72 px-7 py-3 font-normal">{t("colShare")}</th>
+              <th className="px-3 py-3 text-center font-normal">{t("colPortions")}</th>
+              <th className="px-3 py-3 text-center font-normal">{t("colRevenue")}</th>
+              <th className="w-72 px-7 py-3 text-center font-normal">{t("colShare")}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-base-300">
@@ -278,10 +278,10 @@ export function ProductTable({ rows, currency }: { rows: DailyReport["byProduct"
               return (
                 <tr key={r.productId}>
                   <td className="px-7 py-3">{r.name}</td>
-                  <td className="px-3 py-3 text-right">{f.number(r.qty)}</td>
-                  <td className="px-3 py-3 text-right font-semibold">{money(r.revenue)}</td>
+                  <td className="px-3 py-3 text-center">{f.number(r.qty)}</td>
+                  <td className="px-3 py-3 text-center font-semibold">{money(r.revenue)}</td>
                   <td className="px-7 py-3">
-                    <span className="flex items-center gap-3">
+                    <span className="flex items-center justify-center gap-3">
                       <Meter value={share} label={t("shareLabel", { share })} />
                       <span className="w-9 shrink-0 text-right text-xs text-base-content/60">{share}%</span>
                     </span>
@@ -305,7 +305,7 @@ export function StockTable({ stock, timeZone, currency }: { stock: SessionStock[
   const f = useFormat();
   const money = (n: number) => formatMoney(n, currency);
   const rows = stock.toSorted((a, b) => Number(b.isPrimary) - Number(a.isPrimary));
-  const num = "px-3 py-3 text-right";
+  const num = "px-3 py-3 text-center";
   return (
     <section aria-labelledby="stock-heading" className={`${card} overflow-hidden`}>
       <div className="px-7 pt-7 pb-5">
@@ -324,7 +324,7 @@ export function StockTable({ stock, timeZone, currency }: { stock: SessionStock[
               <th className={`${num} font-normal`}>{t("colSold")}</th>
               <th className={`${num} font-normal`}>{t("colCarried")}</th>
               <th className={`${num} font-normal`}>{t("colDiscarded")}</th>
-              <th className="px-7 py-3 text-right font-normal">{t("colSoldOut")}</th>
+              <th className="px-7 py-3 text-center font-normal">{t("colSoldOut")}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-base-300">
@@ -345,7 +345,7 @@ export function StockTable({ stock, timeZone, currency }: { stock: SessionStock[
                   <td className={`${num} ${discarded > 0 ? "text-error" : ""}`}>
                     {discarded > 0 ? `${q(discarded)} · ${money(s.discardedCost ?? 0)}` : "0"}
                   </td>
-                  <td className={`px-7 py-3 text-right ${s.soldOutAt ? "text-error" : "text-base-content/50"}`}>
+                  <td className={`px-7 py-3 text-center ${s.soldOutAt ? "text-error" : "text-base-content/50"}`}>
                     {s.soldOutAt ? t("soldOutTime", { time: formatClock(s.soldOutAt, timeZone) }) : "—"}
                   </td>
                 </tr>

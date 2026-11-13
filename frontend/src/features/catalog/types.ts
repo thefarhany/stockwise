@@ -4,12 +4,7 @@ import type { Id, Money, Quantity } from "@/lib/api-types";
 
 export type StockKind = "RAW" | "FINISHED";
 // Sama dengan backend model/catalog/StockUnit.
-export type StockUnit =
-  | "GRAM" | "ONS" | "KG"
-  | "ML" | "SDT" | "SDM" | "CUP" | "LITER"
-  | "PCS" | "BUTIR" | "BUAH" | "LUSIN" | "KODI" | "TRAY"
-  | "SIUNG" | "IKAT" | "BATANG" | "LEMBAR" | "EKOR" | "POTONG" | "SISIR" | "PORSI"
-  | "BUNGKUS" | "PACK" | "BOTOL" | "KALENG" | "GALON" | "JERIGEN";
+export type StockUnit = "GRAM" | "KG" | "ML" | "LITER" | "PCS" | "TRAY" | "BOTOL" | "PACK" | "DUS" | "RENCENG";
 /** BATCH ditolak di R1. */
 export type StockMode = "MADE_TO_ORDER" | "BATCH";
 

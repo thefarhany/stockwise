@@ -8,7 +8,7 @@ import { useCurrency, useMoney } from "@/components/currency";
 import { moneyInputProps, typeMoney } from "@/components/ui/money-field";
 import { SelectMenu } from "@/components/ui/select-menu";
 import type { StockUnit } from "@/features/catalog/types";
-import { convertQuantity, purchaseUnitsFor, stockUnits } from "@/features/catalog/units";
+import { convertQuantity, purchaseUnitsFor } from "@/features/catalog/units";
 import { openSession } from "@/features/session/api/sessions";
 import { parseCount } from "@/features/session/components/close-form";
 import type { OpeningStock, StockLine } from "@/features/session/types";
@@ -156,11 +156,11 @@ export function OpenForm({ stock, suggested }: { stock: OpeningStock[]; /** Sara
               <thead className="max-sm:hidden border-y border-base-300 bg-base-200/40 text-xs uppercase tracking-widest text-base-content/70">
                 <tr>
                   <th className="py-3 pr-3 pl-6 font-normal">{t("colIngredient")}</th>
-                  <th className="px-3 py-3 font-normal">{t("colInStock")}</th>
-                  <th className="px-3 py-3 font-normal">{t("colSuggested")}</th>
-                  <th className="px-3 py-3 font-normal">{t("colAdd")}</th>
-                  <th className="px-3 py-3 font-normal">{t("colPaid")}</th>
-                  <th className="py-3 pr-6 pl-3 text-right font-normal">{t("colAfter")}</th>
+                  <th className="px-3 py-3 text-center font-normal">{t("colInStock")}</th>
+                  <th className="px-3 py-3 text-center font-normal">{t("colSuggested")}</th>
+                  <th className="px-3 py-3 text-center font-normal">{t("colAdd")}</th>
+                  <th className="px-3 py-3 text-center font-normal">{t("colPaid")}</th>
+                  <th className="py-3 pr-6 pl-3 text-center font-normal">{t("colAfter")}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-base-300 max-sm:block">
@@ -177,20 +177,20 @@ export function OpenForm({ stock, suggested }: { stock: OpeningStock[]; /** Sara
                         {s.isPrimary && <span className="ml-2 whitespace-nowrap rounded-full bg-base-200 px-2 py-0.5 text-xs">{t("mainItem")}</span>}
                         {!s.active && <span className="mt-0.5 block text-xs text-base-content/60">{t("inactiveLeftovers")}</span>}
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 max-sm:p-0">
+                      <td className="whitespace-nowrap px-3 py-4 sm:text-center max-sm:p-0">
                         <span aria-hidden className="mb-1 block text-xs font-normal text-base-content/60 sm:hidden">{t("colInStock")}</span>
                         <span className={s.quantity > 0 ? "font-semibold" : "text-base-content/50"}>{f.quantity(s.quantity, s.unit)}</span>
                         {s.ageDays > 1 && <span className="block text-xs text-base-content/60">{t("daysOld", { count: s.ageDays })}</span>}
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-base-content/70 max-sm:p-0">
+                      <td className="whitespace-nowrap px-3 py-4 text-base-content/70 sm:text-center max-sm:p-0">
                         <span aria-hidden className="mb-1 block text-xs font-normal text-base-content/60 sm:hidden">{t("colSuggested")}</span>
                         {sug > 0 ? f.quantity(sug, s.unit) : "–"}
                       </td>
                       {s.active ? (
                         <>
-                          <td className="px-3 py-3 max-sm:p-0">
+                          <td className="px-3 py-3 sm:text-center max-sm:p-0">
                             <span aria-hidden className="mb-1 block text-xs font-normal text-base-content/60 sm:hidden">{t("colAdd")}</span>
-                            <div className="flex w-36 items-center rounded-field border border-base-300 bg-white has-aria-invalid:border-error max-sm:w-full">
+                            <div className="mx-auto flex w-36 items-center rounded-field border border-base-300 bg-white has-aria-invalid:border-error max-sm:w-full">
                               <label className="sr-only" htmlFor={`qty-${id}`}>{t("amountAdded", { name: s.name })}</label>
                               <input
                                 id={`qty-${id}`}
@@ -206,19 +206,19 @@ export function OpenForm({ stock, suggested }: { stock: OpeningStock[]; /** Sara
                                 <SelectMenu
                                   label={t("unitFor", { name: s.name })}
                                   value={row.unit}
-                                  options={units.map((u) => ({ value: u, label: stockUnits[u].short }))}
+                                  options={units.map((u) => ({ value: u, label: f.unit(u) }))}
                                   onChange={(unit) => update(id, { unit })}
                                 />
                               ) : (
-                                <span className="shrink-0 pr-3 text-xs text-base-content/60">{stockUnits[s.unit].short}</span>
+                                <span className="shrink-0 pr-3 text-xs text-base-content/60">{f.unit(s.unit)}</span>
                               )}
                             </div>
-                            {shown?.field === "qty" && <p className="mt-1 max-w-36 text-xs text-error">{t(shown.message)}</p>}
+                            {shown?.field === "qty" && <p className="mt-1 max-w-36 text-xs text-error sm:mx-auto">{t(shown.message)}</p>}
                           </td>
-                          <td className="px-3 py-3 max-sm:p-0">
+                          <td className="px-3 py-3 sm:text-center max-sm:p-0">
                             <>
                                 <span aria-hidden className="mb-1 block text-xs font-normal text-base-content/60 sm:hidden">{t("colPaid")}</span>
-                                <div className="max-sm:w-full flex w-36 items-center rounded-field border border-base-300 bg-white has-aria-invalid:border-error">
+                                <div className="mx-auto flex w-36 items-center rounded-field border border-base-300 bg-white has-aria-invalid:border-error max-sm:w-full">
                                   <span className="pl-3 text-xs text-base-content/60">{currencies[currency].symbol}</span>
                                   <label className="sr-only" htmlFor={`paid-${id}`}>{t("paidFor", { name: s.name })}</label>
                                   <input
@@ -230,17 +230,17 @@ export function OpenForm({ stock, suggested }: { stock: OpeningStock[]; /** Sara
                                     onChange={(e) => update(id, { paid: typeMoney(e, currency) })}
                                   />
                                 </div>
-                                {shown?.field === "paid" && <p className="mt-1 max-w-36 text-xs text-error">{t(shown.message)}</p>}
+                                {shown?.field === "paid" && <p className="mt-1 max-w-36 text-xs text-error sm:mx-auto">{t(shown.message)}</p>}
                                 {perUnit !== null && (
-                                  <p className="mt-1 text-xs text-base-content/60">{money(Math.round(perUnit))} / {stockUnits[s.unit].short}</p>
+                                  <p className="mt-1 text-xs text-base-content/60">{money(Math.round(perUnit))} / {f.unit(s.unit)}</p>
                                 )}
                             </>
                           </td>
                         </>
                       ) : (
-                        <td colSpan={2} className="px-3 py-4 text-xs text-base-content/60 max-sm:col-span-2 max-sm:p-0">{t("reactivateToAdd")}</td>
+                        <td colSpan={2} className="px-3 py-4 text-xs text-base-content/60 sm:text-center max-sm:col-span-2 max-sm:p-0">{t("reactivateToAdd")}</td>
                       )}
-                      <td className={`whitespace-nowrap py-4 pr-6 pl-3 text-right max-sm:col-span-2 max-sm:p-0 max-sm:text-left ${after > 0 ? "font-semibold" : "text-base-content/50"}`}>
+                      <td className={`whitespace-nowrap py-4 pr-6 pl-3 text-center max-sm:col-span-2 max-sm:p-0 max-sm:text-left ${after > 0 ? "font-semibold" : "text-base-content/50"}`}>
                         <span aria-hidden className="mb-1 block text-xs font-normal text-base-content/60 sm:hidden">{t("colAfter")}</span>
                         {f.quantity(after, s.unit)}
                       </td>
@@ -276,10 +276,10 @@ export function OpenForm({ stock, suggested }: { stock: OpeningStock[]; /** Sara
                 <thead className="border-y border-base-300 bg-base-200/40 text-xs uppercase tracking-widest text-base-content/70">
                   <tr>
                     <th className="py-3 pr-3 pl-6 font-normal">{t("colIngredient")}</th>
-                    <th className="px-3 py-3 text-right font-normal">{t("colInStock")}</th>
-                    <th className="px-3 py-3 text-right font-normal">{t("colAdded")}</th>
-                    <th className="px-3 py-3 text-right font-normal">{t("colOpening")}</th>
-                    <th className="py-3 pr-6 pl-3 text-right font-normal">{t("colPaid")}</th>
+                    <th className="px-3 py-3 text-center font-normal">{t("colInStock")}</th>
+                    <th className="px-3 py-3 text-center font-normal">{t("colAdded")}</th>
+                    <th className="px-3 py-3 text-center font-normal">{t("colOpening")}</th>
+                    <th className="py-3 pr-6 pl-3 text-center font-normal">{t("colPaid")}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-base-300">
@@ -288,10 +288,10 @@ export function OpenForm({ stock, suggested }: { stock: OpeningStock[]; /** Sara
                     .map(({ s, line, added, after }) => (
                       <tr key={s.stockItemId}>
                         <td className="py-3 pr-3 pl-6">{s.name}</td>
-                        <td className="whitespace-nowrap px-3 py-3 text-right text-base-content/70">{s.quantity > 0 ? f.quantity(s.quantity, s.unit) : "–"}</td>
-                        <td className="whitespace-nowrap px-3 py-3 text-right">{added > 0 ? `+${f.quantity(added, s.unit)}` : "–"}</td>
-                        <td className="whitespace-nowrap px-3 py-3 text-right font-semibold">{f.quantity(after, s.unit)}</td>
-                        <td className="whitespace-nowrap py-3 pr-6 pl-3 text-right">
+                        <td className="whitespace-nowrap px-3 py-3 text-center text-base-content/70">{s.quantity > 0 ? f.quantity(s.quantity, s.unit) : "–"}</td>
+                        <td className="whitespace-nowrap px-3 py-3 text-center">{added > 0 ? `+${f.quantity(added, s.unit)}` : "–"}</td>
+                        <td className="whitespace-nowrap px-3 py-3 text-center font-semibold">{f.quantity(after, s.unit)}</td>
+                        <td className="whitespace-nowrap py-3 pr-6 pl-3 text-center">
                           {line ? money(line.totalCost ?? 0) : "–"}
                         </td>
                       </tr>

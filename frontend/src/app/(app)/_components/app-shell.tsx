@@ -24,7 +24,7 @@ type NavKey = "home" | "cashier" | "transactions" | "reports" | "ingredients" | 
 type NavItem = {
   key: NavKey;
   icon: IconType;
-  href?: "/dashboard" | "/cashier" | "/transactions" | "/reports" | "/ingredients" | "/products" | "/settings" | "/docs";
+  href?: "/dashboard" | "/cashier" | "/transactions" | "/reports" | "/ingredients" | "/products" | "/settings" | "/guide";
   /** Hanya untuk Owner (endpoint-nya OWNER). */
   ownerOnly?: true;
 };
@@ -40,7 +40,7 @@ const manageNav: NavItem[] = [
   { key: "ingredients", icon: LuPackage, href: "/ingredients", ownerOnly: true },
   { key: "products", icon: LuBookOpen, href: "/products", ownerOnly: true },
   { key: "settings", icon: LuSettings, href: "/settings" },
-  { key: "docs", icon: LuCircleHelp, href: "/docs" },
+  { key: "docs", icon: LuCircleHelp, href: "/guide" },
 ];
 
 const initials = (name: string) =>
