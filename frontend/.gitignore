@@ -43,7 +43,7 @@ next-env.d.ts
 
 # dokumen & file AI / agent
 TASKS.md
-docs/
+/docs/
 .claude/
 .agents/
 .codex/
