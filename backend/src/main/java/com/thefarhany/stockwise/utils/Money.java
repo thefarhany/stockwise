@@ -1,13 +1,13 @@
 package com.thefarhany.stockwise.utils;
 
 /**
- * Batas atas isian uang (rupiah) dan jumlah di API. Tanpa batas, hasil kali harga x jumlah atau jumlah beberapa baris
+ * Batas atas isian uang (satuan terkecil mata uang: rupiah, sen) dan jumlah di API. Tanpa batas, hasil kali harga x jumlah atau jumlah beberapa baris
  * bisa meluap (long) diam-diam menjadi angka negatif. Dengan batas ini: harga x jumlah (1 miliar x 100.000) x 100 baris
  * tetap jauh di bawah batas long. Angka ini jauh di atas kebutuhan warung.
  */
 public final class Money {
 
-	/** Harga jual per porsi dan harga perkiraan per satuan bahan: Rp1 miliar. */
+	/** Harga jual per porsi dan harga perkiraan per satuan bahan: Rp1 miliar (atau 10 juta dalam mata uang bersen). */
 	public static final long MAX_UNIT_PRICE = 1_000_000_000L;
 
 	/** Total belanja satu baris dan uang diterima satu transaksi: Rp1 triliun. */

@@ -11,7 +11,7 @@ import java.util.UUID;
 
 /**
  * Satu baris belanja/produksi. Wajib tepat satu dari: totalCost (> 0) atau noCost = true (stok dari rumah).
- * unit (opsional) = satuan pasar yang sekeluarga dengan satuan bahan (KG<->GRAM, LITER<->ML).
+ * unit (opsional) = satuan pasar yang sekeluarga dengan satuan bahan (lihat StockUnit, mis. KG->GRAM, TRAY->BUTIR).
  */
 public record StockLineRequest(
 		@NotNull UUID stockItemId,

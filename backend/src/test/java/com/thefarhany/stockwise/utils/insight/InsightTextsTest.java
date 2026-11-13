@@ -7,6 +7,8 @@ import com.thefarhany.stockwise.dto.insight.InsightFacts.PrimaryFacts;
 import com.thefarhany.stockwise.dto.insight.InsightFacts.RecommendationFacts;
 import com.thefarhany.stockwise.dto.insight.InsightFacts;
 import com.thefarhany.stockwise.utils.insight.InsightTexts;
+import com.thefarhany.stockwise.model.outlet.Currency;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
@@ -15,8 +17,9 @@ import tools.jackson.databind.json.JsonMapper;
 class InsightTextsTest {
 
 	private static InsightFacts facts(String closeType, PrimaryFacts primary, RecommendationFacts rec) {
-		return new InsightFacts("id", "Geprek Pak Budi", "2026-10-31", closeType,
-				new Facts(1620000, 982800, 637200, 108, 0, primary, rec));
+		return new InsightFacts("id", "IDR", "2026-10-31", closeType,
+				new Facts(new BigDecimal("1620000"), new BigDecimal("982800"), new BigDecimal("637200"), 108, 0, primary,
+						rec));
 	}
 
 	private static final PrimaryFacts SOLD_OUT = new PrimaryFacts("Ayam", "18:40", 12);
@@ -28,10 +31,22 @@ class InsightTextsTest {
 	}
 
 	@Test
-	void formatsRupiahWithDots() {
-		assertThat(InsightTexts.rupiah(637200)).isEqualTo("Rp637.200");
-		assertThat(InsightTexts.rupiah(1620000)).isEqualTo("Rp1.620.000");
-		assertThat(InsightTexts.rupiah(0)).isEqualTo("Rp0");
+	void formatsMoneyIndonesianStyleWithCurrencySymbol() {
+		assertThat(InsightTexts.money(new BigDecimal("637200"), Currency.IDR)).isEqualTo("Rp637.200");
+		assertThat(InsightTexts.money(new BigDecimal("1620000"), Currency.IDR)).isEqualTo("Rp1.620.000");
+		assertThat(InsightTexts.money(BigDecimal.ZERO, Currency.IDR)).isEqualTo("Rp0");
+		assertThat(InsightTexts.money(InsightTexts.major(123450, Currency.USD), Currency.USD)).isEqualTo("$1.234,50");
+		assertThat(InsightTexts.money(InsightTexts.major(-500, Currency.EUR), Currency.EUR)).isEqualTo("€-5,00");
+	}
+
+	@Test
+	void decimalCurrencyTemplatePassesNumberCheck() {
+		InsightFacts f = new InsightFacts("id", "USD", "2026-10-31", "MANUAL",
+				new Facts(new BigDecimal("1234.50"), new BigDecimal("600.00"), new BigDecimal("634.50"), 8, 0, null, null));
+		String text = InsightTexts.template(f);
+		assertThat(text).contains("$1.234,50", "$634,50");
+		assertThat(accepts(text, allowed(f))).as(text).isTrue();
+		assertThat(accepts("Laba $634,51.", allowed(f))).isFalse();
 	}
 
 	@Test
@@ -44,6 +59,18 @@ class InsightTextsTest {
 		}
 		String text = InsightTexts.template(facts("MANUAL", SOLD_OUT, REC));
 		assertThat(text).contains("108 porsi", "Rp637.200", "18.40", "12 pembeli", "115 Ayam", "108 sampai 122");
+	}
+
+	@Test
+	void englishTemplateAndNumberCheckUseEnglishNotation() {
+		InsightFacts f = new InsightFacts("en", "IDR", "2026-10-31", "AUTO",
+				new Facts(new BigDecimal("1620000"), new BigDecimal("982800"), new BigDecimal("637200"), 108, 2, SOLD_OUT,
+						REC));
+		String text = InsightTexts.template(f);
+		assertThat(text).contains("On Saturday you sold 108 portions", "Rp1,620,000", "Rp637,200", "sold out at 18:40",
+				"12 customers", "For Sunday", "115 Ayam", "108 to 122", "2 transactions were voided", "automatically");
+		assertThat(InsightTexts.rejection(text, allowed(f), true)).as(text).isNull();
+		assertThat(InsightTexts.rejection("Profit was $1,234.51.", allowed(f), true)).isEqualTo("unknown_numbers=[1234.51]");
 	}
 
 	@Test

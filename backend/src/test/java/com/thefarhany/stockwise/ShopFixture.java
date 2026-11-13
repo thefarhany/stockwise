@@ -43,7 +43,7 @@ class ShopFixture {
 		String email = "o-" + UUID.randomUUID() + "@x.id";
 		String owner = JsonPath.read(json(post("/api/v1/auth/register").contentType(MediaType.APPLICATION_JSON)
 				.content("{\"name\":\"Budi\",\"email\":\"" + email + "\",\"password\":\"rahasia123\","
-						+ "\"outletName\":\"Geprek Pak Budi\"}")), "$.data.accessToken");
+						+ "\"outletName\":\"Geprek Pak Budi\",\"language\":\"ID\"}")), "$.data.accessToken");
 		mvc.perform(as(put("/api/v1/outlet"), owner,
 				"{\"name\":\"Geprek Pak Budi\",\"openTime\":\"11:00\",\"closeTime\":\"21:00\","
 						+ "\"paydayDays\":[25,1],\"recommendationBufferPct\":5}")).andExpect(status().isOk());

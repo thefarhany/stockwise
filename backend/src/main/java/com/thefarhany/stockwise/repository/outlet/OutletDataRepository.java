@@ -39,8 +39,10 @@ public class OutletDataRepository {
 				SELECT (SELECT COUNT(*) FROM stock_item WHERE outlet_id = UUID_TO_BIN(?) AND active),
 					   (SELECT COUNT(*) FROM product WHERE outlet_id = UUID_TO_BIN(?) AND active),
 					   (SELECT COUNT(DISTINCT p.id) FROM product p JOIN recipe_item r ON r.product_id = p.id
-						 WHERE p.outlet_id = UUID_TO_BIN(?) AND p.active)""",
-				(rs, i) -> new OnboardingCounts(rs.getInt(1), rs.getInt(2), rs.getInt(3)), id, id, id);
+						 WHERE p.outlet_id = UUID_TO_BIN(?) AND p.active),
+					   EXISTS (SELECT 1 FROM daily_session WHERE outlet_id = UUID_TO_BIN(?))""",
+				(rs, i) -> new OnboardingCounts(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getBoolean(4)), id, id, id,
+				id);
 	}
 
 	/** Harus dipanggil di dalam satu transaksi. */

@@ -16,12 +16,20 @@ class UnitConverterTest {
 		assertThat(UnitConverter.convert(new BigDecimal("1.5"), StockUnit.LITER, StockUnit.ML)).isEqualByComparingTo("1500");
 		assertThat(UnitConverter.convert(BigDecimal.ONE, StockUnit.ML, StockUnit.LITER)).isEqualByComparingTo("0.001");
 		assertThat(UnitConverter.convert(new BigDecimal("3"), StockUnit.PCS, StockUnit.PCS)).isEqualByComparingTo("3");
+		assertThat(UnitConverter.convert(new BigDecimal("2"), StockUnit.ONS, StockUnit.GRAM)).isEqualByComparingTo("200");
+		assertThat(UnitConverter.convert(new BigDecimal("2"), StockUnit.TRAY, StockUnit.BUTIR)).isEqualByComparingTo("60");
+		assertThat(UnitConverter.convert(BigDecimal.ONE, StockUnit.LUSIN, StockUnit.PCS)).isEqualByComparingTo("12");
+		assertThat(UnitConverter.convert(new BigDecimal("3"), StockUnit.SDM, StockUnit.ML)).isEqualByComparingTo("45");
+		assertThat(UnitConverter.convert(new BigDecimal("100"), StockUnit.ML, StockUnit.CUP)).isEqualByComparingTo("0.417");
 	}
 
 	@Test
 	void rejectsOtherFamilies() {
 		assertThat(UnitConverter.convertible(StockUnit.KG, StockUnit.ML)).isFalse();
 		assertThat(UnitConverter.convertible(StockUnit.PCS, StockUnit.GRAM)).isFalse();
+		assertThat(UnitConverter.convertible(StockUnit.IKAT, StockUnit.PCS)).isFalse();
+		assertThat(UnitConverter.convertible(StockUnit.BUNGKUS, StockUnit.PACK)).isFalse();
+		assertThat(UnitConverter.convertible(StockUnit.BOTOL, StockUnit.BOTOL)).isTrue();
 		assertThatThrownBy(() -> UnitConverter.convert(BigDecimal.ONE, StockUnit.KG, StockUnit.LITER))
 				.isInstanceOf(IllegalArgumentException.class);
 	}

@@ -4,6 +4,7 @@ import static com.thefarhany.stockwise.ShopFixture.as;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -91,8 +92,9 @@ class InsightIntegrationTest {
 		assertThat(JsonPath.<Object>read(sent, "$.format.properties.text")).isNotNull();
 		String facts = JsonPath.read(sent, "$.messages[1].content"); // fakta ikut sebagai teks JSON di dalam pesan
 		assertThat(facts).contains("FAKTA", "\"revenue\":65000", "\"netProfit\":26000", "\"itemsSold\":5",
-				"Geprek Pak Budi", "\"closeType\":\"MANUAL\"");
-		assertThat(sent).doesNotContain("@", "Siti", "email", "password", "Bearer");
+				"\"closeType\":\"MANUAL\"");
+		// Privacy Policy: tanpa nama pengguna, email, atau nama usaha
+		assertThat(sent).doesNotContain("@", "Siti", "email", "password", "Bearer", "Geprek Pak Budi", "businessName");
 		assertThat(ollama.lastAuthorization.get()).isEqualTo("Bearer test-key");
 	}
 
@@ -122,6 +124,24 @@ class InsightIntegrationTest {
 		String slow = insight(s, sid);
 		assertThat(JsonPath.<String>read(slow, "$.data.model")).isEqualTo("template");
 		assertThat(JsonPath.<Integer>read(slow, "$.data.attemptsLeft")).isEqualTo(1);
+	}
+
+	@Test
+	void insightIsWrittenInTheRequestingOwnersLanguage() throws Exception {
+		Shop s = fixture.create();
+		String sid = fixture.closedDay(s, clock, 5);
+		mvc.perform(as(put("/api/v1/me/language"), s.owner(), "{\"language\":\"EN\"}")).andExpect(status().isOk())
+				.andExpect(jsonPath("$.data.user.language").value("EN"));
+		ollama.replyWith("Revenue was Rp65,000 and profit Rp26,000 from 5 portions.");
+
+		String body = insight(s, sid);
+		assertThat(JsonPath.<String>read(body, "$.data.model")).isEqualTo("test-model"); // angka gaya English lolos
+		String sent = ollama.lastBody.get();
+		assertThat(JsonPath.<String>read(sent, "$.messages[0].content")).contains("plain everyday English", "Rp637,200");
+		assertThat(JsonPath.<String>read(sent, "$.messages[1].content")).contains("FACTS", "\"language\":\"en\"");
+
+		ollama.failWith(500);
+		assertThat(JsonPath.<String>read(insight(s, sid), "$.data.text")).contains("5 portions", "Rp65,000", "Rp26,000");
 	}
 
 	@Test

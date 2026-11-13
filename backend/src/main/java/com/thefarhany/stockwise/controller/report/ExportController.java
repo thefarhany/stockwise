@@ -30,11 +30,11 @@ class ExportController {
 	@GetMapping("/api/v1/exports/sales")
 	ResponseEntity<byte[]> sales(@AuthenticationPrincipal AuthPrincipal me, @RequestParam LocalDate from,
 			@RequestParam LocalDate to) {
-		byte[] file = service.export(me, from, to);
-		String name = "penjualan-" + from + "_" + to + ".xlsx";
+		SalesExportService.Export export = service.export(me, from, to);
 		return ResponseEntity.ok().contentType(XLSX)
-				.header(HttpHeaders.CONTENT_DISPOSITION, ContentDisposition.attachment().filename(name).build().toString())
-				.body(file);
+				.header(HttpHeaders.CONTENT_DISPOSITION,
+						ContentDisposition.attachment().filename(export.filename()).build().toString())
+				.body(export.file());
 	}
 
 }

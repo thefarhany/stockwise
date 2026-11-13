@@ -58,7 +58,7 @@ class CatalogEdgeCasesIntegrationTest {
 				.fail("nama hanya spasi", 400, "VALIDATION_ERROR", post("/api/v1/stock-items", s.owner(), item("   ", "GRAM", "")))
 				.fail("nama 101 karakter", 400, "VALIDATION_ERROR", post("/api/v1/stock-items", s.owner(), item("a".repeat(101), "GRAM", "")))
 				.ok("nama 100 karakter", 201, post("/api/v1/stock-items", s.owner(), item("b".repeat(100), "GRAM", "")))
-				.fail("satuan tidak dikenal", 400, "VALIDATION_ERROR", post("/api/v1/stock-items", s.owner(), item("X", "LUSIN", "")))
+				.fail("satuan tidak dikenal", 400, "VALIDATION_ERROR", post("/api/v1/stock-items", s.owner(), item("X", "KARUNG", "")))
 				.fail("jenis tidak dikenal", 400, "VALIDATION_ERROR", post("/api/v1/stock-items", s.owner(), "{\"name\":\"X\",\"kind\":\"BASI\",\"unit\":\"GRAM\"}"))
 				.fail("tanpa satuan", 400, "VALIDATION_ERROR", post("/api/v1/stock-items", s.owner(), "{\"name\":\"X\",\"kind\":\"RAW\"}"))
 				.fail("harga satuan negatif", 400, "VALIDATION_ERROR", post("/api/v1/stock-items", s.owner(), item("X", "GRAM", ",\"unitCost\":-1")))

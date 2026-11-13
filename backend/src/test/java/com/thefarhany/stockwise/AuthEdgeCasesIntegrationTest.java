@@ -191,11 +191,14 @@ class AuthEdgeCasesIntegrationTest {
 				.andReturn().getResponse().getContentAsString();
 		String cashierToken = JsonPath.read(login, "$.data.accessToken");
 		String cashierRefresh = JsonPath.read(login, "$.data.refreshToken");
-		new ApiCases(mvc).ok("kasir aktif membuka profil", 200, get("/api/v1/me", cashierToken)).runAll();
+		new ApiCases(mvc).ok("kasir aktif membuka profil", 200, get("/api/v1/me", cashierToken))
+				.ok("kasir aktif membuka sesi", 200, get("/api/v1/sessions/current", cashierToken)).runAll();
 
 		mvc.perform(ApiCases.put("/api/v1/users/" + cashierId, ownerToken, "{\"active\":false}"));
 		new ApiCases(mvc)
 				.fail("profil setelah dinonaktifkan", 401, "UNAUTHORIZED", get("/api/v1/me", cashierToken))
+				// access token masih belum habis, tapi endpoint mana pun langsung menolak
+				.fail("sesi setelah dinonaktifkan", 401, "UNAUTHORIZED", get("/api/v1/sessions/current", cashierToken))
 				.fail("refresh setelah dinonaktifkan", 401, "UNAUTHORIZED", post("/api/v1/auth/refresh", null, "{\"refreshToken\":\"" + cashierRefresh + "\"}"))
 				.fail("login setelah dinonaktifkan", 401, "UNAUTHORIZED", post("/api/v1/auth/login", null, "{\"email\":\"" + cashierEmail + "\",\"password\":\"kasir12345\"}"))
 				.runAll();

@@ -16,4 +16,6 @@ public interface AppUserRepository extends JpaRepository<AppUser, UUID> {
 
 	Optional<AppUser> findByIdAndOutletId(UUID id, UUID outletId);
 
+	boolean existsByIdAndActiveTrue(UUID id);
+
 }

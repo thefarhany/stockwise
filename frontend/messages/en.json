@@ -1,0 +1,1658 @@
+{
+  "common": {
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "close": "Close",
+    "logOut": "Log out",
+    "loggingOut": "Logging out…",
+    "language": "Language",
+    "home": "Home",
+    "privacyPolicy": "Privacy Policy",
+    "cancel": "Cancel",
+    "save": "Save",
+    "saving": "Saving…",
+    "edit": "Edit",
+    "remove": "Remove",
+    "back": "Back",
+    "continue": "Continue",
+    "you": "You"
+  },
+  "validation": {
+    "emailRequired": "Enter your email.",
+    "emailInvalid": "Enter a valid email.",
+    "passwordRequired": "Enter your password.",
+    "nameRequired": "Enter your name.",
+    "businessNameRequired": "Enter your business name.",
+    "maxChars": "Use at most {max} characters.",
+    "minChars": "Use at least {min} characters.",
+    "ingredientNameRequired": "Enter the ingredient name.",
+    "priceRequired": "Enter the price.",
+    "priceNegative": "The price can't be negative.",
+    "priceTooLarge": "That price is too large.",
+    "shelfLife": "Enter 1 to 365 days.",
+    "amountAboveZero": "Enter an amount above 0.",
+    "maxAmount": "Use at most {max, number}.",
+    "maxDecimals": "Use at most 3 decimal places.",
+    "productNameRequired": "Enter the product name.",
+    "chooseIngredient": "Choose an ingredient.",
+    "addIngredient": "Add at least one ingredient.",
+    "maxIngredients": "Use at most 50 ingredients.",
+    "duplicateRecipeIngredient": "This ingredient is already in the recipe.",
+    "sellingPriceRequired": "Enter the selling price.",
+    "pickTime": "Pick a time.",
+    "numberRange": "Enter a number from 0 to {max}.",
+    "closeAfterOpen": "Closing time must be after opening time."
+  },
+  "auth": {
+    "titleLogin": "Log in",
+    "titleSignup": "Sign up",
+    "email": "Email",
+    "password": "Password",
+    "yourPassword": "Your password",
+    "logIn": "Log in",
+    "loggingIn": "Logging in…",
+    "noAccount": "No account yet?",
+    "signUpFree": "Sign up free",
+    "fullName": "Full name",
+    "fullNameHint": "Your name as the business owner.",
+    "emailHint": "Used to log in. One email is for one account only.",
+    "passwordPlaceholder": "At least 8 characters",
+    "passwordHint": "8 to 72 characters.",
+    "businessName": "Business name",
+    "businessNamePlaceholder": "Bu Sari's Bakery",
+    "businessNameHint": "The name of your stall or shop, shown on receipts.",
+    "agree": "By signing up, you agree to the <link>Privacy Policy</link>",
+    "createAccount": "Create account",
+    "creatingAccount": "Creating account…",
+    "haveAccount": "Already have an account?",
+    "loginEyebrow": "Welcome back",
+    "loginAsideTitle": "One trading day, one session, one answer for tomorrow.",
+    "loginAsideText": "Open the stall, sell, close, then see tomorrow's shopping suggestion.",
+    "loginTitle": "Welcome back.",
+    "loginLead": "Log in to open your stall today.",
+    "signupEyebrow": "After sign-up",
+    "signupAsideTitle": "Three steps to your first stall.",
+    "signupStep1Title": "Account and business",
+    "signupStep1Text": "You are here.",
+    "signupStep2Title": "Complete your business",
+    "signupStep2Text": "Opening and closing times, location, and local payday.",
+    "signupStep3Title": "Add ingredients, products, and recipes",
+    "signupStep3Text": "One ingredient, one product, and one recipe are enough to start.",
+    "signupAsideNote": "No templates. There are examples in every field.",
+    "signupTitle": "Start in 10 minutes.",
+    "signupLead": "Create your account and business. Each business's data stays separate and safe."
+  },
+  "nav": {
+    "menu": "Menu",
+    "home": "Home",
+    "cashier": "Cashier",
+    "transactions": "Transaction history",
+    "reports": "Daily report",
+    "ingredients": "Ingredients",
+    "products": "Products and recipes",
+    "settings": "Settings",
+    "main": "Main",
+    "manage": "Manage",
+    "comingSoon": "Coming soon",
+    "openHours": "Open {open} – {close}",
+    "owner": "Owner",
+    "cashierRole": "Cashier",
+    "dashboard": "Dashboard",
+    "openStall": "Open the stall",
+    "closeStall": "Close the stall",
+    "docs": "Guide"
+  },
+  "onboarding": {
+    "steps": {
+      "account": "Account",
+      "profile": "Business profile",
+      "ingredients": "Ingredients",
+      "products": "Products & recipes"
+    },
+    "saveAndExit": "Save and exit",
+    "setupSteps": "Setup steps",
+    "businessSetup": "Business setup",
+    "done": "Done",
+    "under10": "Less than 10 minutes until your first stall can open.",
+    "stepOf": "Step {current} of {total}",
+    "help": "Help",
+    "profileMeta": "Set up your business",
+    "profileTitle": "Complete your business profile.",
+    "profileLead": "Just once. Business hours are used to close sessions automatically and to read busy patterns.",
+    "tipClosingTitle": "Why does closing time matter?",
+    "tipClosingText": "A session you forget to close is closed automatically 30 minutes after closing time. If you change the hours, they apply from the next session.",
+    "tipEmptyTitle": "Can I leave things empty?",
+    "tipEmptyText": "Location can be left empty. Opening and closing times are required.",
+    "ingredientsMeta": "Add your ingredients",
+    "ingredientsTitle": "Add your ingredients.",
+    "ingredientsLead": "An ingredient is anything you keep in stock, such as flour or eggs. One ingredient is enough to start.",
+    "ingredientsAdded": "Ingredients added",
+    "mainItem": "Main item",
+    "nextIngredientHere": "Your next ingredient shows up here",
+    "tipMainTitle": "What is a main item?",
+    "tipMainText": "A main item is the ingredient that matters most to what you sell. Stockwise tracks when it sells out and calculates the shopping suggestion for it.",
+    "duplicateIngredient": "You already added an ingredient with this name.",
+    "saveAddAnother": "Save, add another",
+    "continueToProducts": "Continue to products & recipes",
+    "productsMeta": "Add your products and recipes",
+    "productsTitle": "Add your products and recipes.",
+    "productsLead": "A product is what you sell, such as Chocolate Bread. Pick its ingredients and amounts per portion, see the cost, then decide the selling price.",
+    "productsAdded": "Products added",
+    "doneMeta": "Your business is ready",
+    "doneTitle": "Your business is ready to open.",
+    "doneLead": "{name} now has business hours, ingredients, products, and recipes. You can open your first stall now.",
+    "reqProfile": "Business profile complete",
+    "reqIngredient": "At least one ingredient",
+    "reqProduct": "At least one product",
+    "reqRecipe": "One product has a recipe",
+    "requirements": "Requirements to open",
+    "met": "Met",
+    "whatNext": "What happens next",
+    "nextOpenTitle": "Open the stall",
+    "nextOpenText": "Enter the morning purchases and see the suggestion.",
+    "nextSellTitle": "Sell",
+    "nextSellText": "Record sales at the cashier.",
+    "nextCloseTitle": "Close the stall",
+    "nextCloseText": "Count the leftovers, then see the summary.",
+    "detailOwner": "Owner",
+    "detailHours": "Business hours",
+    "detailLocation": "Location",
+    "notSetYet": "Not set yet",
+    "detailTimezone": "Time zone",
+    "detailPayday": "Payday dates",
+    "none": "None",
+    "detailSuggestions": "Stock and price suggestions",
+    "suggestionsValue": "Buffer {buffer}% · target margin {margin}%",
+    "readyToOpen": "Ready to open",
+    "openStall": "Open stall",
+    "addAnotherProduct": "Add another product",
+    "changeLater": "Ingredients, products, and recipes can be added or changed anytime from the Ingredients and Products and Recipes menus."
+  },
+  "units": {
+    "groups": {
+      "weight": "Weight",
+      "volume": "Volume",
+      "count": "Count",
+      "package": "Package"
+    },
+    "names": {
+      "GRAM": "Gram",
+      "ONS": "Ons (100 g)",
+      "KG": "Kilogram",
+      "ML": "Milliliter",
+      "SDT": "Teaspoon (sdt, 5 ml)",
+      "SDM": "Tablespoon (sdm, 15 ml)",
+      "CUP": "Cup (240 ml)",
+      "LITER": "Liter",
+      "PCS": "Pieces",
+      "BUTIR": "Butir (egg, ball)",
+      "BUAH": "Buah (fruit, whole)",
+      "LUSIN": "Lusin (dozen, 12)",
+      "KODI": "Kodi (20)",
+      "TRAY": "Tray (30)",
+      "SIUNG": "Siung (clove)",
+      "IKAT": "Ikat (bunch)",
+      "BATANG": "Batang (stalk)",
+      "LEMBAR": "Lembar (sheet, leaf)",
+      "EKOR": "Ekor (whole chicken, fish)",
+      "POTONG": "Potong (cut, slice)",
+      "SISIR": "Sisir (hand of bananas)",
+      "PORSI": "Porsi (portion)",
+      "BUNGKUS": "Bungkus (packet)",
+      "PACK": "Pack",
+      "BOTOL": "Botol (bottle)",
+      "KALENG": "Kaleng (can)",
+      "GALON": "Galon (gallon)",
+      "JERIGEN": "Jerigen (jerry can)"
+    }
+  },
+  "catalog": {
+    "kind": {
+      "RAW": "Raw ingredient",
+      "FINISHED": "Finished goods"
+    },
+    "ingredientName": "Ingredient name",
+    "ingredientNamePlaceholder": "Wheat flour",
+    "type": "Type",
+    "kindHint": "Finished goods are what you produce yourself, such as dough or baked bread.",
+    "unit": "Unit",
+    "unitLocked": "Locked, already used in a session.",
+    "estimatedPrice": "Estimated price per {unit}",
+    "unitHint": "Pick the unit you buy in, such as kilogram or liter. Recipes can still use gram or ml. The price is only used until a purchase is recorded; after that, HPP uses the average purchase price.",
+    "shelfLife": "Shelf life (days)",
+    "dayLess": "One day less",
+    "dayMore": "One day more",
+    "shelfLifeHint": "How many days this ingredient stays usable.",
+    "shelfLifeShortcuts": "Shelf life shortcuts",
+    "presets": {
+      "week1": "1 week",
+      "week2": "2 weeks",
+      "month1": "1 month",
+      "month3": "3 months",
+      "month6": "6 months",
+      "year1": "1 year"
+    },
+    "carryOverTitle": "Can carry over to tomorrow",
+    "carryOverText": "If turned off, leftovers of this ingredient can only be thrown away when you close the stall.",
+    "mainTitle": "Main item",
+    "mainText": "The ingredient that matters most. Its sell-out time is tracked and its amount shows up in shopping suggestions."
+  },
+  "ingredients": {
+    "meta": "Ingredients",
+    "title": "Ingredients",
+    "lead": "Everything you stock. Product HPP is calculated from these prices.",
+    "add": "Add ingredient",
+    "search": "Search ingredients",
+    "activeCount": "{count, plural, one {# active ingredient} other {# active ingredients}}",
+    "showInactive": "Show inactive",
+    "colName": "Name",
+    "colType": "Type",
+    "colUnit": "Unit",
+    "colPrice": "Price",
+    "colShelfLife": "Shelf life",
+    "colCarryOver": "Carry over",
+    "colActions": "Actions",
+    "mainItem": "Main item",
+    "mainItemLower": "main item",
+    "inactive": "Inactive",
+    "days": "{count, plural, one {# day} other {# days}}",
+    "yes": "Yes",
+    "no": "No",
+    "editName": "Edit {name}",
+    "deactivateName": "Deactivate {name}",
+    "reactivate": "Reactivate",
+    "noMatch": "No ingredients match.",
+    "estimateNote": "The estimated price is only used until a purchase is recorded. After that, HPP uses the average purchase price.",
+    "duplicate": "Another ingredient already has this name.",
+    "unitLockedError": "The unit can't change because this ingredient was already used in a session. It was set back to {unit}; save again to keep your other changes.",
+    "editTitle": "Edit ingredient",
+    "deactivateIngredient": "Deactivate ingredient",
+    "saveChanges": "Save changes",
+    "inUse": "Still used in the recipe for {products}. Remove it from those recipes first.",
+    "deactivateTitle": "Deactivate {name}?",
+    "deactivateText": "It disappears from purchases and recipes. Past sessions and reports keep it, and you can reactivate it anytime.",
+    "deactivating": "Deactivating…",
+    "deactivate": "Deactivate"
+  },
+  "products": {
+    "categories": {
+      "bread": "Bread",
+      "cake": "Cake",
+      "drinks": "Drinks",
+      "food": "Food"
+    },
+    "recipePerPortion": "Recipe per portion",
+    "colIngredient": "Ingredient",
+    "colAmount": "Amount",
+    "colCost": "Cost",
+    "ingredientN": "Ingredient {n}",
+    "choose": "Choose…",
+    "inactiveSuffix": " (inactive)",
+    "amountN": "Amount of ingredient {n}",
+    "unitN": "Unit of ingredient {n}",
+    "removeN": "Remove ingredient {n}",
+    "addToRecipe": "Add ingredient to recipe",
+    "recipeHint": "Each ingredient can appear only once, and the amount must be above zero.",
+    "tooPrecise": "Too precise. Use at least 0.001 {unit}.",
+    "productName": "Product name",
+    "productNamePlaceholder": "Chocolate bread",
+    "category": "Category (optional)",
+    "categoryPlaceholder": "Bread",
+    "suggestedCategories": "Suggested categories",
+    "categoryHint": "Categories group the product buttons at the cashier.",
+    "sellingPrice": "Selling price",
+    "priceHint": "Decide after seeing the cost. The suggestion uses your {margin}% target margin.",
+    "use": "Use {price}",
+    "useShort": "Use",
+    "duplicateOnboarding": "You already added a product with this name.",
+    "ingredientGone": "One of these ingredients no longer exists. Reload the page and try again.",
+    "saveAndFinish": "Save and finish",
+    "estimatedCostPerPortion": "Estimated cost per portion",
+    "margin": "Margin",
+    "suggestedWithMargin": "Suggested selling price, {margin}% margin",
+    "estimateNote": "An estimate from the ingredient prices you entered. Once purchases are recorded, prices are calculated from those purchases automatically.",
+    "title": "Products and recipes",
+    "lead": "What you sell at the cashier. HPP and margin come from the recipe and ingredient prices.",
+    "add": "Add product",
+    "search": "Search products",
+    "count": "{count, plural, one {# product} other {# products}}",
+    "withoutRecipe": " · {count} without a recipe",
+    "showInactive": "Show inactive",
+    "colProduct": "Product",
+    "colPrice": "Price",
+    "colHpp": "HPP / portion",
+    "colMargin": "Margin",
+    "colSuggested": "Suggested",
+    "colActions": "Actions",
+    "ingredientsCount": "{count, plural, one {# ingredient} other {# ingredients}}",
+    "noRecipe": "No recipe yet",
+    "estimate": "Estimate",
+    "inactive": "Inactive",
+    "editName": "Edit {name}",
+    "deactivateName": "Deactivate {name}",
+    "reactivate": "Reactivate",
+    "noMatch": "No products match.",
+    "tableNote": "Suggested prices use your {margin}% target margin (change it in Settings). HPP marked Estimate means an ingredient hasn't been bought yet.",
+    "duplicate": "Another product already has this name.",
+    "ingredientInactive": "One of these ingredients is inactive or no longer exists. Pick another one.",
+    "editSubtitle": "Edit product and recipe",
+    "newSubtitle": "A product and its recipe per portion",
+    "productLabel": "Product",
+    "recalcNote": "Recalculated as you edit. Uses the estimated ingredient prices, so it can differ slightly from the table, which uses the average purchase price once ingredients are bought.",
+    "deactivateProduct": "Deactivate product",
+    "saveChanges": "Save changes",
+    "hppPerPortion": "HPP per portion",
+    "suggestedMargin": "Suggested ({margin}% margin)",
+    "deactivateTitle": "Deactivate {name}?",
+    "deactivateText": "It disappears from the cashier. Past transactions and reports keep it, and you can reactivate it anytime.",
+    "deactivating": "Deactivating…",
+    "deactivate": "Deactivate"
+  },
+  "profile": {
+    "businessName": "Business name",
+    "businessNamePlaceholder": "Bu Sari's Bakery",
+    "businessNameHint": "Shown on receipts. You can change it anytime.",
+    "openingTime": "Opening time",
+    "closingTime": "Closing time",
+    "hoursHint": "Closing time must be after opening time. Businesses open past midnight aren't supported yet.",
+    "currency": "Currency",
+    "currencyNames": {
+      "IDR": "Indonesian rupiah",
+      "MYR": "Malaysian ringgit",
+      "SGD": "Singapore dollar",
+      "USD": "US dollar",
+      "EUR": "Euro"
+    },
+    "currencyHint": "Used for every price and report. Prices you've already entered aren't converted. Locked once the stall opens for the first time.",
+    "currencyLocked": "Currency: {currency}. Can't be changed after the stall has opened, because recorded amounts aren't converted.",
+    "timezone": "Time zone: {timezone}. Can't be changed yet.",
+    "advancedSettings": "Advanced settings",
+    "suggestionsTitle": "Stock, price, and busy-day suggestions",
+    "suggestionsLead": "Used for shopping suggestions, suggested selling prices, and busy-day estimates.",
+    "defaultsLead": "The defaults suit most businesses. Change them if needed.",
+    "buffer": "Stock suggestion buffer",
+    "bufferHint": "Added on top of the need when calculating shopping suggestions. Range 0–100%.",
+    "targetMargin": "Target margin",
+    "targetMarginHint": "Basis for suggested selling prices, counted from the selling price, not the cost. Range 0–90%.",
+    "payday": "Payday dates in your area",
+    "removeDate": "Remove date {day}",
+    "addDate": "Add a payday date",
+    "addDateOption": "+ Add date",
+    "paydayHint": "Used to predict busier days. You can leave this empty.",
+    "saved": "Profile saved.",
+    "saveProfile": "Save profile",
+    "continueToIngredients": "Continue to ingredients"
+  },
+  "location": {
+    "parts": {
+      "street": "Street",
+      "village": "Village (kelurahan/desa)",
+      "district": "District (kecamatan)",
+      "city": "City or regency",
+      "province": "Province",
+      "postalCode": "Postal code"
+    },
+    "noGeolocation": "Your browser can't share its location. Search for the address instead.",
+    "located": "Location saved. Check the address below.",
+    "blocked": "Location access was blocked. Search for the address instead.",
+    "addressSaved": "Address saved.",
+    "removed": "Location removed.",
+    "label": "Location",
+    "optional": "optional",
+    "notFoundForPoint": "Address not found for this point",
+    "noLocation": "No location set",
+    "finding": "Finding you…",
+    "useCurrent": "Use my current location",
+    "remove": "Remove",
+    "search": "Search for an address",
+    "searchPlaceholder": "Or search for an address, e.g. Jalan Kebon Sirih 12",
+    "found": "Addresses found",
+    "noneFound": "No address found. Try another word.",
+    "hint": "Used for the weather in a later release. Searching and your current location are saved right away.",
+    "editDetails": "Edit address details",
+    "editDetailsHint": "Fix anything the lookup got wrong. Changes here are saved with the Save button.",
+    "fullAddress": "Full address"
+  },
+  "settings": {
+    "title": "Settings",
+    "lead": "Language, business profile, staff accounts, and deleting the business.",
+    "leadStaff": "Choose the language for your account.",
+    "languageTitle": "Language",
+    "languageLead": "Applies to every screen, receipts, and new AI insights for your account.",
+    "profileTitle": "Business profile",
+    "profileLead": "Changes to business hours apply from the next session.",
+    "deleteTitle": "Delete business",
+    "deleteLead": "Permanently deletes {name}, all staff accounts, ingredients, products, and the whole sales history. This can't be undone. You'll be asked to type the business name to confirm.",
+    "deleteConfirmTitle": "Delete the business permanently?",
+    "deleteConfirmLead": "All of {name}'s data is deleted and can't be restored.",
+    "alsoDeleted": "Also deleted",
+    "deletedAccounts": "{count, plural, one {# account} other {# accounts}}, including your own",
+    "deletedCatalog": "{ingredients, plural, one {# ingredient} other {# ingredients}}, {products, plural, one {# product} other {# products}}, and all recipes",
+    "deletedHistory": "Session, transaction, report, and suggestion history",
+    "typeName": "Type the business name to confirm",
+    "mustMatch": "Must match exactly: {name}",
+    "deleting": "Deleting…",
+    "deletePermanently": "Delete permanently"
+  },
+  "staff": {
+    "title": "Staff accounts",
+    "lead": "Cashiers can only open and close the stall, record sales, and see that day's transactions.",
+    "addCashier": "Add cashier",
+    "colName": "Name",
+    "colRole": "Role",
+    "colStatus": "Status",
+    "colActions": "Actions",
+    "owner": "Owner",
+    "cashier": "Cashier",
+    "active": "Active",
+    "inactive": "Inactive",
+    "editName": "Edit {name}",
+    "deactivate": "Deactivate",
+    "activate": "Activate",
+    "note": "A deactivated account can't log in right away. If it's logged in, its access stops within 15 minutes. Its transaction history is kept.",
+    "emailTaken": "This email already has an account.",
+    "addLead": "New accounts are always cashiers. Give the email and password to your cashier.",
+    "name": "Name",
+    "namePlaceholder": "Example: Siti Rahma",
+    "email": "Email",
+    "emailPlaceholder": "Example: siti@example.com",
+    "emailHint": "Used to log in. One email per account.",
+    "password": "Password",
+    "passwordPlaceholder": "At least 8 characters",
+    "passwordHint": "8 to 72 characters.",
+    "adding": "Adding…",
+    "editCashier": "Edit cashier"
+  },
+  "open": {
+    "qtyInvalid": "Enter an amount above 0, up to 3 decimals.",
+    "paidRequired": "Enter the total paid.",
+    "paidTooLarge": "That amount is too large.",
+    "stepStock": "Stock & shopping",
+    "stepReview": "Review & open",
+    "steps": "Steps",
+    "done": "Done",
+    "stockTitle": "What's in stock, and what you're adding",
+    "stockLead": "In stock is left over from the last close and is counted automatically. For anything you bought this morning, fill in Add and Total paid. Leave both empty if nothing was added.",
+    "fillSuggested": "Fill suggested amounts",
+    "colIngredient": "Ingredient",
+    "colInStock": "In stock",
+    "colSuggested": "Suggested",
+    "colAdd": "+ Add",
+    "colPaid": "Total paid",
+    "colAfter": "= After",
+    "mainItem": "Main item",
+    "inactiveLeftovers": "Inactive, leftovers only",
+    "daysOld": "{count, plural, one {# day old} other {# days old}}",
+    "amountAdded": "Amount of {name} added",
+    "unitFor": "Unit for {name}",
+    "paidFor": "Total paid for {name}",
+    "reactivateToAdd": "Reactivate it in Ingredients to add more.",
+    "addedSummary": "{count, plural, one {# ingredient} other {# ingredients}} added · <strong>{amount}</strong> spent",
+    "fixFirst": "Fix the highlighted fields first.",
+    "review": "Review",
+    "openingStock": "Opening stock",
+    "openingLead": "What the stall starts with today.",
+    "colAdded": "Added",
+    "colOpening": "Opening",
+    "nothingInStock": "Nothing in stock. Go back to add this morning's shopping.",
+    "startingAtZero": "Starting at 0: {names}. Products that need them can't be sold until stock is added.",
+    "readyToOpen": "Ready to open",
+    "spentMorning": "Spent this morning · {count, plural, one {# ingredient} other {# ingredients}} added",
+    "opening": "Opening…",
+    "openStall": "Open stall",
+    "backToEdit": "Back to edit",
+    "openNote": "The stall can open before opening time. Once it closes, it can't open again until tomorrow.",
+    "title": "Open the stall.",
+    "lead": "Check what's in stock and add this morning's shopping. Today it opens at {open} and closes at {close}."
+  },
+  "close": {
+    "countTitle": "Count leftovers",
+    "countLead": "Every ingredient in the session must be counted. Correct it if something spoiled.",
+    "useRecorded": "Use recorded stock",
+    "colIngredient": "Ingredient",
+    "colRecorded": "Recorded",
+    "colCounted": "Counted",
+    "colDifference": "Difference",
+    "colAction": "Action",
+    "mainItem": "Main item",
+    "countedName": "Counted {name}",
+    "countInvalid": "Enter 0 or more, up to 3 decimals.",
+    "spoiled": "Spoiled or missing {qty}",
+    "actionFor": "Action for {name}",
+    "keep": "Keep",
+    "discard": "Discard",
+    "cantCarry": "Can't be carried over",
+    "chosenDiscard": "Chosen to discard",
+    "tableNote": "Ingredients that can't be carried over can only be discarded. The gap between recorded and counted stock counts as a stock difference cost.",
+    "notes": "Session notes (optional)",
+    "notesPlaceholder": "Example: rain since the afternoon",
+    "summaryTitle": "Leftover summary",
+    "carriedValue": "Estimated value carried to tomorrow",
+    "nothingCarried": "Nothing carried over.",
+    "discardedRow": "Discarded · {name} {qty}",
+    "differenceRow": "Stock difference · {name} {qty}",
+    "closing": "Closing…",
+    "closeStall": "Close stall",
+    "noChanges": "Session data can't be changed after closing.",
+    "valuesNote": "Values use the estimated ingredient prices. The final summary uses the average purchase price.",
+    "forgotTitle": "Forgot to close?",
+    "forgotText": "At {time} the system closes on its own using the recorded stock. Ingredients that can be carried over are carried over.",
+    "stallOpen": "Stall open",
+    "title": "Close the stall.",
+    "lead": "Count what's left of each ingredient, then keep it for tomorrow or discard it."
+  },
+  "recommendation": {
+    "weekdayUp": "{day}s are usually busier",
+    "weekdayDown": "{day}s are usually quieter",
+    "soldOutEarly": "{name} sold out early",
+    "soldOutAt": "{name} sold out at {time}",
+    "soldOutMissed": "{name} sold out at {time}, about {missed} customers missed out",
+    "carryOver": "Yesterday's leftovers are already subtracted",
+    "lowData": "Little data so far ({count, plural, one {# day} other {# days}})",
+    "noneTitle": "No suggestion yet.",
+    "noneText": "Suggestions are made after a stall closes, from your sales and leftovers.",
+    "toPrepare": "{count, plural, one {# ingredient} other {# ingredients}} to prepare",
+    "costFor": "Estimated shopping cost for {day}, ",
+    "guideFor": "Shopping guide for {day}, ",
+    "fromData": "from {count, plural, one {# day} other {# days}} of data.",
+    "startingEstimate": "a starting estimate from your recipes.",
+    "leftoversSubtracted": " Yesterday's leftovers are already subtracted.",
+    "why": "Why this much?",
+    "needs": "{name}: needs {required}",
+    "minusLeft": ", minus {left} left over",
+    "soBuy": ", so buy {buy}.",
+    "colIngredient": "Ingredient",
+    "colAmount": "Amount",
+    "colRange": "Range",
+    "colCost": "Estimated cost",
+    "mainItem": "Main item",
+    "reasons": "Reasons"
+  },
+  "leftovers": {
+    "carried": "Carried over",
+    "discarded": "Discarded",
+    "soldOutAt": "Sold out {time}",
+    "soldOut": "Sold out"
+  },
+  "payment": {
+    "CASH": "Cash",
+    "QRIS": "QRIS",
+    "OTHER": "Other"
+  },
+  "cashier": {
+    "notEnough": "Not enough {items} for this order.",
+    "soldOutAt": "{name} sold out {time}",
+    "soldOutName": "{name} sold out",
+    "title": "Cashier",
+    "stallOpen": "Stall open · {date}",
+    "inputMode": "Input mode",
+    "quick": "Quick",
+    "recap": "Recap",
+    "recapHint": "Recap: enter the total sold per product for sales you didn't record one by one. It is saved as one transaction.",
+    "mainItemStock": "Main item stock",
+    "mainItem": "Main item",
+    "left": "{name} left",
+    "category": "Category",
+    "all": "All",
+    "search": "Search products",
+    "addProduct": "Add {name}",
+    "addProductInCart": "Add {name}, {count} in cart",
+    "soldOut": "Sold out",
+    "leftPortions": "left ±{count}",
+    "noMatch": "No products match.",
+    "cart": "Cart",
+    "nextTransaction": "Next transaction #{no}",
+    "clear": "Clear",
+    "perPortion": "{price} / portion",
+    "removeOne": "Remove one {name}",
+    "addOne": "Add one {name}",
+    "viewCart": "View cart",
+    "tapToAdd": "Tap a product to add it to the cart.",
+    "totalPortions": "Total · {count, plural, one {# portion} other {# portions}}",
+    "paymentMethod": "Payment method",
+    "cashReceived": "Cash received (optional)",
+    "lessThanTotal": "Less than the total.",
+    "exact": "Exact",
+    "change": "Change",
+    "saving": "Saving…",
+    "pay": "Pay {amount}",
+    "saveRecap": "Save recap {amount}",
+    "saved": "Transaction #{no} saved",
+    "totalCash": "Total {total} · Cash {cash}",
+    "totalPaid": "Total paid",
+    "printReceipt": "Print receipt",
+    "newTransaction": "New transaction",
+    "enterHint": "Press Enter for a new transaction."
+  },
+  "receipt": {
+    "no": "No. {no}",
+    "total": "Total",
+    "change": "Change",
+    "voided": "Voided: {reason}",
+    "thanks": "Thank you",
+    "COPY": "COPY",
+    "VOID": "VOID"
+  },
+  "stallStatus": {
+    "step1Title": "Open the stall",
+    "step1Text": "Enter this morning's shopping from Home. Stock is ready for the cashier.",
+    "step2Title": "Sell here",
+    "step2Text": "Tap products, take payment, and stock goes down on its own.",
+    "step3Title": "Close the stall",
+    "step3Text": "Count the leftovers, then see the summary and tomorrow's suggestion.",
+    "revenue": "Revenue",
+    "profit": "Profit",
+    "sold": "{name} sold",
+    "title": "Cashier",
+    "closed": "Stall closed",
+    "notOpen": "Stall not open yet",
+    "closedTitle": "Today's stall is closed.",
+    "notOpenTitle": "The stall isn't open yet.",
+    "closedText": "Sales for today are final. The cashier opens again when tomorrow's stall is opened.",
+    "notOpenText": "Open the stall from Home first. After that, the products and their stock show up here, ready to sell.",
+    "hours": "Business hours {open} – {close}",
+    "seeReport": "See today's report",
+    "history": "Transaction history",
+    "goHome": "Go to Home to open the stall"
+  },
+  "sales": {
+    "reasons": {
+      "wrongProduct": "Wrong product tapped",
+      "cancelled": "Customer cancelled",
+      "wrongQty": "Wrong quantity"
+    },
+    "voided": "Voided",
+    "completed": "Completed",
+    "colNo": "No.",
+    "colTime": "Time",
+    "colCashier": "Cashier",
+    "colPortions": "Portions",
+    "colPayment": "Payment",
+    "colTotal": "Total",
+    "colStatus": "Status",
+    "openTransaction": "Open transaction {no}",
+    "none": "No transactions on this date.",
+    "transaction": "Transaction {no}",
+    "meta": "{date} · {time} · Cashier {name}",
+    "loading": "Loading…",
+    "voidTransaction": "Void transaction",
+    "printReceipt": "Print receipt",
+    "voidTitle": "Void transaction {no}?",
+    "voidText": "The ingredients go back to stock and the transaction is marked VOID. Only possible while the stall is open.",
+    "totalPayment": "Total · {method}",
+    "reason": "Reason",
+    "required": "required",
+    "reasonPlaceholder": "Example: wrong product tapped",
+    "voiding": "Voiding…"
+  },
+  "dateFilter": {
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "otherDate": "Other date"
+  },
+  "transactions": {
+    "title": "Transaction history",
+    "OPEN": "Session running",
+    "CLOSED": "Session closed",
+    "NONE": "No session",
+    "pages": "Pages",
+    "showing": "Showing {from}–{to} of {total, plural, one {# transaction} other {# transactions}}",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "report": {
+    "revenue": "Revenue",
+    "cogs": "Cost of goods sold (HPP)",
+    "wasted": "Wasted",
+    "differences": "Stock differences",
+    "operating": "Operating costs",
+    "profit": "Profit",
+    "profitBefore": "Profit before operating costs",
+    "fromPortions": "From {portions, plural, one {# portion} other {# portions}} and {transactions, plural, one {# transaction} other {# transactions}}.",
+    "mainItem": "Main item",
+    "soldOutAt": "{name} sold out {time}",
+    "missed": "±{count} customers missed",
+    "sold": "sold {qty}",
+    "suggested": "suggested {qty}",
+    "carriedTomorrow": "Carried over to tomorrow",
+    "nothingCarried": "Nothing carried over",
+    "voided": "Voided transactions",
+    "stockRestored": ", stock restored",
+    "suggestionFor": "Suggestion for {day}",
+    "range": "Range {lower}–{upper}",
+    "estimated": ", estimated {amount}",
+    "notesTitle": "Notes for the day",
+    "noSales": "No sales this day.",
+    "busiestAt": "Busiest at {hours}.",
+    "hourPortions": "{hour}:00 ({count, plural, one {# portion} other {# portions}})",
+    "and": " and ",
+    "hourlyTitle": "Sales per hour",
+    "hourlyLead": "Portions sold per hour, local time ({zone}).",
+    "hourlyAria": "Portions sold per hour",
+    "barLabel": "{hour}:00, {count, plural, one {# portion} other {# portions}}",
+    "barTooltip": "{hour}:00 · {count, plural, one {# portion} other {# portions}}",
+    "paymentTitle": "Payment methods",
+    "paymentLead": "Revenue per payment method.",
+    "totalRevenue": "Total revenue <strong>{amount}</strong>",
+    "productsTitle": "Sales per product",
+    "productsLead": "Sorted by highest revenue. Voided transactions are not counted.",
+    "colProduct": "Product",
+    "colPortions": "Portions",
+    "colRevenue": "Revenue",
+    "colShare": "Share of portions",
+    "shareLabel": "{share}% of portions",
+    "noProducts": "No products sold.",
+    "stockTitle": "Ingredient stock at close",
+    "stockLead": "Carried-over stock becomes tomorrow's opening stock. Discarded stock counts as wasted.",
+    "colIngredient": "Ingredient",
+    "colOpening": "Opening",
+    "colBought": "Bought",
+    "colSold": "Sold",
+    "colCarried": "Carried",
+    "colDiscarded": "Discarded",
+    "colSoldOut": "Sold out",
+    "soldOutTime": "Sold out {time}"
+  },
+  "summary": {
+    "revenue": "Revenue",
+    "cogs": "Cost of goods sold (HPP)",
+    "wasted": "Wasted",
+    "adjustments": "Stock adjustments",
+    "carried": "Leftovers carried over",
+    "sold": "Sold",
+    "portions": "{count, plural, one {# portion} other {# portions}}",
+    "voided": "Voided transactions",
+    "closedAutoAt": "closed automatically at {time}",
+    "closedAt": "closed at {time}",
+    "closed": "closed",
+    "dailyReport": "Daily report",
+    "profitBefore": "Profit before operating costs",
+    "soldOutAt": "{name} sold out at {time}",
+    "missed": "About {count} customers missed out.",
+    "didntSellOut": "{name} didn't sell out",
+    "leftCarried": "{qty} left, carried to the next day.",
+    "leftAtClose": "{qty} left at close."
+  },
+  "insight": {
+    "title": "Insight",
+    "madeAt": "Insight · made {time}",
+    "prompt": "Ask for today's evaluation in everyday language. It's made from the numbers above, so they always match.",
+    "making": "Making insight…",
+    "regenerate": "Regenerate",
+    "make": "Make insight",
+    "triesLeft": "{count, plural, one {# try} other {# tries}} left",
+    "triesForSession": "{count, plural, one {# try} other {# tries}} for this session · up to 30 seconds"
+  },
+  "dateNav": {
+    "previousDay": "Previous day",
+    "nextDay": "Next day",
+    "reportDate": "Report date"
+  },
+  "reports": {
+    "title": "Daily report",
+    "closedAt": "Session closed at {time}",
+    "stillOpen": "The stall is still open. The report appears after it closes.",
+    "noClosed": "No closed stall on this date.",
+    "closedAuto": "Closed automatically",
+    "closedManual": "Closed manually",
+    "downloadExcel": "Download Excel",
+    "soldOutNote": "{name} sold out at {time}.",
+    "noReport": "No report for this date. Use the arrows to see another day.",
+    "viewTrend": "View trend"
+  },
+  "trend": {
+    "title": "Sales trend",
+    "lead": "Revenue and profit from closed stalls. Days without a closed stall are not shown.",
+    "daily": "Daily report",
+    "from": "From",
+    "to": "To",
+    "groupBy": "Group by",
+    "byDay": "By day",
+    "byWeek": "By week",
+    "apply": "Show",
+    "lastDays": "{days} days",
+    "maxRange": "366 days at most.",
+    "quickRange": "Quick range",
+    "downloadExcel": "Download Excel",
+    "sessions": "Stalls closed",
+    "portions": "Portions sold",
+    "chartTitle": "Revenue per period",
+    "chartAria": "Revenue per period chart",
+    "barLabel": "{period}: revenue {revenue}, profit {profit}",
+    "weekOf": "Week of {date}",
+    "period": "Period",
+    "noData": "No closed stalls in this range yet. Try another range."
+  },
+  "dashboard": {
+    "morning": "Good morning",
+    "afternoon": "Good afternoon",
+    "evening": "Good evening",
+    "greeting": "{greeting}, {name}.",
+    "notSetUp": "The business isn't set up yet.",
+    "askOwner": "Ask the Owner to finish setting up the business, then log in again.",
+    "openSince": "The stall has been open since {since}. It closes at {close}.",
+    "notOpen": "The stall isn't open yet. Today it opens at {open} and closes at {close}.",
+    "suggestionFor": "Shopping suggestion for {day}",
+    "tomorrow": "tomorrow",
+    "todaySuggestion": "Today's shopping suggestion",
+    "todaySummary": "Today's summary",
+    "yesterdaySummary": "Yesterday's summary",
+    "latestSummary": "Latest summary",
+    "stallClosed": "The stall is closed.",
+    "closedAutoAt": "Closed automatically at {time}. Session data is final and can't be changed.",
+    "closedAt": "Closed at {time}. Session data is final and can't be changed.",
+    "closeStall": "Close stall",
+    "dailyReport": "Daily report",
+    "openStall": "Open stall",
+    "openCashier": "Open cashier",
+    "carriedTomorrow": "Carried to tomorrow",
+    "yesterdayLeftovers": "Yesterday's leftovers",
+    "becomesOpening": "Becomes opening stock when the stall opens tomorrow. Worth {amount}.",
+    "alreadyRecorded": "Already recorded as opening stock when the stall opens.",
+    "aiTitle": "Insight made with AI",
+    "aiText": "Only the summary numbers are sent, without names or emails. If the AI fails, a template summary is shown.",
+    "quickOpenTitle": "Open the stall in under a minute",
+    "quickOpenOwner": "Enter the amount and total paid from this morning's shopping. Price per unit and HPP are calculated automatically.",
+    "quickOpenCashier": "Enter the amount and total paid from this morning's shopping. Price per unit is calculated automatically."
+  },
+  "meta": {
+    "description": "POS, inventory, and finance for small food and beverage businesses. Know how much to prepare tomorrow."
+  },
+  "notFound": {
+    "meta": "Page not found",
+    "eyebrow": "Error 404",
+    "title": "This page isn't at the stall.",
+    "text": "The address may have a typo, or the page has moved. Try starting again from home.",
+    "home": "Back to home",
+    "how": "See how it works"
+  },
+  "public": {
+    "nav": {
+      "home": "Home",
+      "how": "How It Works",
+      "features": "Features",
+      "forYou": "For You",
+      "docs": "Guide"
+    },
+    "logIn": "Log in",
+    "signUp": "Sign up",
+    "signUpFree": "Sign up free",
+    "tagline": "POS, inventory, and finance for small food and beverage businesses. Know how much to prepare tomorrow.",
+    "product": "Product",
+    "account": "Account",
+    "contact": "Contact",
+    "copyright": "© 2026 Stockwise. A portfolio project, open to try.",
+    "privacy": "Privacy Policy",
+    "backToTop": "Back to top ↑",
+    "illustrationsBy": "Illustrations by Storyset"
+  },
+  "landing": {
+    "features": [
+      {
+        "title": "One-tap POS",
+        "text": "One tap, one item. Stock drops automatically by recipe."
+      },
+      {
+        "title": "Automatic cost",
+        "text": "Just log purchases. Cost and profit calculate themselves."
+      },
+      {
+        "title": "Auto-close",
+        "text": "Forgot to close? The system closes 30 minutes after closing time."
+      },
+      {
+        "title": "Tomorrow's suggestion",
+        "text": "With a range and reasons, from your own sales data."
+      }
+    ],
+    "problems": [
+      {
+        "title": "Running short",
+        "text": "Goods sell out before closing and customers leave empty-handed. This loss is never recorded, so it goes unnoticed."
+      },
+      {
+        "title": "Overstock",
+        "text": "Leftovers are kept until quality drops, sold at a discount, or thrown away. Capital quietly disappears."
+      },
+      {
+        "title": "Unclear profit",
+        "text": "Business and personal money mix together. Profit or loss is only known from the cash in the drawer."
+      }
+    ],
+    "steps": [
+      {
+        "title": "Open the stall",
+        "text": "Log the morning purchase: just quantity and total paid. Cost is calculated automatically."
+      },
+      {
+        "title": "Sell",
+        "text": "Tap a product, take payment. Stock drops according to the recipe."
+      },
+      {
+        "title": "Close the stall",
+        "text": "Count leftovers in seconds. Forgot to close? The system closes automatically."
+      },
+      {
+        "title": "Tomorrow's suggestion",
+        "text": "Today's profit and tomorrow's shopping suggestion are ready as soon as you close."
+      }
+    ],
+    "day": [
+      {
+        "time": "06:00",
+        "you": "Shop at the market, log quantity and total paid.",
+        "app": "Calculates price per ingredient and cost automatically."
+      },
+      {
+        "time": "11:00",
+        "you": "Open the stall and start selling.",
+        "app": "Carries over yesterday's leftovers and shows the shopping suggestion."
+      },
+      {
+        "time": "14:00",
+        "you": "Tap a product, take payment.",
+        "app": "Reduces stock by recipe and records the sold-out time."
+      },
+      {
+        "time": "21:00",
+        "you": "Count leftovers and close the stall.",
+        "app": "Prepares today's profit and tomorrow's shopping suggestion."
+      }
+    ],
+    "eyebrow": "Inventory · POS · Finance for small F&B",
+    "title": "Stop guessing. Know how much to prepare tomorrow.",
+    "lead": "Stockwise records your sales, stock, and daily profit, then turns them into a shopping suggestion for tomorrow morning.",
+    "signUpFree": "Sign up free",
+    "seeHow": "See how it works",
+    "quoteEyebrow": "Often heard at the stall",
+    "quote": "“Sold out by 2 pm yesterday, and today I'm stuck with leftovers.”",
+    "quoteText": "A sentence familiar to small vendors. Stockwise is built so it stops repeating.",
+    "problemEyebrow": "The problem",
+    "problemTitle": "Wrong guesses cost you in both directions.",
+    "howEyebrow": "How it works",
+    "howTitle": "One trading day, four steps.",
+    "howText": "Every sale, purchase, and leftover attaches to one daily session, so each day becomes clean data.",
+    "dayEyebrow": "One trading day",
+    "dayTitle": "You sell, Stockwise does the rest.",
+    "you": "You",
+    "autoClose": "Forgot to close? The system closes automatically 30 minutes after closing time.",
+    "ctaTitle": "Start in 10 minutes.",
+    "ctaText": "Add one ingredient, one product, one recipe, then open your first stall."
+  },
+  "how": {
+    "meta": "How It Works",
+    "metaDescription": "One trading day, four stages: open the stall, sell, close the stall, then get a summary and tomorrow's shopping suggestion.",
+    "steps": [
+      {
+        "title": "Open the stall",
+        "text": "Start the day by logging what you actually bought. No need to calculate cost yourself.",
+        "points": [
+          "Yesterday's leftovers and the shopping suggestion appear automatically",
+          "Enter only quantity and total paid; market units like kg are converted automatically",
+          "Stock from home? Choose “no cost” explicitly"
+        ]
+      },
+      {
+        "title": "Sell",
+        "text": "Record sales as fast as you take payment, with two modes you can switch between.",
+        "points": [
+          "Quick mode: one tap adds one item, one pay button",
+          "Recap mode: enter totals sold after the rush",
+          "Made a mistake? Void with a reason, stock returns automatically"
+        ]
+      },
+      {
+        "title": "Close the stall",
+        "text": "Under two minutes at night that makes tomorrow's suggestion accurate.",
+        "points": [
+          "Confirm leftovers per ingredient, then keep them for tomorrow or discard them",
+          "Sold-out time is recorded automatically while selling",
+          "Forgot to close? The system closes automatically 30 minutes after closing time"
+        ]
+      },
+      {
+        "title": "Summary and suggestion",
+        "text": "As soon as the stall closes, the results appear. No waiting, no opening reports.",
+        "points": [
+          "Revenue, cost of goods sold, profit, and leftovers carried to tomorrow",
+          "Tomorrow's shopping suggestion with a range and reasons",
+          "A plain-language insight, only when you ask"
+        ]
+      }
+    ],
+    "days": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat",
+      "Sun"
+    ],
+    "stages": [
+      {
+        "label": "Early",
+        "title": "Just started",
+        "sessions": "Fewer than 7 sessions",
+        "chips": [
+          "Average"
+        ],
+        "text": "Uses the average of recent sessions, corrected for customers missed when stock ran out. Marked “not much data yet”."
+      },
+      {
+        "label": "Basic",
+        "title": "Learning the pattern",
+        "sessions": "7 to 20 sessions",
+        "chips": [
+          "Day pattern"
+        ],
+        "text": "Uses the average per day of the week, so Saturday is calculated from previous Saturdays."
+      },
+      {
+        "label": "Advanced",
+        "title": "Knows it well",
+        "sessions": "21 sessions or more",
+        "chips": [
+          "Day pattern",
+          "Calendar",
+          "Weather"
+        ],
+        "text": "Adds calendar and weather, with a narrower range. Coming in a later release."
+      }
+    ],
+    "setup": [
+      {
+        "title": "Add ingredients",
+        "text": "For example flour (grams) or eggs (pieces). Mark the main ingredient you want predicted."
+      },
+      {
+        "title": "Add products",
+        "text": "For example Chocolate Bread priced at Rp8,000."
+      },
+      {
+        "title": "Set the recipe",
+        "text": "1 Chocolate Bread = 60 grams of flour + 1 egg + 15 grams of chocolate. Cost per portion is calculated automatically."
+      }
+    ],
+    "roles": [
+      {
+        "title": "Owner",
+        "subtitle": "Business owner",
+        "points": [
+          "Manage ingredients, products, recipes, and prices",
+          "See summaries, reports, and insights",
+          "Add and deactivate staff accounts",
+          "Everything a Cashier can do"
+        ]
+      },
+      {
+        "title": "Cashier",
+        "subtitle": "Staff created by the Owner",
+        "points": [
+          "Open and close sessions",
+          "POS, add stock, and void in an open session",
+          "See the history of the current session",
+          "No access to reports, costs, or cost of goods"
+        ]
+      }
+    ],
+    "eyebrow": "How it works",
+    "title": "One trading day, four stages.",
+    "lead": "Stockwise treats every trading day as one session: opened in the morning, used for selling, closed at night. Everything that happens attaches to that session, then turns into a suggestion for tomorrow.",
+    "suggestionEyebrow": "Shopping suggestion",
+    "suggestionTitle": "The longer you use it, the more accurate it gets.",
+    "suggestionText": "Every suggestion comes with reasons and a range, not one absolute number. The numbers come from your own data.",
+    "range": "Suggested range",
+    "firstEyebrow": "First time",
+    "firstTitle": "Start from zero, no template.",
+    "firstText": "Just one ingredient, one product, and one recipe. Add the rest anytime.",
+    "thenOpen": "Then open your first stall.",
+    "rolesEyebrow": "Roles",
+    "rolesTitle": "Two roles, one stall.",
+    "ctaTitle": "Ready to try?",
+    "ctaText": "Sign up, fill in your business, and open your first stall in 10 minutes."
+  },
+  "features": {
+    "meta": "Features",
+    "metaDescription": "POS, stock, cost, and shopping suggestions in one daily flow for small food and beverage businesses.",
+    "groups": [
+      {
+        "label": "Selling",
+        "cards": [
+          {
+            "label": "Quick POS",
+            "title": "Sell in one tap",
+            "text": "Tap a product, pick cash, QRIS, or other, and you're done. Stock updates on its own."
+          },
+          {
+            "label": "Stock tracking",
+            "title": "Know when you sold out",
+            "text": "When a main ingredient runs out, Stockwise notes the time and marks its products Sold out."
+          },
+          {
+            "label": "History",
+            "title": "Fix mistakes, reprint receipts",
+            "text": "Void a wrong sale with a reason and the stock comes back. Reprints are labeled COPY."
+          }
+        ]
+      },
+      {
+        "label": "Money",
+        "cards": [
+          {
+            "label": "Automatic cost",
+            "title": "Know your real cost",
+            "text": "Log what you paid at the market. Cost per portion and a suggested price follow from your recipes."
+          },
+          {
+            "label": "Suggestion",
+            "title": "Know what to buy tomorrow",
+            "text": "One suggestion per main ingredient, with a range and the reasons behind it."
+          },
+          {
+            "label": "Insight",
+            "title": "Your day, in plain words",
+            "text": "A short review of today and advice for tomorrow, only when you ask. Every number is checked against your data."
+          }
+        ]
+      },
+      {
+        "label": "Peace of mind",
+        "cards": [
+          {
+            "label": "Auto-close",
+            "title": "Forgot to close? Covered.",
+            "text": "30 minutes after closing time, the session closes itself using recorded stock."
+          },
+          {
+            "label": "Roles",
+            "title": "Staff sell, you see the money",
+            "text": "Cashiers run sales and sessions. Reports, costs, and settings stay with the Owner."
+          },
+          {
+            "label": "Separate data",
+            "title": "Your data stays yours",
+            "text": "No other business can see it, and you can delete all of it at once."
+          }
+        ]
+      }
+    ],
+    "catalog": [
+      {
+        "title": "Ingredients",
+        "text": "What you buy to make your goods. Set the unit once, in grams, pieces, or liters."
+      },
+      {
+        "title": "Products",
+        "text": "What you sell to customers, each with your own selling price."
+      },
+      {
+        "title": "Recipe",
+        "text": "What goes into each product. Stockwise does the counting from there."
+      }
+    ],
+    "comparison": [
+      {
+        "label": "Shopping",
+        "without": "Based on feel and habit",
+        "with": "Based on a suggestion from your sales data"
+      },
+      {
+        "label": "Cost",
+        "without": "Calculated by hand, or not at all",
+        "with": "Calculated automatically from your purchases"
+      },
+      {
+        "label": "Sold out",
+        "without": "Not recorded, customers leave quietly",
+        "with": "Sold-out time recorded, missed customers estimated"
+      },
+      {
+        "label": "Profit",
+        "without": "Known only from the cash in the drawer",
+        "with": "A full daily profit every night"
+      },
+      {
+        "label": "Mistakes",
+        "without": "Hard to trace",
+        "with": "Void with a reason, recorded who and when"
+      }
+    ],
+    "eyebrow": "Features",
+    "title": "Everything a stall needs, nothing more.",
+    "lead": "POS, stock, cost, and shopping suggestions in one daily flow. Built for busy hands and phone screens.",
+    "catalogEyebrow": "For any goods",
+    "catalogTitle": "You fill it in, the engine does the math.",
+    "catalogText": "You define ingredients, products, and recipes yourself, guided by examples in every field. It works for any kind of goods.",
+    "compareEyebrow": "Before and after",
+    "compareTitle": "From guessing to knowing.",
+    "aspect": "Aspect",
+    "without": "Without Stockwise",
+    "becomes": "becomes",
+    "with": "With Stockwise",
+    "ctaTitle": "Try it yourself.",
+    "ctaText": "Sign up, fill in your business, and open your first stall in 10 minutes."
+  },
+  "forYou": {
+    "meta": "For You",
+    "metaDescription": "For owners of small food and beverage businesses whose goods spoil fast and whose stock is prepared every morning.",
+    "businesses": [
+      {
+        "title": "Snacks & desserts",
+        "mode": "Produced at the start of the day",
+        "text": "Fried snacks, puddings, and sweets made in batches. See which sold out early and which were left over."
+      },
+      {
+        "title": "Bakery & pastry",
+        "mode": "Produced at the start of the day",
+        "text": "Baked at the start of the day, leftovers carried to tomorrow or thrown away at closing."
+      },
+      {
+        "title": "Drinks",
+        "mode": "Made to order",
+        "text": "Coffee, tea, and other drinks made when ordered, with ingredients counted per cup by recipe."
+      }
+    ],
+    "fit": [
+      "Run one stall or one shop",
+      "Sell with one to three people",
+      "Prepare stock every morning, and your goods spoil fast",
+      "Count revenue per day",
+      "Sell with an internet connection"
+    ],
+    "notFit": [
+      "Need multiple branches in one account",
+      "Need online ordering by customers or delivery",
+      "Need integrated payments, dynamic QRIS or VA",
+      "Open past midnight",
+      "Need an app that works offline, or on iOS"
+    ],
+    "examples": [
+      {
+        "name": "Bakery & Pastry",
+        "note": "One batch, many breads and pastries",
+        "ingredients": [
+          "Flour",
+          "Eggs",
+          "Butter"
+        ],
+        "product": "Bread",
+        "mode": "Produced at the start of the day"
+      },
+      {
+        "name": "Main Course",
+        "note": "Cooked when ordered",
+        "ingredients": [
+          "Rice",
+          "Eggs",
+          "Soy sauce"
+        ],
+        "product": "Fried Rice",
+        "mode": "Made to order"
+      },
+      {
+        "name": "Beverages",
+        "note": "Mixed when ordered",
+        "ingredients": [
+          "Tea",
+          "Sugar",
+          "Ice"
+        ],
+        "product": "Iced Tea",
+        "mode": "Made to order"
+      },
+      {
+        "name": "Other Goods",
+        "note": "You decide",
+        "ingredients": [
+          "Your ingredients"
+        ],
+        "product": "Your product",
+        "mode": "You choose the mode"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Do I need to install an app?",
+        "a": "No. Stockwise runs in a phone or computer browser, with nothing to install. Just open it, sign up, and start."
+      },
+      {
+        "q": "Do I need old sales data?",
+        "a": "No. Start from day one. Shopping suggestions appear once a session has been closed, and are marked “not much data yet” until there is enough data."
+      },
+      {
+        "q": "I sell alone, is that okay?",
+        "a": "Yes. One Owner account is enough for POS, stock, and reports. Cashier accounts for staff are only needed if you have staff."
+      },
+      {
+        "q": "Can staff see my profit?",
+        "a": "No. Cashier accounts only run sales and daily sessions. Reports, costs, cost of goods, and settings are visible to the Owner only."
+      },
+      {
+        "q": "What if I forget to close the stall?",
+        "a": "The system closes the session automatically 30 minutes after closing time, using recorded stock as leftovers. Ingredients that can be carried over move to tomorrow; the rest are counted as discarded."
+      },
+      {
+        "q": "Is my business data separate and deletable?",
+        "a": "Yes. One business's data is never visible to another. The Owner can permanently delete the business and all its data by typing the business name to confirm."
+      }
+    ],
+    "eyebrow": "For you",
+    "title": "For goods that spoil fast.",
+    "lead": "Stockwise is built for owners of small food and beverage businesses: one stall or shop, one to three people selling, stock prepared every morning.",
+    "bizEyebrow": "Businesses like yours",
+    "bizTitle": "Made for stalls like these.",
+    "bizText": "From snacks to bakeries to drink stands, as long as the goods spoil fast and stock is prepared every morning.",
+    "fitEyebrow": "Fit or not",
+    "fitTitle": "Take a look before you try.",
+    "fitsIf": "It fits if you",
+    "notFitsIf": "It doesn't fit yet if you",
+    "examplesEyebrow": "Example goods",
+    "examplesTitle": "One engine, many kinds of goods.",
+    "examplesText": "You define ingredients, products, and recipes yourself. The engine calculates stock, cost, and shopping suggestions.",
+    "colBusiness": "Business",
+    "colIngredients": "Ingredients",
+    "colProduct": "Product",
+    "colMode": "Stock mode",
+    "becomes": "becomes",
+    "modeNote": "Stock mode decides when stock drops: when ordered, or when produced.",
+    "faqEyebrow": "Questions",
+    "faqTitle": "Frequently asked.",
+    "faqNote": "Not answered yet? Sign up and try it yourself, free.",
+    "ctaTitle": "Sound like you?",
+    "ctaText": "Sign up, fill in your business, and open your first stall in 10 minutes."
+  },
+  "privacy": {
+    "meta": "Privacy Policy",
+    "metaDescription": "What data Stockwise stores, what for, and what you control.",
+    "highlights": [
+      {
+        "title": "Separate per business",
+        "text": "Your data is never visible to other businesses."
+      },
+      {
+        "title": "No identity to the model",
+        "text": "Insights get numbers and ingredient names, never who you are."
+      },
+      {
+        "title": "Hashed passwords",
+        "text": "Stored as a hash, never in original form."
+      },
+      {
+        "title": "Delete anytime",
+        "text": "Your account and all its data deleted permanently."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Data we store",
+        "lead": "Only what's needed to run your business in Stockwise.",
+        "points": [
+          "Account: name, email, password (as a hash), and display language",
+          "Business: business name, currency, opening and closing times, location, and local payday",
+          "Operations: ingredients, products, recipes, purchases, sales, daily sessions, and stock",
+          "Staff: name and email of Cashier accounts created by the Owner"
+        ]
+      },
+      {
+        "title": "What the data is used for",
+        "lead": "Your data is used to run Stockwise's features.",
+        "points": [
+          "Running the daily cycle: opening, selling, closing",
+          "Calculating cost, cost of goods, and daily profit",
+          "Preparing the evening summary and tomorrow's shopping suggestion",
+          "Keeping transaction history and receipts"
+        ]
+      },
+      {
+        "title": "Language model for insights",
+        "lead": "An insight is generated only when you press “Make insight”, and only the Owner can.",
+        "points": [
+          "Only aggregate numbers, ingredient names, and calculation reasons are sent",
+          "Never your name, email, or business name",
+          "The model may run on an external AI service, outside Stockwise's server",
+          "Every number in the text must match the real data, otherwise the text is replaced by a template",
+          "One insight result is stored per session"
+        ]
+      },
+      {
+        "title": "Security",
+        "lead": "What we do to protect your data.",
+        "points": [
+          "Passwords are stored hashed, never in original form",
+          "Access tokens are short-lived and kept in httpOnly cookies that JavaScript cannot read",
+          "All traffic goes over HTTPS",
+          "Login and sign-up attempts are rate limited",
+          "Database backups are made daily"
+        ]
+      },
+      {
+        "title": "Data separation",
+        "lead": "One account, one business.",
+        "points": [
+          "You can only see and change your own business's data",
+          "Requests for another business's data are answered “not found”",
+          "This separation is tested automatically"
+        ]
+      },
+      {
+        "title": "Your rights and control",
+        "lead": "You stay in control of your data.",
+        "points": [
+          "Edit the business profile anytime",
+          "Deactivate staff accounts, which lose access once their token lifetime ends",
+          "Permanently delete your account and business by typing the business name",
+          "Once deleted, the business, staff, and all history can no longer be accessed"
+        ]
+      },
+      {
+        "title": "What isn't available yet",
+        "lead": "We're honest about the current limits.",
+        "points": [
+          "Email verification when signing up",
+          "Resetting a forgotten password"
+        ]
+      },
+      {
+        "title": "Changes and contact",
+        "lead": "This policy may change as Stockwise grows. The last update date is shown at the top of the page.",
+        "points": [
+          "Privacy questions: info@stockwise.com"
+        ]
+      }
+    ],
+    "eyebrow": "Privacy policy",
+    "title": "Your data is yours.",
+    "lead": "This page explains what data Stockwise stores, what for, and what you control. Stockwise is a portfolio project open to try.",
+    "lastUpdated": "Last updated: <time>{date}</time>",
+    "onThisPage": "On this page"
+  },
+  "docs": {
+    "meta": "Guide",
+    "metaDescription": "A step-by-step tutorial for using Stockwise: sign up, open your stall, sell, close up, and read your reports.",
+    "eyebrow": "Guide",
+    "title": "How to use Stockwise, step by step.",
+    "lead": "Follow the sections below in order for your first day. After that, come back to the section you need.",
+    "onThisPage": "On this page",
+    "stepsLabel": "Steps",
+    "tipsLabel": "Good to know",
+    "ownerOnly": "Owner only",
+    "faqTitle": "Common questions",
+    "sections": [
+      {
+        "title": "Sign up and log in",
+        "lead": "One owner account per business.",
+        "owner": true,
+        "steps": [
+          "Click **Sign up** at the top right and enter your name, email, and password (8–72 characters).",
+          "After signing up, you go straight to business setup.",
+          "Next time, use **Log in** with the same email and password."
+        ],
+        "tips": [
+          "Accounts created through Sign up are always owners. Cashier accounts are created by the owner in Settings."
+        ]
+      },
+      {
+        "title": "Set up your business",
+        "lead": "Three steps, under 10 minutes. You can stop and come back later with **Save and exit**.",
+        "owner": true,
+        "steps": [
+          "**Business profile**: enter your business name, opening time, closing time, and currency.",
+          "**Ingredients**: add everything you stock, like flour (grams) or eggs (pieces), with an estimated price. Mark one ingredient as the **main item**.",
+          "**Products & recipes**: add what you sell, pick the ingredients and amount per portion, then set a selling price. The estimated cost per portion and a suggested price appear automatically.",
+          "On the **Done** page, check that every requirement is met, then go open your stall."
+        ],
+        "tips": [
+          "The main item is the ingredient that matters most to your sales. Stockwise records when it sells out and calculates how much to buy.",
+          "The currency locks once you open your stall for the first time, because recorded amounts are not converted.",
+          "The closing time is used to close your stall automatically if you forget."
+        ]
+      },
+      {
+        "title": "Open your stall",
+        "lead": "Done every morning before selling, by the owner or a cashier.",
+        "owner": false,
+        "steps": [
+          "From **Home**, click **Open stall**.",
+          "Check the **In stock** column: these are leftovers from your last close, calculated automatically.",
+          "For what you bought this morning, fill in **+ Add** and **Total paid**. Or click **Fill suggested amounts** to use the shopping suggestion.",
+          "Click **Review**, check the opening stock, then **Open stall**."
+        ],
+        "tips": [
+          "Leave Add and Total paid empty if you bought nothing for that ingredient.",
+          "Just enter the total you paid. The unit price and cost of goods are calculated for you.",
+          "You can open before your opening time. Once closed, the stall can only reopen tomorrow."
+        ]
+      },
+      {
+        "title": "Sell at the cashier",
+        "lead": "Record sales as fast as you take payment.",
+        "owner": false,
+        "steps": [
+          "Open **Cashier**.",
+          "Tap a product to add it to the cart. Use − and + to change the amount.",
+          "Choose a payment method. For cash, enter the amount received if you want to see the change.",
+          "Click **Pay**. Once saved, print a receipt if needed, then **New transaction** (or press Enter)."
+        ],
+        "tips": [
+          "Too busy to record each sale? Switch to **Recap** mode, enter the total sold per product, and save it as one transaction.",
+          "Products whose ingredients ran out are marked **Sold out** and can't be added.",
+          "On a phone, the cart is below the product list. Tap the **View cart** bar to jump there."
+        ]
+      },
+      {
+        "title": "Void a transaction",
+        "lead": "Made a mistake? Void the transaction and the stock comes back automatically.",
+        "owner": false,
+        "steps": [
+          "Open **Transaction history** and click the wrong transaction.",
+          "Click **Void transaction** and enter a reason.",
+          "The transaction is marked Voided and its ingredients go back into stock."
+        ],
+        "tips": [
+          "You can only void while the stall is still open.",
+          "Voided transactions stay visible in the history and reports, with their reason."
+        ]
+      },
+      {
+        "title": "Close your stall",
+        "lead": "Under two minutes at night, and it makes tomorrow's suggestion more accurate.",
+        "owner": false,
+        "steps": [
+          "From **Home**, click **Close stall**.",
+          "Count what is left of each ingredient and fill in **Counted**. If it matches the record, click **Use recorded stock**.",
+          "For each ingredient, choose **Keep** (carried to tomorrow) or **Discard**.",
+          "Add a note if you like, such as \"rain since the afternoon\", then click **Close stall**."
+        ],
+        "tips": [
+          "Any difference between recorded and counted stock is recorded as a stock difference cost.",
+          "Ingredients that can't be carried over can only be discarded.",
+          "Forgot to close? The system closes it 30 minutes after closing time, using recorded stock.",
+          "Session data can't be changed after the stall is closed."
+        ]
+      },
+      {
+        "title": "Read your summary and shopping suggestion",
+        "lead": "As soon as the stall closes, the day's results and tomorrow's suggestion show up on Home.",
+        "owner": false,
+        "steps": [
+          "See **Today's summary** on Home: revenue, cost of goods, profit, and leftovers carried to tomorrow.",
+          "See the **shopping suggestion** for tomorrow, with a range and reasons. Click **Why this much?** to see the calculation.",
+          "Want a plain-language review? Click **Make insight**."
+        ],
+        "tips": [
+          "Suggestions get better after a few days of data. At first, they are estimated from your recipes.",
+          "Insight only receives summary numbers, never names or emails, and the number of tries per session is limited."
+        ]
+      },
+      {
+        "title": "Reports, trends, and Excel",
+        "lead": "For details on one day or how things went over several weeks.",
+        "owner": true,
+        "steps": [
+          "Open **Daily report** to see profit, sales by hour, payment methods, products, and stock. Use the date arrows to switch days.",
+          "Click **View trend** to see revenue and profit over a date range, by day or by week.",
+          "Click **Download Excel** to download sales data for the day or range you are viewing."
+        ],
+        "tips": [
+          "Reports only exist for days whose stall has been closed.",
+          "A trend range can be up to 366 days."
+        ]
+      },
+      {
+        "title": "Manage ingredients and products",
+        "lead": "Change your ingredients, recipes, and prices any time.",
+        "owner": true,
+        "steps": [
+          "Open **Ingredients** to add, edit, or deactivate ingredients.",
+          "Open **Products and recipes** to change recipes and selling prices. Check the cost, margin, and suggested price columns.",
+          "Ingredients or products you no longer use can simply be deactivated. Their history is kept."
+        ],
+        "tips": [
+          "An ingredient still used in a recipe must be removed from that recipe before it can be deactivated.",
+          "An ingredient's unit can't be changed once it has been used in a session.",
+          "A cost marked Estimate means an ingredient hasn't been bought through Open stall yet."
+        ]
+      },
+      {
+        "title": "Cashier accounts and settings",
+        "lead": "Add cashiers, change the language, and tune suggestions.",
+        "owner": true,
+        "steps": [
+          "Open **Settings** and click **Add cashier**. Enter a name, email, and password, then give them to your cashier.",
+          "In **Business profile**, change your opening hours or business name. Hour changes apply from the next session.",
+          "Open **Advanced settings** to change the stock suggestion buffer, target margin, and paydays."
+        ],
+        "tips": [
+          "Cashiers can only open and close the stall, record sales, and see that day's transactions.",
+          "A deactivated cashier can't log in anymore. Their transaction history is kept.",
+          "Each account picks its own language in Settings."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "I forgot to close the stall. What happens?",
+        "a": "The system closes it automatically 30 minutes after closing time, using recorded stock. Ingredients that can be carried over are carried to tomorrow."
+      },
+      {
+        "q": "Can I open the stall twice in one day?",
+        "a": "No. One session per day. Once closed, the stall can only reopen tomorrow."
+      },
+      {
+        "q": "I entered the wrong count when closing. Can I change it?",
+        "a": "No. Session data is final once closed. The difference is corrected when you check the stock at your next Open stall."
+      },
+      {
+        "q": "Why is there no shopping suggestion yet?",
+        "a": "Suggestions are made after the stall closes. Close today's stall, then check Home."
+      },
+      {
+        "q": "My business stays open past midnight. Can I use Stockwise?",
+        "a": "Not yet. The closing time must be after the opening time on the same day."
+      }
+    ],
+    "ctaTitle": "Ready to try it?",
+    "ctaText": "Sign up for free, then follow this guide from step one."
+  }
+}

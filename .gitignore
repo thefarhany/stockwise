@@ -4,6 +4,8 @@
 /.obsidian/
 TASKS.md
 HELP.md
+# README bawaan create-next-app; README utama ada di root
+/frontend/README.md
 
 # File AI / agent
 .claude/
@@ -16,6 +18,15 @@ AGENTS.md
 GEMINI.md
 skills-lock.json
 .caveman/
+skill.json
+SKILL.md
+.cursor/
+.cursorrules
+.windsurf/
+.windsurfrules
+.aider*
+.continue/
+.github/copilot-instructions.md
 
 # Rahasia & environment
 .env

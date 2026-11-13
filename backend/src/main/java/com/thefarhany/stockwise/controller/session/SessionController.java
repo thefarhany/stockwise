@@ -4,10 +4,12 @@ import com.thefarhany.stockwise.common.ApiResponse;
 import com.thefarhany.stockwise.dto.session.AddStockRequest;
 import com.thefarhany.stockwise.dto.session.CloseSessionRequest;
 import com.thefarhany.stockwise.dto.session.OpenSessionRequest;
+import com.thefarhany.stockwise.dto.session.OpeningStockResponse;
 import com.thefarhany.stockwise.dto.session.SessionResponse;
 import com.thefarhany.stockwise.security.AuthPrincipal;
 import com.thefarhany.stockwise.service.session.SessionService;
 import jakarta.validation.Valid;
+import java.util.List;
 import java.util.UUID;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -33,6 +35,12 @@ class SessionController {
 	@GetMapping("/current")
 	ApiResponse<SessionResponse> current(@AuthenticationPrincipal AuthPrincipal me) {
 		return ApiResponse.ok(service.current(me));
+	}
+
+	/** Stok awal bila lapak dibuka sekarang (semua bahan aktif + sisa yang dibawa); untuk halaman buka lapak. */
+	@GetMapping("/opening-stock")
+	ApiResponse<List<OpeningStockResponse>> openingStock(@AuthenticationPrincipal AuthPrincipal me) {
+		return ApiResponse.ok(service.openingStock(me));
 	}
 
 	@PostMapping("/open")

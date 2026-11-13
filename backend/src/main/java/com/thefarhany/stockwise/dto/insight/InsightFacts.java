@@ -1,14 +1,17 @@
 package com.thefarhany.stockwise.dto.insight;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * Fakta yang dikirim ke model (docs/05 bagian 13): hanya angka agregat dan alasan, tanpa nama pengguna atau email.
- * businessName adalah nama usaha untuk sapaan, bukan identitas pribadi.
+ * Fakta yang dikirim ke model (docs/05 bagian 13): angka agregat, nama bahan, dan alasan; tanpa nama pengguna, email,
+ * atau nama usaha (Privacy Policy menjanjikan itu, dan model bisa berjalan di luar server). currency = kode mata uang (mis. IDR); uang
+ * ditulis dalam satuan utuh (mis. 12.50 untuk $12.50), bukan satuan terkecil, supaya model tidak salah baca.
  */
-public record InsightFacts(String language, String businessName, String date, String closeType, Facts facts) {
+public record InsightFacts(String language, String currency, String date, String closeType,
+		Facts facts) {
 
-	public record Facts(long revenue, long cogs, long netProfit, long itemsSold, int voidCount,
+	public record Facts(BigDecimal revenue, BigDecimal cogs, BigDecimal netProfit, long itemsSold, int voidCount,
 			PrimaryFacts primaryItem, RecommendationFacts recommendation) {
 	}
 

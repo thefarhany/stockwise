@@ -3,13 +3,17 @@ package com.thefarhany.stockwise.service.insight;
 import com.thefarhany.stockwise.dto.insight.InsightFacts;
 import com.thefarhany.stockwise.dto.insight.InsightResultResponse;
 import com.thefarhany.stockwise.exception.BusinessException;
+import com.thefarhany.stockwise.model.auth.AppUser;
+import com.thefarhany.stockwise.model.auth.Language;
 import com.thefarhany.stockwise.model.insight.DailySummary;
 import com.thefarhany.stockwise.model.insight.InsightStatus;
 import com.thefarhany.stockwise.model.insight.Recommendation;
 import com.thefarhany.stockwise.model.insight.RecommendationStatus;
+import com.thefarhany.stockwise.model.outlet.Currency;
 import com.thefarhany.stockwise.model.session.DailySession;
 import com.thefarhany.stockwise.model.session.SessionStatus;
 import com.thefarhany.stockwise.model.session.SessionStock;
+import com.thefarhany.stockwise.repository.auth.AppUserRepository;
 import com.thefarhany.stockwise.repository.insight.DailySummaryRepository;
 import com.thefarhany.stockwise.repository.insight.RecommendationRepository;
 import com.thefarhany.stockwise.repository.session.DailySessionRepository;
@@ -17,6 +21,7 @@ import com.thefarhany.stockwise.repository.session.SessionStockRepository;
 import com.thefarhany.stockwise.security.AuthPrincipal;
 import com.thefarhany.stockwise.utils.insight.InsightTexts;
 import com.thefarhany.stockwise.utils.outlet.OutletRules;
+import java.math.BigDecimal;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
@@ -51,15 +56,26 @@ public class InsightService {
 	static final String TEMPLATE_MODEL = "template";
 	private static final DateTimeFormatter HOUR_MINUTE = DateTimeFormatter.ofPattern("HH:mm");
 
+	/** {example} diganti contoh uang dalam mata uang usaha. */
 	static final String SYSTEM_PROMPT = """
 			Kamu membantu pemilik usaha makanan kecil memahami hasil jualan hari ini.
 			Tulis evaluasi penjualan hari ini dan arahan belanja besok dalam bahasa Indonesia sehari-hari, 3 sampai 4 kalimat.
 			ATURAN:
 			- Hanya pakai angka yang tertulis di FAKTA. Jangan menghitung, membulatkan, atau membuat angka baru.
-			- Tulis rupiah lengkap seperti Rp637.200, jangan memakai kata ribu atau juta.
+			- Tulis uang lengkap dengan simbolnya seperti {example}, jangan memakai kata ribu atau juta.
 			- Jangan menyebut hal yang tidak ada di FAKTA.
 			- Jika closeType adalah AUTO, katakan bahwa sisa stok dihitung otomatis dari stok tercatat.
 			Balas hanya dengan JSON: {"text": "..."}""";
+
+	static final String SYSTEM_PROMPT_EN = """
+			You help the owner of a small food business understand today's sales.
+			Write an evaluation of today's sales and guidance for tomorrow's shopping in plain everyday English, 3 to 4 sentences.
+			RULES:
+			- Only use numbers written in the FACTS. Do not calculate, round, or create new numbers.
+			- Write money in full with its symbol, like {example}; do not use words like thousand or million.
+			- Do not mention anything that is not in the FACTS.
+			- If closeType is AUTO, say that the leftovers were counted automatically from recorded stock.
+			Reply only with JSON: {"text": "..."}""";
 
 	private record Prepared(UUID summaryId, InsightFacts facts, String factsJson) {
 	}
@@ -68,6 +84,7 @@ public class InsightService {
 	private final DailySummaryRepository summaries;
 	private final SessionStockRepository stocks;
 	private final RecommendationRepository recommendations;
+	private final AppUserRepository users;
 	private final OllamaClient ollama;
 	private final ObjectMapper mapper;
 	private final Clock clock;
@@ -76,13 +93,15 @@ public class InsightService {
 	private final Semaphore gate = new Semaphore(1, true);
 
 	public InsightService(DailySessionRepository sessions, DailySummaryRepository summaries,
-			SessionStockRepository stocks, RecommendationRepository recommendations, OllamaClient ollama,
+			SessionStockRepository stocks, RecommendationRepository recommendations, AppUserRepository users,
+			OllamaClient ollama,
 			ObjectMapper mapper, Clock clock, PlatformTransactionManager txManager,
 			@Value("${stockwise.ollama.queue-wait-seconds}") long queueWaitSeconds) {
 		this.sessions = sessions;
 		this.summaries = summaries;
 		this.stocks = stocks;
 		this.recommendations = recommendations;
+		this.users = users;
 		this.ollama = ollama;
 		this.mapper = mapper;
 		this.clock = clock;
@@ -95,10 +114,12 @@ public class InsightService {
 		try {
 			Prepared prepared = tx.execute(status -> reserve(me, sessionId));
 			Set<String> allowed = InsightTexts.allowedNumbers(prepared.factsJson());
-			Optional<String> generated = ollama.generate(SYSTEM_PROMPT, "FAKTA:\n" + prepared.factsJson())
+			Optional<String> generated = ollama.generate(systemPrompt(prepared.facts()),
+					(InsightTexts.english(prepared.facts()) ? "FACTS:\n" : "FAKTA:\n") + prepared.factsJson())
 					.map(String::trim);
 			// null = lolos. Jangan lewat Optional.map: hasil null akan dianggap "tidak ada" dan teks valid ikut terbuang.
-			String rejection = generated.isPresent() ? InsightTexts.rejection(generated.get(), allowed)
+			String rejection = generated.isPresent() ? InsightTexts.rejection(generated.get(), allowed,
+					InsightTexts.english(prepared.facts()))
 					: "model_unavailable";
 			Optional<String> fromModel = rejection == null ? generated : Optional.empty();
 			if (fromModel.isEmpty() && ollama.isConfigured()) {
@@ -111,6 +132,14 @@ public class InsightService {
 		finally {
 			gate.release();
 		}
+	}
+
+	static String systemPrompt(InsightFacts facts) {
+		Currency currency = Currency.valueOf(facts.currency());
+		BigDecimal example = new BigDecimal(currency.decimals() == 0 ? "637200" : "637.20");
+		return InsightTexts.english(facts)
+				? SYSTEM_PROMPT_EN.replace("{example}", InsightTexts.moneyEn(example, currency))
+				: SYSTEM_PROMPT.replace("{example}", InsightTexts.money(example, currency));
 	}
 
 	private void acquire() {
@@ -140,7 +169,9 @@ public class InsightService {
 					"Kesempatan membuat insight untuk sesi ini sudah habis.");
 		}
 		summary.setInsightAttempts((short) (summary.getInsightAttempts() + 1));
-		InsightFacts facts = facts(session, summary);
+		// Insight ditulis dalam bahasa akun yang memintanya.
+		Language language = users.findById(me.userId()).map(AppUser::getLanguage).orElse(Language.ID);
+		InsightFacts facts = facts(session, summary, language);
 		return new Prepared(summary.getId(), facts, mapper.writeValueAsString(facts));
 	}
 
@@ -154,16 +185,18 @@ public class InsightService {
 				summary.getInsightGeneratedAt());
 	}
 
-	/** Hanya angka agregat dan alasan; tidak ada nama pengguna, email, atau id. */
-	private InsightFacts facts(DailySession session, DailySummary s) {
+	/** Angka agregat, nama bahan, dan alasan; tidak ada nama pengguna, email, id, atau nama usaha. */
+	private InsightFacts facts(DailySession session, DailySummary s, Language language) {
 		List<SessionStock> rows = stocks.findBySessionIdOrderByStockItemName(session.getId());
 		InsightFacts.PrimaryFacts primary = SummaryService.primaryItem(s, rows).map(p -> new InsightFacts.PrimaryFacts(
 				p.name(), p.soldOutAt() == null ? null
 						: HOUR_MINUTE.format(p.soldOutAt().atZone(OutletRules.zone(session.getOutlet()))),
 				p.lostSalesEstimate() == null ? 0 : Math.round(p.lostSalesEstimate().doubleValue()))).orElse(null);
-		return new InsightFacts("id", session.getOutlet().getName(), session.getBusinessDate().toString(),
-				session.getCloseType().name(),
-				new InsightFacts.Facts(s.getRevenue(), s.getCogs(), s.getNetProfit(),
+		Currency currency = session.getOutlet().getCurrency();
+		return new InsightFacts(language.name().toLowerCase(java.util.Locale.ROOT), currency.name(),
+				session.getBusinessDate().toString(), session.getCloseType().name(),
+				new InsightFacts.Facts(InsightTexts.major(s.getRevenue(), currency),
+						InsightTexts.major(s.getCogs(), currency), InsightTexts.major(s.getNetProfit(), currency),
 						Math.round(s.getTotalItemsSold().doubleValue()), s.getVoidCount(), primary,
 						recommendationFacts(session)));
 	}

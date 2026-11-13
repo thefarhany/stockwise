@@ -2,7 +2,10 @@ package com.thefarhany.stockwise.model.outlet;
 
 import com.thefarhany.stockwise.model.Auditable;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,6 +29,9 @@ public class Outlet extends Auditable {
 
 	private String timezone = "Asia/Jakarta";
 
+	@Enumerated(EnumType.STRING)
+	private Currency currency = Currency.IDR;
+
 	@Column(name = "open_time")
 	private LocalTime openTime;
 
@@ -35,6 +41,9 @@ public class Outlet extends Auditable {
 	private BigDecimal latitude;
 
 	private BigDecimal longitude;
+
+	@Embedded
+	private OutletAddress address;
 
 	@JdbcTypeCode(SqlTypes.JSON)
 	@Column(name = "payday_days")
@@ -70,6 +79,14 @@ public class Outlet extends Auditable {
 		return timezone;
 	}
 
+	public Currency getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(Currency currency) {
+		this.currency = currency;
+	}
+
 	public LocalTime getCloseTime() {
 		return closeTime;
 	}
@@ -88,6 +105,14 @@ public class Outlet extends Auditable {
 
 	public void setCloseTime(LocalTime closeTime) {
 		this.closeTime = closeTime;
+	}
+
+	public OutletAddress getAddress() {
+		return address;
+	}
+
+	public void setAddress(OutletAddress address) {
+		this.address = address;
 	}
 
 	public void setLatitude(BigDecimal latitude) {

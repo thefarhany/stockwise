@@ -1,0 +1,1658 @@
+{
+  "common": {
+    "showPassword": "Tampilkan kata sandi",
+    "hidePassword": "Sembunyikan kata sandi",
+    "close": "Tutup",
+    "logOut": "Keluar",
+    "loggingOut": "Keluar…",
+    "language": "Bahasa",
+    "home": "Beranda",
+    "privacyPolicy": "Kebijakan Privasi",
+    "cancel": "Batal",
+    "save": "Simpan",
+    "saving": "Menyimpan…",
+    "edit": "Ubah",
+    "remove": "Hapus",
+    "back": "Kembali",
+    "continue": "Lanjut",
+    "you": "Kamu"
+  },
+  "validation": {
+    "emailRequired": "Masukkan email kamu.",
+    "emailInvalid": "Masukkan email yang valid.",
+    "passwordRequired": "Masukkan kata sandi kamu.",
+    "nameRequired": "Masukkan nama kamu.",
+    "businessNameRequired": "Masukkan nama usaha kamu.",
+    "maxChars": "Maksimal {max} karakter.",
+    "minChars": "Minimal {min} karakter.",
+    "ingredientNameRequired": "Masukkan nama bahan.",
+    "priceRequired": "Masukkan harga.",
+    "priceNegative": "Harga tidak boleh negatif.",
+    "priceTooLarge": "Harga itu terlalu besar.",
+    "shelfLife": "Masukkan 1 sampai 365 hari.",
+    "amountAboveZero": "Masukkan jumlah di atas 0.",
+    "maxAmount": "Maksimal {max, number}.",
+    "maxDecimals": "Maksimal 3 angka di belakang koma.",
+    "productNameRequired": "Masukkan nama produk.",
+    "chooseIngredient": "Pilih bahan.",
+    "addIngredient": "Tambahkan minimal satu bahan.",
+    "maxIngredients": "Maksimal 50 bahan.",
+    "duplicateRecipeIngredient": "Bahan ini sudah ada di resep.",
+    "sellingPriceRequired": "Masukkan harga jual.",
+    "pickTime": "Pilih jam.",
+    "numberRange": "Masukkan angka 0 sampai {max}.",
+    "closeAfterOpen": "Jam tutup harus setelah jam buka."
+  },
+  "auth": {
+    "titleLogin": "Masuk",
+    "titleSignup": "Daftar",
+    "email": "Email",
+    "password": "Kata sandi",
+    "yourPassword": "Kata sandi kamu",
+    "logIn": "Masuk",
+    "loggingIn": "Masuk…",
+    "noAccount": "Belum punya akun?",
+    "signUpFree": "Daftar gratis",
+    "fullName": "Nama lengkap",
+    "fullNameHint": "Nama kamu sebagai pemilik usaha.",
+    "emailHint": "Dipakai untuk masuk. Satu email untuk satu akun.",
+    "passwordPlaceholder": "Minimal 8 karakter",
+    "passwordHint": "8 sampai 72 karakter.",
+    "businessName": "Nama usaha",
+    "businessNamePlaceholder": "Roti Bu Sari",
+    "businessNameHint": "Nama lapak atau toko kamu, tampil di struk.",
+    "agree": "Dengan mendaftar, kamu menyetujui <link>Kebijakan Privasi</link>",
+    "createAccount": "Buat akun",
+    "creatingAccount": "Membuat akun…",
+    "haveAccount": "Sudah punya akun?",
+    "loginEyebrow": "Selamat datang kembali",
+    "loginAsideTitle": "Satu hari dagang, satu sesi, satu jawaban untuk besok.",
+    "loginAsideText": "Buka lapak, jualan, tutup, lalu lihat saran belanja untuk besok.",
+    "loginTitle": "Selamat datang kembali.",
+    "loginLead": "Masuk untuk membuka lapak hari ini.",
+    "signupEyebrow": "Setelah daftar",
+    "signupAsideTitle": "Tiga langkah menuju lapak pertamamu.",
+    "signupStep1Title": "Akun dan usaha",
+    "signupStep1Text": "Kamu di sini.",
+    "signupStep2Title": "Lengkapi usaha",
+    "signupStep2Text": "Jam buka dan tutup, lokasi, dan tanggal gajian setempat.",
+    "signupStep3Title": "Tambah bahan, produk, dan resep",
+    "signupStep3Text": "Satu bahan, satu produk, dan satu resep sudah cukup untuk mulai.",
+    "signupAsideNote": "Tanpa template. Setiap isian ada contohnya.",
+    "signupTitle": "Mulai dalam 10 menit.",
+    "signupLead": "Buat akun dan usaha kamu. Data setiap usaha terpisah dan aman."
+  },
+  "nav": {
+    "menu": "Menu",
+    "home": "Beranda",
+    "cashier": "Kasir",
+    "transactions": "Riwayat transaksi",
+    "reports": "Laporan harian",
+    "ingredients": "Bahan",
+    "products": "Produk dan resep",
+    "settings": "Pengaturan",
+    "main": "Utama",
+    "manage": "Kelola",
+    "comingSoon": "Segera hadir",
+    "openHours": "Buka {open} – {close}",
+    "owner": "Pemilik",
+    "cashierRole": "Kasir",
+    "dashboard": "Dasbor",
+    "openStall": "Buka lapak",
+    "closeStall": "Tutup lapak",
+    "docs": "Panduan"
+  },
+  "onboarding": {
+    "steps": {
+      "account": "Akun",
+      "profile": "Profil usaha",
+      "ingredients": "Bahan",
+      "products": "Produk & resep"
+    },
+    "saveAndExit": "Simpan dan keluar",
+    "setupSteps": "Langkah pengaturan",
+    "businessSetup": "Pengaturan usaha",
+    "done": "Selesai",
+    "under10": "Kurang dari 10 menit sampai lapak pertamamu bisa buka.",
+    "stepOf": "Langkah {current} dari {total}",
+    "help": "Bantuan",
+    "profileMeta": "Atur usaha kamu",
+    "profileTitle": "Lengkapi profil usaha kamu.",
+    "profileLead": "Cukup sekali. Jam buka dipakai untuk menutup sesi otomatis dan membaca pola ramai.",
+    "tipClosingTitle": "Kenapa jam tutup penting?",
+    "tipClosingText": "Sesi yang lupa ditutup akan ditutup otomatis 30 menit setelah jam tutup. Kalau jamnya diubah, berlaku mulai sesi berikutnya.",
+    "tipEmptyTitle": "Boleh ada yang dikosongkan?",
+    "tipEmptyText": "Lokasi boleh kosong. Jam buka dan jam tutup wajib diisi.",
+    "ingredientsMeta": "Tambah bahan kamu",
+    "ingredientsTitle": "Tambah bahan kamu.",
+    "ingredientsLead": "Bahan adalah apa pun yang kamu stok, seperti tepung atau telur. Satu bahan sudah cukup untuk mulai.",
+    "ingredientsAdded": "Bahan yang ditambahkan",
+    "mainItem": "Barang utama",
+    "nextIngredientHere": "Bahan berikutnya muncul di sini",
+    "tipMainTitle": "Apa itu barang utama?",
+    "tipMainText": "Barang utama adalah bahan yang paling menentukan jualanmu. Stockwise mencatat kapan bahan itu habis dan menghitung saran belanjanya.",
+    "duplicateIngredient": "Kamu sudah menambahkan bahan dengan nama ini.",
+    "saveAddAnother": "Simpan, tambah lagi",
+    "continueToProducts": "Lanjut ke produk & resep",
+    "productsMeta": "Tambah produk dan resep",
+    "productsTitle": "Tambah produk dan resep kamu.",
+    "productsLead": "Produk adalah yang kamu jual, misalnya Roti Cokelat. Pilih bahan dan takarannya per porsi, lihat biayanya, lalu tentukan harga jual.",
+    "productsAdded": "Produk yang ditambahkan",
+    "doneMeta": "Usaha kamu siap",
+    "doneTitle": "Usaha kamu siap buka.",
+    "doneLead": "{name} sekarang sudah punya jam buka, bahan, produk, dan resep. Kamu bisa membuka lapak pertama sekarang.",
+    "reqProfile": "Profil usaha lengkap",
+    "reqIngredient": "Minimal satu bahan",
+    "reqProduct": "Minimal satu produk",
+    "reqRecipe": "Satu produk punya resep",
+    "requirements": "Syarat untuk buka",
+    "met": "Terpenuhi",
+    "whatNext": "Langkah berikutnya",
+    "nextOpenTitle": "Buka lapak",
+    "nextOpenText": "Catat belanja pagi dan lihat sarannya.",
+    "nextSellTitle": "Jualan",
+    "nextSellText": "Catat penjualan di kasir.",
+    "nextCloseTitle": "Tutup lapak",
+    "nextCloseText": "Hitung sisa barang, lalu lihat ringkasannya.",
+    "detailOwner": "Pemilik",
+    "detailHours": "Jam buka",
+    "detailLocation": "Lokasi",
+    "notSetYet": "Belum diatur",
+    "detailTimezone": "Zona waktu",
+    "detailPayday": "Tanggal gajian",
+    "none": "Tidak ada",
+    "detailSuggestions": "Saran stok dan harga",
+    "suggestionsValue": "Cadangan {buffer}% · target margin {margin}%",
+    "readyToOpen": "Siap buka",
+    "openStall": "Buka lapak",
+    "addAnotherProduct": "Tambah produk lain",
+    "changeLater": "Bahan, produk, dan resep bisa ditambah atau diubah kapan saja dari menu Bahan serta Produk dan resep."
+  },
+  "units": {
+    "groups": {
+      "weight": "Berat",
+      "volume": "Volume",
+      "count": "Jumlah",
+      "package": "Kemasan"
+    },
+    "names": {
+      "GRAM": "Gram",
+      "ONS": "Ons (100 g)",
+      "KG": "Kilogram",
+      "ML": "Mililiter",
+      "SDT": "Sendok teh (sdt, 5 ml)",
+      "SDM": "Sendok makan (sdm, 15 ml)",
+      "CUP": "Cangkir (240 ml)",
+      "LITER": "Liter",
+      "PCS": "Pcs (biji)",
+      "BUTIR": "Butir (telur, bola)",
+      "BUAH": "Buah (utuh)",
+      "LUSIN": "Lusin (12)",
+      "KODI": "Kodi (20)",
+      "TRAY": "Tray (30)",
+      "SIUNG": "Siung",
+      "IKAT": "Ikat",
+      "BATANG": "Batang",
+      "LEMBAR": "Lembar (daun, kertas)",
+      "EKOR": "Ekor (ayam, ikan utuh)",
+      "POTONG": "Potong",
+      "SISIR": "Sisir (pisang)",
+      "PORSI": "Porsi",
+      "BUNGKUS": "Bungkus",
+      "PACK": "Pack",
+      "BOTOL": "Botol",
+      "KALENG": "Kaleng",
+      "GALON": "Galon",
+      "JERIGEN": "Jerigen"
+    }
+  },
+  "catalog": {
+    "kind": {
+      "RAW": "Bahan mentah",
+      "FINISHED": "Barang jadi"
+    },
+    "ingredientName": "Nama bahan",
+    "ingredientNamePlaceholder": "Tepung terigu",
+    "type": "Jenis",
+    "kindHint": "Barang jadi adalah yang kamu buat sendiri, seperti adonan atau roti yang sudah dipanggang.",
+    "unit": "Satuan",
+    "unitLocked": "Terkunci, sudah dipakai di sesi.",
+    "estimatedPrice": "Perkiraan harga per {unit}",
+    "unitHint": "Pilih satuan saat kamu membeli, misalnya kilogram atau liter. Resep tetap bisa memakai gram atau ml. Harga ini hanya dipakai sampai ada belanja tercatat; setelah itu HPP memakai harga beli rata-rata.",
+    "shelfLife": "Umur simpan (hari)",
+    "dayLess": "Kurangi satu hari",
+    "dayMore": "Tambah satu hari",
+    "shelfLifeHint": "Berapa hari bahan ini masih layak dipakai.",
+    "shelfLifeShortcuts": "Pintasan umur simpan",
+    "presets": {
+      "week1": "1 minggu",
+      "week2": "2 minggu",
+      "month1": "1 bulan",
+      "month3": "3 bulan",
+      "month6": "6 bulan",
+      "year1": "1 tahun"
+    },
+    "carryOverTitle": "Bisa dibawa ke besok",
+    "carryOverText": "Kalau dimatikan, sisa bahan ini hanya bisa dibuang saat menutup lapak.",
+    "mainTitle": "Barang utama",
+    "mainText": "Bahan yang paling penting. Jam habisnya dicatat dan jumlahnya muncul di saran belanja."
+  },
+  "ingredients": {
+    "meta": "Bahan",
+    "title": "Bahan",
+    "lead": "Semua yang kamu stok. HPP produk dihitung dari harga-harga ini.",
+    "add": "Tambah bahan",
+    "search": "Cari bahan",
+    "activeCount": "{count} bahan aktif",
+    "showInactive": "Tampilkan nonaktif",
+    "colName": "Nama",
+    "colType": "Jenis",
+    "colUnit": "Satuan",
+    "colPrice": "Harga",
+    "colShelfLife": "Umur simpan",
+    "colCarryOver": "Dibawa besok",
+    "colActions": "Aksi",
+    "mainItem": "Barang utama",
+    "mainItemLower": "barang utama",
+    "inactive": "Nonaktif",
+    "days": "{count} hari",
+    "yes": "Ya",
+    "no": "Tidak",
+    "editName": "Ubah {name}",
+    "deactivateName": "Nonaktifkan {name}",
+    "reactivate": "Aktifkan lagi",
+    "noMatch": "Tidak ada bahan yang cocok.",
+    "estimateNote": "Perkiraan harga hanya dipakai sampai ada belanja tercatat. Setelah itu, HPP memakai harga beli rata-rata.",
+    "duplicate": "Sudah ada bahan lain dengan nama ini.",
+    "unitLockedError": "Satuan tidak bisa diganti karena bahan ini sudah dipakai di sesi. Satuannya dikembalikan ke {unit}; simpan lagi untuk menyimpan perubahan lainnya.",
+    "editTitle": "Ubah bahan",
+    "deactivateIngredient": "Nonaktifkan bahan",
+    "saveChanges": "Simpan perubahan",
+    "inUse": "Masih dipakai di resep {products}. Hapus dulu dari resep-resep itu.",
+    "deactivateTitle": "Nonaktifkan {name}?",
+    "deactivateText": "Bahan ini hilang dari belanja dan resep. Sesi dan laporan lama tetap menyimpannya, dan kamu bisa mengaktifkannya lagi kapan saja.",
+    "deactivating": "Menonaktifkan…",
+    "deactivate": "Nonaktifkan"
+  },
+  "products": {
+    "categories": {
+      "bread": "Roti",
+      "cake": "Kue",
+      "drinks": "Minuman",
+      "food": "Makanan"
+    },
+    "recipePerPortion": "Resep per porsi",
+    "colIngredient": "Bahan",
+    "colAmount": "Jumlah",
+    "colCost": "Biaya",
+    "ingredientN": "Bahan {n}",
+    "choose": "Pilih…",
+    "inactiveSuffix": " (nonaktif)",
+    "amountN": "Jumlah bahan {n}",
+    "unitN": "Satuan bahan {n}",
+    "removeN": "Hapus bahan {n}",
+    "addToRecipe": "Tambah bahan ke resep",
+    "recipeHint": "Setiap bahan hanya boleh muncul sekali, dan jumlahnya harus di atas nol.",
+    "tooPrecise": "Terlalu detail. Gunakan minimal 0,001 {unit}.",
+    "productName": "Nama produk",
+    "productNamePlaceholder": "Roti cokelat",
+    "category": "Kategori (opsional)",
+    "categoryPlaceholder": "Roti",
+    "suggestedCategories": "Saran kategori",
+    "categoryHint": "Kategori mengelompokkan tombol produk di kasir.",
+    "sellingPrice": "Harga jual",
+    "priceHint": "Tentukan setelah melihat biayanya. Saran harga memakai target margin {margin}%.",
+    "use": "Pakai {price}",
+    "useShort": "Pakai",
+    "duplicateOnboarding": "Kamu sudah menambahkan produk dengan nama ini.",
+    "ingredientGone": "Salah satu bahan ini sudah tidak ada. Muat ulang halaman lalu coba lagi.",
+    "saveAndFinish": "Simpan dan selesai",
+    "estimatedCostPerPortion": "Perkiraan biaya per porsi",
+    "margin": "Margin",
+    "suggestedWithMargin": "Saran harga jual, margin {margin}%",
+    "estimateNote": "Perkiraan dari harga bahan yang kamu isi. Setelah belanja tercatat, harga dihitung otomatis dari belanja itu.",
+    "title": "Produk dan resep",
+    "lead": "Yang kamu jual di kasir. HPP dan margin dihitung dari resep dan harga bahan.",
+    "add": "Tambah produk",
+    "search": "Cari produk",
+    "count": "{count} produk",
+    "withoutRecipe": " · {count} tanpa resep",
+    "showInactive": "Tampilkan nonaktif",
+    "colProduct": "Produk",
+    "colPrice": "Harga",
+    "colHpp": "HPP / porsi",
+    "colMargin": "Margin",
+    "colSuggested": "Saran",
+    "colActions": "Aksi",
+    "ingredientsCount": "{count} bahan",
+    "noRecipe": "Belum ada resep",
+    "estimate": "Perkiraan",
+    "inactive": "Nonaktif",
+    "editName": "Ubah {name}",
+    "deactivateName": "Nonaktifkan {name}",
+    "reactivate": "Aktifkan lagi",
+    "noMatch": "Tidak ada produk yang cocok.",
+    "tableNote": "Saran harga memakai target margin {margin}% (ubah di Pengaturan). HPP bertanda Perkiraan berarti ada bahan yang belum pernah dibeli.",
+    "duplicate": "Sudah ada produk lain dengan nama ini.",
+    "ingredientInactive": "Salah satu bahan ini nonaktif atau sudah tidak ada. Pilih bahan lain.",
+    "editSubtitle": "Ubah produk dan resep",
+    "newSubtitle": "Produk dan resepnya per porsi",
+    "productLabel": "Produk",
+    "recalcNote": "Dihitung ulang saat kamu mengubah isian. Memakai perkiraan harga bahan, jadi bisa sedikit berbeda dari tabel, yang memakai harga beli rata-rata setelah bahan dibeli.",
+    "deactivateProduct": "Nonaktifkan produk",
+    "saveChanges": "Simpan perubahan",
+    "hppPerPortion": "HPP per porsi",
+    "suggestedMargin": "Saran (margin {margin}%)",
+    "deactivateTitle": "Nonaktifkan {name}?",
+    "deactivateText": "Produk ini hilang dari kasir. Transaksi dan laporan lama tetap menyimpannya, dan kamu bisa mengaktifkannya lagi kapan saja.",
+    "deactivating": "Menonaktifkan…",
+    "deactivate": "Nonaktifkan"
+  },
+  "profile": {
+    "businessName": "Nama usaha",
+    "businessNamePlaceholder": "Roti Bu Sari",
+    "businessNameHint": "Tampil di struk. Bisa diganti kapan saja.",
+    "openingTime": "Jam buka",
+    "closingTime": "Jam tutup",
+    "hoursHint": "Jam tutup harus setelah jam buka. Usaha yang buka melewati tengah malam belum didukung.",
+    "currency": "Mata uang",
+    "currencyNames": {
+      "IDR": "Rupiah Indonesia",
+      "MYR": "Ringgit Malaysia",
+      "SGD": "Dolar Singapura",
+      "USD": "Dolar AS",
+      "EUR": "Euro"
+    },
+    "currencyHint": "Dipakai untuk semua harga dan laporan. Harga yang sudah diisi tidak dikonversi. Terkunci setelah lapak dibuka pertama kali.",
+    "currencyLocked": "Mata uang: {currency}. Tidak bisa diganti setelah lapak pernah dibuka, karena angka yang tercatat tidak dikonversi.",
+    "timezone": "Zona waktu: {timezone}. Belum bisa diganti.",
+    "advancedSettings": "Pengaturan lanjutan",
+    "suggestionsTitle": "Saran stok, harga, dan hari ramai",
+    "suggestionsLead": "Dipakai untuk saran belanja, saran harga jual, dan perkiraan hari ramai.",
+    "defaultsLead": "Nilai bawaan cocok untuk kebanyakan usaha. Ubah kalau perlu.",
+    "buffer": "Cadangan saran stok",
+    "bufferHint": "Ditambahkan di atas kebutuhan saat menghitung saran belanja. Rentang 0–100%.",
+    "targetMargin": "Target margin",
+    "targetMarginHint": "Dasar saran harga jual, dihitung dari harga jual, bukan dari biaya. Rentang 0–90%.",
+    "payday": "Tanggal gajian di daerahmu",
+    "removeDate": "Hapus tanggal {day}",
+    "addDate": "Tambah tanggal gajian",
+    "addDateOption": "+ Tambah tanggal",
+    "paydayHint": "Dipakai untuk memperkirakan hari yang lebih ramai. Boleh dikosongkan.",
+    "saved": "Profil tersimpan.",
+    "saveProfile": "Simpan profil",
+    "continueToIngredients": "Lanjut ke bahan"
+  },
+  "location": {
+    "parts": {
+      "street": "Jalan",
+      "village": "Kelurahan/desa",
+      "district": "Kecamatan",
+      "city": "Kota atau kabupaten",
+      "province": "Provinsi",
+      "postalCode": "Kode pos"
+    },
+    "noGeolocation": "Browser kamu tidak bisa membagikan lokasi. Cari alamatnya saja.",
+    "located": "Lokasi tersimpan. Periksa alamat di bawah.",
+    "blocked": "Akses lokasi diblokir. Cari alamatnya saja.",
+    "addressSaved": "Alamat tersimpan.",
+    "removed": "Lokasi dihapus.",
+    "label": "Lokasi",
+    "optional": "opsional",
+    "notFoundForPoint": "Alamat untuk titik ini tidak ditemukan",
+    "noLocation": "Lokasi belum diatur",
+    "finding": "Mencari lokasimu…",
+    "useCurrent": "Pakai lokasi saat ini",
+    "remove": "Hapus",
+    "search": "Cari alamat",
+    "searchPlaceholder": "Atau cari alamat, mis. Jalan Kebon Sirih 12",
+    "found": "Alamat yang ditemukan",
+    "noneFound": "Alamat tidak ditemukan. Coba kata lain.",
+    "hint": "Akan dipakai untuk cuaca di rilis berikutnya. Hasil pencarian dan lokasi saat ini langsung tersimpan.",
+    "editDetails": "Ubah detail alamat",
+    "editDetailsHint": "Perbaiki yang keliru dari hasil pencarian. Perubahan di sini tersimpan lewat tombol Simpan.",
+    "fullAddress": "Alamat lengkap"
+  },
+  "settings": {
+    "title": "Pengaturan",
+    "lead": "Bahasa, profil usaha, akun staf, dan menghapus usaha.",
+    "leadStaff": "Pilih bahasa untuk akunmu.",
+    "languageTitle": "Bahasa",
+    "languageLead": "Berlaku untuk semua layar, struk, dan AI insight baru di akunmu.",
+    "profileTitle": "Profil usaha",
+    "profileLead": "Perubahan jam buka berlaku mulai sesi berikutnya.",
+    "deleteTitle": "Hapus usaha",
+    "deleteLead": "Menghapus permanen {name}, semua akun staf, bahan, produk, dan seluruh riwayat penjualan. Ini tidak bisa dibatalkan. Kamu akan diminta mengetik nama usaha untuk konfirmasi.",
+    "deleteConfirmTitle": "Hapus usaha secara permanen?",
+    "deleteConfirmLead": "Semua data {name} dihapus dan tidak bisa dikembalikan.",
+    "alsoDeleted": "Ikut terhapus",
+    "deletedAccounts": "{count} akun, termasuk akunmu sendiri",
+    "deletedCatalog": "{ingredients} bahan, {products} produk, dan semua resep",
+    "deletedHistory": "Riwayat sesi, transaksi, laporan, dan saran",
+    "typeName": "Ketik nama usaha untuk konfirmasi",
+    "mustMatch": "Harus sama persis: {name}",
+    "deleting": "Menghapus…",
+    "deletePermanently": "Hapus permanen"
+  },
+  "staff": {
+    "title": "Akun staf",
+    "lead": "Kasir hanya bisa membuka dan menutup lapak, mencatat penjualan, dan melihat transaksi hari itu.",
+    "addCashier": "Tambah kasir",
+    "colName": "Nama",
+    "colRole": "Peran",
+    "colStatus": "Status",
+    "colActions": "Aksi",
+    "owner": "Pemilik",
+    "cashier": "Kasir",
+    "active": "Aktif",
+    "inactive": "Nonaktif",
+    "editName": "Ubah {name}",
+    "deactivate": "Nonaktifkan",
+    "activate": "Aktifkan",
+    "note": "Akun yang dinonaktifkan langsung tidak bisa masuk. Kalau sedang masuk, aksesnya berhenti dalam 15 menit. Riwayat transaksinya tetap disimpan.",
+    "emailTaken": "Email ini sudah punya akun.",
+    "addLead": "Akun baru selalu kasir. Berikan email dan kata sandinya ke kasirmu.",
+    "name": "Nama",
+    "namePlaceholder": "Contoh: Siti Rahma",
+    "email": "Email",
+    "emailPlaceholder": "Contoh: siti@example.com",
+    "emailHint": "Dipakai untuk masuk. Satu email untuk satu akun.",
+    "password": "Kata sandi",
+    "passwordPlaceholder": "Minimal 8 karakter",
+    "passwordHint": "8 sampai 72 karakter.",
+    "adding": "Menambahkan…",
+    "editCashier": "Ubah kasir"
+  },
+  "open": {
+    "qtyInvalid": "Masukkan jumlah di atas 0, maksimal 3 angka di belakang koma.",
+    "paidRequired": "Masukkan total bayar.",
+    "paidTooLarge": "Jumlah itu terlalu besar.",
+    "stepStock": "Stok & belanja",
+    "stepReview": "Periksa & buka",
+    "steps": "Langkah",
+    "done": "Selesai",
+    "stockTitle": "Stok yang ada, dan yang kamu tambahkan",
+    "stockLead": "Stok yang ada adalah sisa dari tutup lapak terakhir dan dihitung otomatis. Untuk yang kamu beli pagi ini, isi Tambah dan Total bayar. Kosongkan keduanya kalau tidak ada tambahan.",
+    "fillSuggested": "Isi sesuai saran",
+    "colIngredient": "Bahan",
+    "colInStock": "Stok ada",
+    "colSuggested": "Saran",
+    "colAdd": "+ Tambah",
+    "colPaid": "Total bayar",
+    "colAfter": "= Jadi",
+    "mainItem": "Barang utama",
+    "inactiveLeftovers": "Nonaktif, hanya sisa",
+    "daysOld": "Sudah {count} hari",
+    "amountAdded": "Jumlah {name} yang ditambahkan",
+    "unitFor": "Satuan untuk {name}",
+    "paidFor": "Total bayar untuk {name}",
+    "reactivateToAdd": "Aktifkan lagi di menu Bahan untuk menambah.",
+    "addedSummary": "{count} bahan ditambahkan · <strong>{amount}</strong> dibelanjakan",
+    "fixFirst": "Perbaiki isian yang ditandai dulu.",
+    "review": "Periksa",
+    "openingStock": "Stok awal",
+    "openingLead": "Stok yang dimiliki lapak hari ini.",
+    "colAdded": "Ditambah",
+    "colOpening": "Awal",
+    "nothingInStock": "Tidak ada stok. Kembali untuk menambahkan belanja pagi ini.",
+    "startingAtZero": "Mulai dari 0: {names}. Produk yang memakainya belum bisa dijual sampai stoknya ditambah.",
+    "readyToOpen": "Siap buka",
+    "spentMorning": "Belanja pagi ini · {count} bahan ditambahkan",
+    "opening": "Membuka…",
+    "openStall": "Buka lapak",
+    "backToEdit": "Kembali mengubah",
+    "openNote": "Lapak boleh dibuka sebelum jam buka. Setelah ditutup, lapak baru bisa dibuka lagi besok.",
+    "title": "Buka lapak.",
+    "lead": "Periksa stok yang ada dan tambahkan belanja pagi ini. Hari ini buka jam {open} dan tutup jam {close}."
+  },
+  "close": {
+    "countTitle": "Hitung sisa",
+    "countLead": "Semua bahan di sesi ini harus dihitung. Koreksi kalau ada yang rusak.",
+    "useRecorded": "Pakai stok tercatat",
+    "colIngredient": "Bahan",
+    "colRecorded": "Tercatat",
+    "colCounted": "Dihitung",
+    "colDifference": "Selisih",
+    "colAction": "Tindakan",
+    "mainItem": "Barang utama",
+    "countedName": "Hitungan {name}",
+    "countInvalid": "Masukkan 0 atau lebih, maksimal 3 angka di belakang koma.",
+    "spoiled": "Rusak atau hilang {qty}",
+    "actionFor": "Tindakan untuk {name}",
+    "keep": "Simpan",
+    "discard": "Buang",
+    "cantCarry": "Tidak bisa dibawa ke besok",
+    "chosenDiscard": "Dipilih untuk dibuang",
+    "tableNote": "Bahan yang tidak boleh dibawa ke besok hanya bisa dibuang. Selisih antara stok tercatat dan hitungan dicatat sebagai biaya selisih stok.",
+    "notes": "Catatan sesi (opsional)",
+    "notesPlaceholder": "Contoh: hujan sejak sore",
+    "summaryTitle": "Ringkasan sisa",
+    "carriedValue": "Perkiraan nilai yang dibawa ke besok",
+    "nothingCarried": "Tidak ada yang dibawa.",
+    "discardedRow": "Dibuang · {name} {qty}",
+    "differenceRow": "Selisih stok · {name} {qty}",
+    "closing": "Menutup…",
+    "closeStall": "Tutup lapak",
+    "noChanges": "Data sesi tidak bisa diubah setelah ditutup.",
+    "valuesNote": "Nilai memakai perkiraan harga bahan. Ringkasan akhir memakai harga beli rata-rata.",
+    "forgotTitle": "Lupa menutup?",
+    "forgotText": "Jam {time} sistem menutup sendiri memakai stok tercatat. Bahan yang boleh dibawa akan dibawa ke besok.",
+    "stallOpen": "Lapak buka",
+    "title": "Tutup lapak.",
+    "lead": "Hitung sisa tiap bahan, lalu simpan untuk besok atau buang."
+  },
+  "recommendation": {
+    "weekdayUp": "Hari {day} biasanya lebih ramai",
+    "weekdayDown": "Hari {day} biasanya lebih sepi",
+    "soldOutEarly": "{name} habis lebih awal",
+    "soldOutAt": "{name} habis jam {time}",
+    "soldOutMissed": "{name} habis jam {time}, sekitar {missed} pembeli terlewat",
+    "carryOver": "Sisa kemarin sudah dikurangkan",
+    "lowData": "Data masih sedikit ({count} hari)",
+    "noneTitle": "Belum ada saran.",
+    "noneText": "Saran dibuat setelah lapak ditutup, dari penjualan dan sisa barangmu.",
+    "toPrepare": "{count} bahan untuk disiapkan",
+    "costFor": "Perkiraan biaya belanja untuk {day}, ",
+    "guideFor": "Panduan belanja untuk {day}, ",
+    "fromData": "dari data {count} hari.",
+    "startingEstimate": "perkiraan awal dari resepmu.",
+    "leftoversSubtracted": " Sisa kemarin sudah dikurangkan.",
+    "why": "Kenapa sebanyak ini?",
+    "needs": "{name}: butuh {required}",
+    "minusLeft": ", dikurangi sisa {left}",
+    "soBuy": ", jadi beli {buy}.",
+    "colIngredient": "Bahan",
+    "colAmount": "Jumlah",
+    "colRange": "Kisaran",
+    "colCost": "Perkiraan biaya",
+    "mainItem": "Barang utama",
+    "reasons": "Alasan"
+  },
+  "leftovers": {
+    "carried": "Dibawa",
+    "discarded": "Dibuang",
+    "soldOutAt": "Habis {time}",
+    "soldOut": "Habis"
+  },
+  "payment": {
+    "CASH": "Tunai",
+    "QRIS": "QRIS",
+    "OTHER": "Lainnya"
+  },
+  "cashier": {
+    "notEnough": "{items} tidak cukup untuk pesanan ini.",
+    "soldOutAt": "{name} habis {time}",
+    "soldOutName": "{name} habis",
+    "title": "Kasir",
+    "stallOpen": "Lapak buka · {date}",
+    "inputMode": "Mode input",
+    "quick": "Cepat",
+    "recap": "Rekap",
+    "recapHint": "Rekap: masukkan total terjual per produk untuk penjualan yang tidak dicatat satu per satu. Disimpan sebagai satu transaksi.",
+    "mainItemStock": "Stok barang utama",
+    "mainItem": "Barang utama",
+    "left": "Sisa {name}",
+    "category": "Kategori",
+    "all": "Semua",
+    "search": "Cari produk",
+    "addProduct": "Tambah {name}",
+    "addProductInCart": "Tambah {name}, {count} di keranjang",
+    "soldOut": "Habis",
+    "leftPortions": "sisa ±{count}",
+    "noMatch": "Tidak ada produk yang cocok.",
+    "cart": "Keranjang",
+    "nextTransaction": "Transaksi berikutnya #{no}",
+    "clear": "Kosongkan",
+    "perPortion": "{price} / porsi",
+    "removeOne": "Kurangi satu {name}",
+    "addOne": "Tambah satu {name}",
+    "viewCart": "Lihat keranjang",
+    "tapToAdd": "Ketuk produk untuk menambahkannya ke keranjang.",
+    "totalPortions": "Total · {count} porsi",
+    "paymentMethod": "Metode bayar",
+    "cashReceived": "Uang diterima (opsional)",
+    "lessThanTotal": "Kurang dari total.",
+    "exact": "Uang pas",
+    "change": "Kembalian",
+    "saving": "Menyimpan…",
+    "pay": "Bayar {amount}",
+    "saveRecap": "Simpan rekap {amount}",
+    "saved": "Transaksi #{no} tersimpan",
+    "totalCash": "Total {total} · Tunai {cash}",
+    "totalPaid": "Total dibayar",
+    "printReceipt": "Cetak struk",
+    "newTransaction": "Transaksi baru",
+    "enterHint": "Tekan Enter untuk transaksi baru."
+  },
+  "receipt": {
+    "no": "No. {no}",
+    "total": "Total",
+    "change": "Kembalian",
+    "voided": "Dibatalkan: {reason}",
+    "thanks": "Terima kasih",
+    "COPY": "SALINAN",
+    "VOID": "BATAL"
+  },
+  "stallStatus": {
+    "step1Title": "Buka lapak",
+    "step1Text": "Catat belanja pagi ini dari Beranda. Stok siap untuk kasir.",
+    "step2Title": "Jualan di sini",
+    "step2Text": "Ketuk produk, terima pembayaran, dan stok berkurang sendiri.",
+    "step3Title": "Tutup lapak",
+    "step3Text": "Hitung sisa barang, lalu lihat ringkasan dan saran untuk besok.",
+    "revenue": "Omzet",
+    "profit": "Laba",
+    "sold": "{name} terjual",
+    "title": "Kasir",
+    "closed": "Lapak tutup",
+    "notOpen": "Lapak belum buka",
+    "closedTitle": "Lapak hari ini sudah tutup.",
+    "notOpenTitle": "Lapak belum dibuka.",
+    "closedText": "Penjualan hari ini sudah final. Kasir buka lagi saat lapak besok dibuka.",
+    "notOpenText": "Buka lapak dari Beranda dulu. Setelah itu, produk dan stoknya muncul di sini, siap dijual.",
+    "hours": "Jam buka {open} – {close}",
+    "seeReport": "Lihat laporan hari ini",
+    "history": "Riwayat transaksi",
+    "goHome": "Ke Beranda untuk membuka lapak"
+  },
+  "sales": {
+    "reasons": {
+      "wrongProduct": "Salah pilih produk",
+      "cancelled": "Pembeli batal",
+      "wrongQty": "Jumlah salah"
+    },
+    "voided": "Dibatalkan",
+    "completed": "Selesai",
+    "colNo": "No.",
+    "colTime": "Jam",
+    "colCashier": "Kasir",
+    "colPortions": "Porsi",
+    "colPayment": "Pembayaran",
+    "colTotal": "Total",
+    "colStatus": "Status",
+    "openTransaction": "Buka transaksi {no}",
+    "none": "Tidak ada transaksi pada tanggal ini.",
+    "transaction": "Transaksi {no}",
+    "meta": "{date} · {time} · Kasir {name}",
+    "loading": "Memuat…",
+    "voidTransaction": "Batalkan transaksi",
+    "printReceipt": "Cetak struk",
+    "voidTitle": "Batalkan transaksi {no}?",
+    "voidText": "Bahan dikembalikan ke stok dan transaksi ditandai BATAL. Hanya bisa selama lapak masih buka.",
+    "totalPayment": "Total · {method}",
+    "reason": "Alasan",
+    "required": "wajib",
+    "reasonPlaceholder": "Contoh: salah pilih produk",
+    "voiding": "Membatalkan…"
+  },
+  "dateFilter": {
+    "today": "Hari ini",
+    "yesterday": "Kemarin",
+    "otherDate": "Tanggal lain"
+  },
+  "transactions": {
+    "title": "Riwayat transaksi",
+    "OPEN": "Sesi berjalan",
+    "CLOSED": "Sesi ditutup",
+    "NONE": "Tidak ada sesi",
+    "pages": "Halaman",
+    "showing": "Menampilkan {from}–{to} dari {total} transaksi",
+    "previous": "Sebelumnya",
+    "next": "Berikutnya"
+  },
+  "report": {
+    "revenue": "Omzet",
+    "cogs": "Harga pokok penjualan (HPP)",
+    "wasted": "Terbuang",
+    "differences": "Selisih stok",
+    "operating": "Biaya operasional",
+    "profit": "Laba",
+    "profitBefore": "Laba sebelum biaya operasional",
+    "fromPortions": "Dari {portions} porsi dan {transactions} transaksi.",
+    "mainItem": "Barang utama",
+    "soldOutAt": "{name} habis {time}",
+    "missed": "±{count} pembeli terlewat",
+    "sold": "terjual {qty}",
+    "suggested": "saran {qty}",
+    "carriedTomorrow": "Dibawa ke besok",
+    "nothingCarried": "Tidak ada yang dibawa",
+    "voided": "Transaksi dibatalkan",
+    "stockRestored": ", stok dikembalikan",
+    "suggestionFor": "Saran untuk {day}",
+    "range": "Kisaran {lower}–{upper}",
+    "estimated": ", perkiraan {amount}",
+    "notesTitle": "Catatan hari ini",
+    "noSales": "Tidak ada penjualan hari ini.",
+    "busiestAt": "Paling ramai jam {hours}.",
+    "hourPortions": "{hour}:00 ({count} porsi)",
+    "and": " dan ",
+    "hourlyTitle": "Penjualan per jam",
+    "hourlyLead": "Porsi terjual per jam, waktu setempat ({zone}).",
+    "hourlyAria": "Porsi terjual per jam",
+    "barLabel": "{hour}:00, {count} porsi",
+    "barTooltip": "{hour}:00 · {count} porsi",
+    "paymentTitle": "Metode pembayaran",
+    "paymentLead": "Omzet per metode pembayaran.",
+    "totalRevenue": "Total omzet <strong>{amount}</strong>",
+    "productsTitle": "Penjualan per produk",
+    "productsLead": "Diurutkan dari omzet terbesar. Transaksi yang dibatalkan tidak dihitung.",
+    "colProduct": "Produk",
+    "colPortions": "Porsi",
+    "colRevenue": "Omzet",
+    "colShare": "Porsi dari total",
+    "shareLabel": "{share}% dari porsi",
+    "noProducts": "Tidak ada produk terjual.",
+    "stockTitle": "Stok bahan saat tutup",
+    "stockLead": "Stok yang dibawa jadi stok awal besok. Stok yang dibuang dihitung sebagai terbuang.",
+    "colIngredient": "Bahan",
+    "colOpening": "Awal",
+    "colBought": "Dibeli",
+    "colSold": "Terjual",
+    "colCarried": "Dibawa",
+    "colDiscarded": "Dibuang",
+    "colSoldOut": "Habis",
+    "soldOutTime": "Habis {time}"
+  },
+  "summary": {
+    "revenue": "Omzet",
+    "cogs": "Harga pokok penjualan (HPP)",
+    "wasted": "Terbuang",
+    "adjustments": "Penyesuaian stok",
+    "carried": "Sisa yang dibawa",
+    "sold": "Terjual",
+    "portions": "{count} porsi",
+    "voided": "Transaksi dibatalkan",
+    "closedAutoAt": "ditutup otomatis jam {time}",
+    "closedAt": "ditutup jam {time}",
+    "closed": "ditutup",
+    "dailyReport": "Laporan harian",
+    "profitBefore": "Laba sebelum biaya operasional",
+    "soldOutAt": "{name} habis jam {time}",
+    "missed": "Sekitar {count} pembeli terlewat.",
+    "didntSellOut": "{name} tidak habis",
+    "leftCarried": "Sisa {qty}, dibawa ke hari berikutnya.",
+    "leftAtClose": "Sisa {qty} saat tutup."
+  },
+  "insight": {
+    "title": "Insight",
+    "madeAt": "Insight · dibuat {time}",
+    "prompt": "Minta evaluasi hari ini dalam bahasa sehari-hari. Dibuat dari angka di atas, jadi angkanya selalu cocok.",
+    "making": "Membuat insight…",
+    "regenerate": "Buat ulang",
+    "make": "Buat insight",
+    "triesLeft": "Sisa {count} kesempatan",
+    "triesForSession": "{count} kesempatan untuk sesi ini · sampai 30 detik"
+  },
+  "dateNav": {
+    "previousDay": "Hari sebelumnya",
+    "nextDay": "Hari berikutnya",
+    "reportDate": "Tanggal laporan"
+  },
+  "reports": {
+    "title": "Laporan harian",
+    "closedAt": "Sesi ditutup jam {time}",
+    "stillOpen": "Lapak masih buka. Laporan muncul setelah lapak ditutup.",
+    "noClosed": "Tidak ada lapak yang ditutup pada tanggal ini.",
+    "closedAuto": "Ditutup otomatis",
+    "closedManual": "Ditutup manual",
+    "downloadExcel": "Unduh Excel",
+    "soldOutNote": "{name} habis jam {time}.",
+    "noReport": "Tidak ada laporan untuk tanggal ini. Pakai tanda panah untuk melihat hari lain.",
+    "viewTrend": "Lihat tren"
+  },
+  "trend": {
+    "title": "Tren penjualan",
+    "lead": "Omzet dan laba dari lapak yang sudah ditutup. Hari tanpa lapak tutup tidak ditampilkan.",
+    "daily": "Laporan harian",
+    "from": "Dari",
+    "to": "Sampai",
+    "groupBy": "Kelompokkan",
+    "byDay": "Per hari",
+    "byWeek": "Per minggu",
+    "apply": "Tampilkan",
+    "lastDays": "{days} hari",
+    "maxRange": "Paling panjang 366 hari.",
+    "quickRange": "Rentang cepat",
+    "downloadExcel": "Unduh Excel",
+    "sessions": "Lapak ditutup",
+    "portions": "Porsi terjual",
+    "chartTitle": "Omzet per periode",
+    "chartAria": "Grafik omzet per periode",
+    "barLabel": "{period}: omzet {revenue}, laba {profit}",
+    "weekOf": "Minggu {date}",
+    "period": "Periode",
+    "noData": "Belum ada lapak yang ditutup di rentang ini. Coba rentang lain."
+  },
+  "dashboard": {
+    "morning": "Selamat pagi",
+    "afternoon": "Selamat siang",
+    "evening": "Selamat malam",
+    "greeting": "{greeting}, {name}.",
+    "notSetUp": "Usaha belum diatur.",
+    "askOwner": "Minta pemilik menyelesaikan pengaturan usaha, lalu masuk lagi.",
+    "openSince": "Lapak buka sejak {since}. Tutup jam {close}.",
+    "notOpen": "Lapak belum dibuka. Hari ini buka jam {open} dan tutup jam {close}.",
+    "suggestionFor": "Saran belanja untuk {day}",
+    "tomorrow": "besok",
+    "todaySuggestion": "Saran belanja hari ini",
+    "todaySummary": "Ringkasan hari ini",
+    "yesterdaySummary": "Ringkasan kemarin",
+    "latestSummary": "Ringkasan terakhir",
+    "stallClosed": "Lapak sudah tutup.",
+    "closedAutoAt": "Ditutup otomatis jam {time}. Data sesi sudah final dan tidak bisa diubah.",
+    "closedAt": "Ditutup jam {time}. Data sesi sudah final dan tidak bisa diubah.",
+    "closeStall": "Tutup lapak",
+    "dailyReport": "Laporan harian",
+    "openStall": "Buka lapak",
+    "openCashier": "Buka kasir",
+    "carriedTomorrow": "Dibawa ke besok",
+    "yesterdayLeftovers": "Sisa kemarin",
+    "becomesOpening": "Jadi stok awal saat lapak dibuka besok. Senilai {amount}.",
+    "alreadyRecorded": "Sudah tercatat sebagai stok awal saat lapak dibuka.",
+    "aiTitle": "Insight dibuat dengan AI",
+    "aiText": "Hanya angka ringkasan yang dikirim, tanpa nama atau email. Kalau AI gagal, ringkasan template yang ditampilkan.",
+    "quickOpenTitle": "Buka lapak dalam semenit",
+    "quickOpenOwner": "Isi jumlah dan total bayar belanja pagi ini. Harga per satuan dan HPP dihitung otomatis.",
+    "quickOpenCashier": "Isi jumlah dan total bayar belanja pagi ini. Harga per satuan dihitung otomatis."
+  },
+  "meta": {
+    "description": "Kasir, stok, dan keuangan untuk usaha makanan dan minuman kecil. Tahu berapa yang perlu disiapkan besok."
+  },
+  "notFound": {
+    "meta": "Halaman tidak ditemukan",
+    "eyebrow": "Error 404",
+    "title": "Halaman ini tidak ada di lapak.",
+    "text": "Alamatnya mungkin salah ketik, atau halamannya sudah pindah. Coba mulai lagi dari beranda.",
+    "home": "Kembali ke beranda",
+    "how": "Lihat cara kerjanya"
+  },
+  "public": {
+    "nav": {
+      "home": "Beranda",
+      "how": "Cara Kerja",
+      "features": "Fitur",
+      "forYou": "Untuk Kamu",
+      "docs": "Panduan"
+    },
+    "logIn": "Masuk",
+    "signUp": "Daftar",
+    "signUpFree": "Daftar gratis",
+    "tagline": "Kasir, stok, dan keuangan untuk usaha makanan dan minuman kecil. Tahu berapa yang perlu disiapkan besok.",
+    "product": "Produk",
+    "account": "Akun",
+    "contact": "Kontak",
+    "copyright": "© 2026 Stockwise. Proyek portofolio, terbuka untuk dicoba.",
+    "privacy": "Kebijakan Privasi",
+    "backToTop": "Kembali ke atas ↑",
+    "illustrationsBy": "Ilustrasi oleh Storyset"
+  },
+  "landing": {
+    "features": [
+      {
+        "title": "Kasir sekali ketuk",
+        "text": "Sekali ketuk, satu barang. Stok berkurang otomatis sesuai resep."
+      },
+      {
+        "title": "HPP otomatis",
+        "text": "Cukup catat belanja. HPP dan laba terhitung sendiri."
+      },
+      {
+        "title": "Tutup otomatis",
+        "text": "Lupa tutup? Sistem menutup 30 menit setelah jam tutup."
+      },
+      {
+        "title": "Saran untuk besok",
+        "text": "Lengkap dengan kisaran dan alasan, dari data penjualanmu sendiri."
+      }
+    ],
+    "problems": [
+      {
+        "title": "Kehabisan",
+        "text": "Barang habis sebelum tutup dan pembeli pulang dengan tangan kosong. Kerugian ini tidak pernah tercatat, jadi tidak terasa."
+      },
+      {
+        "title": "Kelebihan stok",
+        "text": "Sisa barang disimpan sampai kualitasnya turun, dijual murah, atau dibuang. Modal hilang diam-diam."
+      },
+      {
+        "title": "Laba tidak jelas",
+        "text": "Uang usaha dan uang pribadi tercampur. Untung atau rugi hanya ketahuan dari uang di laci."
+      }
+    ],
+    "steps": [
+      {
+        "title": "Buka lapak",
+        "text": "Catat belanja pagi: cukup jumlah dan total bayar. HPP dihitung otomatis."
+      },
+      {
+        "title": "Jualan",
+        "text": "Ketuk produk, terima pembayaran. Stok berkurang sesuai resep."
+      },
+      {
+        "title": "Tutup lapak",
+        "text": "Hitung sisa dalam hitungan detik. Lupa tutup? Sistem menutup otomatis."
+      },
+      {
+        "title": "Saran untuk besok",
+        "text": "Laba hari ini dan saran belanja besok langsung siap begitu lapak ditutup."
+      }
+    ],
+    "day": [
+      {
+        "time": "06:00",
+        "you": "Belanja ke pasar, catat jumlah dan total bayar.",
+        "app": "Menghitung harga per bahan dan HPP otomatis."
+      },
+      {
+        "time": "11:00",
+        "you": "Buka lapak dan mulai jualan.",
+        "app": "Membawa sisa kemarin dan menampilkan saran belanja."
+      },
+      {
+        "time": "14:00",
+        "you": "Ketuk produk, terima pembayaran.",
+        "app": "Mengurangi stok sesuai resep dan mencatat jam habis."
+      },
+      {
+        "time": "21:00",
+        "you": "Hitung sisa dan tutup lapak.",
+        "app": "Menyiapkan laba hari ini dan saran belanja untuk besok."
+      }
+    ],
+    "eyebrow": "Stok · Kasir · Keuangan untuk usaha makanan kecil",
+    "title": "Berhenti menebak. Tahu berapa yang perlu disiapkan besok.",
+    "lead": "Stockwise mencatat penjualan, stok, dan laba harianmu, lalu mengubahnya jadi saran belanja untuk besok pagi.",
+    "signUpFree": "Daftar gratis",
+    "seeHow": "Lihat cara kerjanya",
+    "quoteEyebrow": "Sering terdengar di lapak",
+    "quote": "“Kemarin jam 2 siang sudah habis, hari ini malah sisa banyak.”",
+    "quoteText": "Kalimat yang akrab bagi pedagang kecil. Stockwise dibuat supaya ini tidak terulang.",
+    "problemEyebrow": "Masalahnya",
+    "problemTitle": "Salah tebak merugikan dari dua arah.",
+    "howEyebrow": "Cara kerja",
+    "howTitle": "Satu hari dagang, empat langkah.",
+    "howText": "Setiap penjualan, belanja, dan sisa barang masuk ke satu sesi harian, jadi setiap hari menjadi data yang rapi.",
+    "dayEyebrow": "Satu hari dagang",
+    "dayTitle": "Kamu jualan, Stockwise mengurus sisanya.",
+    "you": "Kamu",
+    "autoClose": "Lupa tutup? Sistem menutup otomatis 30 menit setelah jam tutup.",
+    "ctaTitle": "Mulai dalam 10 menit.",
+    "ctaText": "Tambah satu bahan, satu produk, satu resep, lalu buka lapak pertamamu."
+  },
+  "how": {
+    "meta": "Cara Kerja",
+    "metaDescription": "Satu hari dagang, empat tahap: buka lapak, jualan, tutup lapak, lalu dapat ringkasan dan saran belanja untuk besok.",
+    "steps": [
+      {
+        "title": "Buka lapak",
+        "text": "Mulai hari dengan mencatat yang benar-benar kamu beli. Tidak perlu menghitung HPP sendiri.",
+        "points": [
+          "Sisa kemarin dan saran belanja muncul otomatis",
+          "Cukup isi jumlah dan total bayar; satuan pasar seperti kg diubah otomatis",
+          "Stok bawaan dari rumah? Pilih “tanpa biaya” secara jelas"
+        ]
+      },
+      {
+        "title": "Jualan",
+        "text": "Catat penjualan secepat kamu menerima pembayaran, dengan dua mode yang bisa diganti.",
+        "points": [
+          "Mode cepat: sekali ketuk tambah satu barang, satu tombol bayar",
+          "Mode rekap: isi total terjual setelah ramai reda",
+          "Salah catat? Batalkan dengan alasan, stok kembali otomatis"
+        ]
+      },
+      {
+        "title": "Tutup lapak",
+        "text": "Kurang dari dua menit di malam hari yang membuat saran besok makin tepat.",
+        "points": [
+          "Pastikan sisa tiap bahan, lalu simpan untuk besok atau buang",
+          "Jam habis tercatat otomatis selama jualan",
+          "Lupa tutup? Sistem menutup otomatis 30 menit setelah jam tutup"
+        ]
+      },
+      {
+        "title": "Ringkasan dan saran",
+        "text": "Begitu lapak ditutup, hasilnya langsung muncul. Tanpa menunggu, tanpa membuka laporan.",
+        "points": [
+          "Omzet, HPP, laba, dan sisa yang dibawa ke besok",
+          "Saran belanja besok lengkap dengan kisaran dan alasan",
+          "Insight dalam bahasa sehari-hari, hanya saat kamu minta"
+        ]
+      }
+    ],
+    "days": [
+      "Sen",
+      "Sel",
+      "Rab",
+      "Kam",
+      "Jum",
+      "Sab",
+      "Min"
+    ],
+    "stages": [
+      {
+        "label": "Awal",
+        "title": "Baru mulai",
+        "sessions": "Kurang dari 7 sesi",
+        "chips": [
+          "Rata-rata"
+        ],
+        "text": "Memakai rata-rata sesi terakhir, dikoreksi dengan pembeli yang terlewat saat stok habis. Ditandai “data masih sedikit”."
+      },
+      {
+        "label": "Dasar",
+        "title": "Mulai paham pola",
+        "sessions": "7 sampai 20 sesi",
+        "chips": [
+          "Pola hari"
+        ],
+        "text": "Memakai rata-rata per hari dalam seminggu, jadi hari Sabtu dihitung dari Sabtu-Sabtu sebelumnya."
+      },
+      {
+        "label": "Lanjut",
+        "title": "Sudah kenal betul",
+        "sessions": "21 sesi atau lebih",
+        "chips": [
+          "Pola hari",
+          "Kalender",
+          "Cuaca"
+        ],
+        "text": "Menambahkan kalender dan cuaca, dengan kisaran yang lebih sempit. Hadir di rilis berikutnya."
+      }
+    ],
+    "setup": [
+      {
+        "title": "Tambah bahan",
+        "text": "Misalnya tepung (gram) atau telur (butir). Tandai bahan utama yang ingin diprediksi."
+      },
+      {
+        "title": "Tambah produk",
+        "text": "Misalnya Roti Cokelat seharga Rp8.000."
+      },
+      {
+        "title": "Atur resep",
+        "text": "1 Roti Cokelat = 60 gram tepung + 1 telur + 15 gram cokelat. HPP per porsi dihitung otomatis."
+      }
+    ],
+    "roles": [
+      {
+        "title": "Pemilik",
+        "subtitle": "Pemilik usaha",
+        "points": [
+          "Kelola bahan, produk, resep, dan harga",
+          "Lihat ringkasan, laporan, dan insight",
+          "Tambah dan nonaktifkan akun staf",
+          "Semua yang bisa dilakukan kasir"
+        ]
+      },
+      {
+        "title": "Kasir",
+        "subtitle": "Staf yang dibuat pemilik",
+        "points": [
+          "Buka dan tutup sesi",
+          "Kasir, tambah stok, dan batalkan transaksi di sesi yang buka",
+          "Lihat riwayat sesi yang sedang berjalan",
+          "Tidak bisa melihat laporan, biaya, atau HPP"
+        ]
+      }
+    ],
+    "eyebrow": "Cara kerja",
+    "title": "Satu hari dagang, empat tahap.",
+    "lead": "Stockwise memperlakukan setiap hari dagang sebagai satu sesi: dibuka pagi, dipakai jualan, ditutup malam. Semua yang terjadi menempel ke sesi itu, lalu diolah jadi saran untuk besok.",
+    "suggestionEyebrow": "Saran belanja",
+    "suggestionTitle": "Makin lama dipakai, makin tepat.",
+    "suggestionText": "Setiap saran disertai alasan dan kisaran, bukan satu angka mutlak. Angkanya dari datamu sendiri.",
+    "range": "Kisaran saran",
+    "firstEyebrow": "Pertama kali",
+    "firstTitle": "Mulai dari nol, tanpa template.",
+    "firstText": "Cukup satu bahan, satu produk, dan satu resep. Sisanya bisa ditambah kapan saja.",
+    "thenOpen": "Lalu buka lapak pertamamu.",
+    "rolesEyebrow": "Peran",
+    "rolesTitle": "Dua peran, satu lapak.",
+    "ctaTitle": "Siap mencoba?",
+    "ctaText": "Daftar, isi data usahamu, dan buka lapak pertama dalam 10 menit."
+  },
+  "features": {
+    "meta": "Fitur",
+    "metaDescription": "Kasir, stok, HPP, dan saran belanja dalam satu alur harian untuk usaha makanan dan minuman kecil.",
+    "groups": [
+      {
+        "label": "Jualan",
+        "cards": [
+          {
+            "label": "Kasir cepat",
+            "title": "Jualan sekali ketuk",
+            "text": "Ketuk produk, pilih tunai, QRIS, atau lainnya, beres. Stok terbarui sendiri."
+          },
+          {
+            "label": "Pantau stok",
+            "title": "Tahu kapan habis",
+            "text": "Saat bahan utama habis, Stockwise mencatat jamnya dan menandai produknya Habis."
+          },
+          {
+            "label": "Riwayat",
+            "title": "Perbaiki salah catat, cetak ulang struk",
+            "text": "Batalkan penjualan yang salah dengan alasan, stok kembali. Cetak ulang diberi label SALINAN."
+          }
+        ]
+      },
+      {
+        "label": "Uang",
+        "cards": [
+          {
+            "label": "HPP otomatis",
+            "title": "Tahu biaya sebenarnya",
+            "text": "Catat yang kamu bayar di pasar. HPP per porsi dan saran harga mengikuti resepmu."
+          },
+          {
+            "label": "Saran",
+            "title": "Tahu apa yang dibeli besok",
+            "text": "Satu saran per bahan utama, lengkap dengan kisaran dan alasannya."
+          },
+          {
+            "label": "Insight",
+            "title": "Harimu, dalam bahasa sehari-hari",
+            "text": "Ulasan singkat hari ini dan saran untuk besok, hanya saat kamu minta. Setiap angka dicek dengan datamu."
+          }
+        ]
+      },
+      {
+        "label": "Tenang",
+        "cards": [
+          {
+            "label": "Tutup otomatis",
+            "title": "Lupa tutup? Aman.",
+            "text": "30 menit setelah jam tutup, sesi menutup sendiri memakai stok tercatat."
+          },
+          {
+            "label": "Peran",
+            "title": "Staf jualan, kamu pegang uangnya",
+            "text": "Kasir mengurus penjualan dan sesi. Laporan, biaya, dan pengaturan tetap di tangan pemilik."
+          },
+          {
+            "label": "Data terpisah",
+            "title": "Datamu tetap milikmu",
+            "text": "Usaha lain tidak bisa melihatnya, dan kamu bisa menghapus semuanya sekaligus."
+          }
+        ]
+      }
+    ],
+    "catalog": [
+      {
+        "title": "Bahan",
+        "text": "Yang kamu beli untuk membuat barang daganganmu. Atur satuannya sekali, dalam gram, butir, atau liter."
+      },
+      {
+        "title": "Produk",
+        "text": "Yang kamu jual ke pembeli, masing-masing dengan harga jualmu sendiri."
+      },
+      {
+        "title": "Resep",
+        "text": "Isi setiap produk. Setelah itu Stockwise yang menghitung."
+      }
+    ],
+    "comparison": [
+      {
+        "label": "Belanja",
+        "without": "Berdasarkan perasaan dan kebiasaan",
+        "with": "Berdasarkan saran dari data penjualanmu"
+      },
+      {
+        "label": "HPP",
+        "without": "Dihitung manual, atau tidak sama sekali",
+        "with": "Dihitung otomatis dari belanjamu"
+      },
+      {
+        "label": "Habis",
+        "without": "Tidak tercatat, pembeli pergi diam-diam",
+        "with": "Jam habis tercatat, pembeli terlewat diperkirakan"
+      },
+      {
+        "label": "Laba",
+        "without": "Hanya ketahuan dari uang di laci",
+        "with": "Laba harian lengkap setiap malam"
+      },
+      {
+        "label": "Salah catat",
+        "without": "Sulit dilacak",
+        "with": "Dibatalkan dengan alasan, tercatat siapa dan kapan"
+      }
+    ],
+    "eyebrow": "Fitur",
+    "title": "Semua yang dibutuhkan lapak, tidak lebih.",
+    "lead": "Kasir, stok, HPP, dan saran belanja dalam satu alur harian. Dibuat untuk tangan yang sibuk dan layar HP.",
+    "catalogEyebrow": "Untuk barang apa pun",
+    "catalogTitle": "Kamu yang mengisi, mesin yang menghitung.",
+    "catalogText": "Kamu menentukan bahan, produk, dan resep sendiri, dibantu contoh di setiap isian. Cocok untuk barang apa pun.",
+    "compareEyebrow": "Sebelum dan sesudah",
+    "compareTitle": "Dari menebak jadi tahu.",
+    "aspect": "Aspek",
+    "without": "Tanpa Stockwise",
+    "becomes": "menjadi",
+    "with": "Dengan Stockwise",
+    "ctaTitle": "Coba sendiri.",
+    "ctaText": "Daftar, isi data usahamu, dan buka lapak pertama dalam 10 menit."
+  },
+  "forYou": {
+    "meta": "Untuk Kamu",
+    "metaDescription": "Untuk pemilik usaha makanan dan minuman kecil yang barangnya cepat basi dan stoknya disiapkan setiap pagi.",
+    "businesses": [
+      {
+        "title": "Camilan & dessert",
+        "mode": "Diproduksi di awal hari",
+        "text": "Gorengan, puding, dan jajanan manis dibuat per adonan. Kelihatan mana yang cepat habis dan mana yang tersisa."
+      },
+      {
+        "title": "Roti & pastry",
+        "mode": "Diproduksi di awal hari",
+        "text": "Dipanggang di awal hari, sisanya dibawa ke besok atau dibuang saat tutup."
+      },
+      {
+        "title": "Minuman",
+        "mode": "Dibuat saat dipesan",
+        "text": "Kopi, teh, dan minuman lain dibuat saat dipesan, bahannya dihitung per gelas sesuai resep."
+      }
+    ],
+    "fit": [
+      "Punya satu lapak atau satu toko",
+      "Jualan dengan satu sampai tiga orang",
+      "Menyiapkan stok setiap pagi, dan barangmu cepat basi",
+      "Menghitung omzet per hari",
+      "Jualan dengan koneksi internet"
+    ],
+    "notFit": [
+      "Butuh banyak cabang dalam satu akun",
+      "Butuh pesanan online oleh pembeli atau pengantaran",
+      "Butuh pembayaran terintegrasi, QRIS dinamis atau VA",
+      "Buka melewati tengah malam",
+      "Butuh aplikasi yang jalan tanpa internet, atau di iOS"
+    ],
+    "examples": [
+      {
+        "name": "Roti & Kue",
+        "note": "Satu adonan, banyak roti dan kue",
+        "ingredients": [
+          "Tepung",
+          "Telur",
+          "Mentega"
+        ],
+        "product": "Roti",
+        "mode": "Diproduksi di awal hari"
+      },
+      {
+        "name": "Makanan Utama",
+        "note": "Dimasak saat dipesan",
+        "ingredients": [
+          "Nasi",
+          "Telur",
+          "Kecap"
+        ],
+        "product": "Nasi Goreng",
+        "mode": "Dibuat saat dipesan"
+      },
+      {
+        "name": "Minuman",
+        "note": "Diracik saat dipesan",
+        "ingredients": [
+          "Teh",
+          "Gula",
+          "Es"
+        ],
+        "product": "Es Teh",
+        "mode": "Dibuat saat dipesan"
+      },
+      {
+        "name": "Barang Lain",
+        "note": "Kamu yang menentukan",
+        "ingredients": [
+          "Bahanmu"
+        ],
+        "product": "Produkmu",
+        "mode": "Kamu pilih modenya"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Perlu pasang aplikasi?",
+        "a": "Tidak. Stockwise berjalan di browser HP atau komputer, tanpa perlu dipasang. Cukup buka, daftar, dan mulai."
+      },
+      {
+        "q": "Perlu data penjualan lama?",
+        "a": "Tidak. Mulai dari hari pertama. Saran belanja muncul setelah satu sesi ditutup, dan ditandai “data masih sedikit” sampai datanya cukup."
+      },
+      {
+        "q": "Saya jualan sendiri, bisa?",
+        "a": "Bisa. Satu akun pemilik sudah cukup untuk kasir, stok, dan laporan. Akun kasir hanya perlu kalau kamu punya staf."
+      },
+      {
+        "q": "Apakah staf bisa melihat labaku?",
+        "a": "Tidak. Akun kasir hanya untuk penjualan dan sesi harian. Laporan, biaya, HPP, dan pengaturan hanya bisa dilihat pemilik."
+      },
+      {
+        "q": "Bagaimana kalau lupa menutup lapak?",
+        "a": "Sistem menutup sesi otomatis 30 menit setelah jam tutup, memakai stok tercatat sebagai sisa. Bahan yang boleh dibawa pindah ke besok; sisanya dihitung dibuang."
+      },
+      {
+        "q": "Apakah data usahaku terpisah dan bisa dihapus?",
+        "a": "Ya. Data satu usaha tidak pernah terlihat oleh usaha lain. Pemilik bisa menghapus usaha beserta seluruh datanya secara permanen dengan mengetik nama usaha untuk konfirmasi."
+      }
+    ],
+    "eyebrow": "Untuk kamu",
+    "title": "Untuk barang yang cepat basi.",
+    "lead": "Stockwise dibuat untuk pemilik usaha makanan dan minuman kecil: satu lapak atau toko, satu sampai tiga orang yang jualan, stok disiapkan setiap pagi.",
+    "bizEyebrow": "Usaha seperti punyamu",
+    "bizTitle": "Dibuat untuk lapak seperti ini.",
+    "bizText": "Dari camilan, toko roti, sampai kedai minuman, selama barangnya cepat basi dan stoknya disiapkan setiap pagi.",
+    "fitEyebrow": "Cocok atau tidak",
+    "fitTitle": "Lihat dulu sebelum mencoba.",
+    "fitsIf": "Cocok kalau kamu",
+    "notFitsIf": "Belum cocok kalau kamu",
+    "examplesEyebrow": "Contoh barang",
+    "examplesTitle": "Satu mesin, banyak jenis barang.",
+    "examplesText": "Kamu menentukan bahan, produk, dan resep sendiri. Mesinnya menghitung stok, HPP, dan saran belanja.",
+    "colBusiness": "Usaha",
+    "colIngredients": "Bahan",
+    "colProduct": "Produk",
+    "colMode": "Mode stok",
+    "becomes": "menjadi",
+    "modeNote": "Mode stok menentukan kapan stok berkurang: saat dipesan, atau saat diproduksi.",
+    "faqEyebrow": "Pertanyaan",
+    "faqTitle": "Sering ditanyakan.",
+    "faqNote": "Belum terjawab? Daftar dan coba sendiri, gratis.",
+    "ctaTitle": "Seperti usahamu?",
+    "ctaText": "Daftar, isi data usahamu, dan buka lapak pertama dalam 10 menit."
+  },
+  "privacy": {
+    "meta": "Kebijakan Privasi",
+    "metaDescription": "Data apa yang disimpan Stockwise, untuk apa, dan apa yang kamu kendalikan.",
+    "highlights": [
+      {
+        "title": "Terpisah per usaha",
+        "text": "Datamu tidak pernah terlihat oleh usaha lain."
+      },
+      {
+        "title": "Tanpa identitas ke model",
+        "text": "Insight hanya menerima angka dan nama bahan, tanpa identitasmu."
+      },
+      {
+        "title": "Kata sandi di-hash",
+        "text": "Disimpan sebagai hash, tidak pernah dalam bentuk asli."
+      },
+      {
+        "title": "Hapus kapan saja",
+        "text": "Akun dan seluruh datanya dihapus permanen."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Data yang kami simpan",
+        "lead": "Hanya yang dibutuhkan untuk menjalankan usahamu di Stockwise.",
+        "points": [
+          "Akun: nama, email, kata sandi (sebagai hash), dan bahasa tampilan",
+          "Usaha: nama usaha, mata uang, jam buka dan tutup, lokasi, dan tanggal gajian setempat",
+          "Operasional: bahan, produk, resep, belanja, penjualan, sesi harian, dan stok",
+          "Staf: nama dan email akun kasir yang dibuat pemilik"
+        ]
+      },
+      {
+        "title": "Untuk apa data dipakai",
+        "lead": "Datamu dipakai untuk menjalankan fitur Stockwise.",
+        "points": [
+          "Menjalankan siklus harian: buka, jualan, tutup",
+          "Menghitung biaya, HPP, dan laba harian",
+          "Menyiapkan ringkasan malam dan saran belanja besok",
+          "Menyimpan riwayat transaksi dan struk"
+        ]
+      },
+      {
+        "title": "Model bahasa untuk insight",
+        "lead": "Insight hanya dibuat saat kamu menekan “Buat insight”, dan hanya pemilik yang bisa.",
+        "points": [
+          "Hanya angka agregat, nama bahan, dan alasan perhitungan yang dikirim",
+          "Tanpa namamu, email, atau nama usaha",
+          "Modelnya bisa berjalan di layanan AI eksternal, di luar server Stockwise",
+          "Setiap angka di teks harus cocok dengan data asli; kalau tidak, teksnya diganti template",
+          "Satu hasil insight disimpan per sesi"
+        ]
+      },
+      {
+        "title": "Keamanan",
+        "lead": "Yang kami lakukan untuk melindungi datamu.",
+        "points": [
+          "Kata sandi disimpan sebagai hash, tidak pernah dalam bentuk asli",
+          "Token akses berumur pendek dan disimpan di cookie httpOnly yang tidak bisa dibaca JavaScript",
+          "Semua lalu lintas lewat HTTPS",
+          "Percobaan masuk dan daftar dibatasi",
+          "Database dicadangkan setiap hari"
+        ]
+      },
+      {
+        "title": "Pemisahan data",
+        "lead": "Satu akun, satu usaha.",
+        "points": [
+          "Kamu hanya bisa melihat dan mengubah data usahamu sendiri",
+          "Permintaan data usaha lain dijawab “tidak ditemukan”",
+          "Pemisahan ini diuji secara otomatis"
+        ]
+      },
+      {
+        "title": "Hak dan kendalimu",
+        "lead": "Kamu tetap memegang kendali atas datamu.",
+        "points": [
+          "Ubah profil usaha kapan saja",
+          "Nonaktifkan akun staf, yang kehilangan akses setelah masa token berakhir",
+          "Hapus akun dan usaha secara permanen dengan mengetik nama usaha",
+          "Setelah dihapus, usaha, staf, dan seluruh riwayat tidak bisa diakses lagi"
+        ]
+      },
+      {
+        "title": "Yang belum tersedia",
+        "lead": "Kami terbuka soal batasan saat ini.",
+        "points": [
+          "Verifikasi email saat mendaftar",
+          "Mengatur ulang kata sandi yang lupa"
+        ]
+      },
+      {
+        "title": "Perubahan dan kontak",
+        "lead": "Kebijakan ini bisa berubah seiring Stockwise berkembang. Tanggal pembaruan terakhir ada di atas halaman.",
+        "points": [
+          "Pertanyaan privasi: info@stockwise.com"
+        ]
+      }
+    ],
+    "eyebrow": "Kebijakan privasi",
+    "title": "Datamu milikmu.",
+    "lead": "Halaman ini menjelaskan data apa yang disimpan Stockwise, untuk apa, dan apa yang kamu kendalikan. Stockwise adalah proyek portofolio yang terbuka untuk dicoba.",
+    "lastUpdated": "Terakhir diperbarui: <time>{date}</time>",
+    "onThisPage": "Di halaman ini"
+  },
+  "docs": {
+    "meta": "Panduan",
+    "metaDescription": "Tutorial langkah demi langkah memakai Stockwise: dari daftar, buka lapak, jualan, tutup lapak, sampai membaca laporan.",
+    "eyebrow": "Panduan",
+    "title": "Cara memakai Stockwise, langkah demi langkah.",
+    "lead": "Ikuti urutan bagian di bawah untuk hari pertamamu. Setelah itu, kembali ke bagian yang kamu butuhkan saja.",
+    "onThisPage": "Di halaman ini",
+    "stepsLabel": "Langkah",
+    "tipsLabel": "Perlu diketahui",
+    "ownerOnly": "Khusus pemilik",
+    "faqTitle": "Pertanyaan umum",
+    "sections": [
+      {
+        "title": "Daftar dan masuk",
+        "lead": "Satu akun pemilik untuk satu usaha.",
+        "owner": true,
+        "steps": [
+          "Klik **Daftar** di kanan atas, isi nama, email, dan kata sandi (8–72 karakter).",
+          "Setelah daftar, kamu langsung diarahkan ke pengaturan usaha.",
+          "Berikutnya, masuk lewat **Masuk** dengan email dan kata sandi yang sama."
+        ],
+        "tips": [
+          "Akun yang dibuat lewat Daftar selalu menjadi pemilik. Akun kasir dibuat pemilik dari menu Pengaturan."
+        ]
+      },
+      {
+        "title": "Atur usaha pertama kali",
+        "lead": "Tiga langkah, kurang dari 10 menit. Bisa disimpan dan dilanjutkan nanti lewat **Simpan dan keluar**.",
+        "owner": true,
+        "steps": [
+          "**Profil usaha**: isi nama usaha, jam buka, jam tutup, dan mata uang.",
+          "**Bahan**: tambahkan semua yang kamu stok, misalnya tepung (gram) atau telur (butir), lengkap dengan perkiraan harga. Tandai satu bahan sebagai **barang utama**.",
+          "**Produk & resep**: tambahkan yang kamu jual, pilih bahan dan takarannya per porsi, lalu tentukan harga jual. Perkiraan biaya per porsi dan saran harga muncul otomatis.",
+          "Di halaman **Selesai**, pastikan semua syarat terpenuhi, lalu lanjut buka lapak."
+        ],
+        "tips": [
+          "Barang utama adalah bahan yang paling menentukan jualanmu. Stockwise mencatat jam habisnya dan menghitung saran belanjanya.",
+          "Mata uang terkunci setelah lapak dibuka pertama kali, karena angka yang tercatat tidak dikonversi.",
+          "Jam tutup dipakai untuk menutup lapak otomatis kalau kamu lupa."
+        ]
+      },
+      {
+        "title": "Buka lapak",
+        "lead": "Dilakukan tiap pagi sebelum jualan, oleh pemilik atau kasir.",
+        "owner": false,
+        "steps": [
+          "Dari **Beranda**, klik **Buka lapak**.",
+          "Periksa kolom **Stok ada**: ini sisa dari tutup lapak terakhir, dihitung otomatis.",
+          "Untuk yang kamu beli pagi ini, isi **+ Tambah** dan **Total bayar**. Atau klik **Isi sesuai saran** untuk memakai saran belanja.",
+          "Klik **Periksa**, cek stok awal, lalu **Buka lapak**."
+        ],
+        "tips": [
+          "Kosongkan Tambah dan Total bayar kalau tidak ada belanja untuk bahan itu.",
+          "Cukup isi total yang kamu bayar. Harga per satuan dan HPP dihitung otomatis.",
+          "Lapak boleh dibuka sebelum jam buka. Setelah ditutup, lapak baru bisa dibuka lagi besok."
+        ]
+      },
+      {
+        "title": "Jualan di kasir",
+        "lead": "Catat penjualan secepat kamu menerima pembayaran.",
+        "owner": false,
+        "steps": [
+          "Buka menu **Kasir**.",
+          "Ketuk produk untuk menambahkannya ke keranjang. Pakai tombol − dan + untuk mengubah jumlah.",
+          "Pilih metode bayar. Untuk tunai, isi uang diterima kalau ingin melihat kembalian.",
+          "Klik **Bayar**. Setelah tersimpan, cetak struk kalau perlu, lalu **Transaksi baru** (atau tekan Enter)."
+        ],
+        "tips": [
+          "Lagi ramai dan tidak sempat mencatat satu per satu? Pindah ke mode **Rekap**, isi total terjual per produk, lalu simpan sebagai satu transaksi.",
+          "Produk yang bahannya habis ditandai **Habis** dan tidak bisa ditambahkan.",
+          "Di HP, keranjang ada di bawah daftar produk. Ketuk bilah **Lihat keranjang** untuk langsung ke sana."
+        ]
+      },
+      {
+        "title": "Membatalkan transaksi",
+        "lead": "Kalau salah catat, batalkan transaksinya. Stok kembali otomatis.",
+        "owner": false,
+        "steps": [
+          "Buka **Riwayat transaksi**, lalu klik transaksi yang salah.",
+          "Klik **Batalkan transaksi** dan isi alasannya.",
+          "Transaksi ditandai Dibatalkan dan bahannya dikembalikan ke stok."
+        ],
+        "tips": [
+          "Pembatalan hanya bisa selama lapak masih buka.",
+          "Transaksi yang dibatalkan tetap terlihat di riwayat dan laporan, lengkap dengan alasannya."
+        ]
+      },
+      {
+        "title": "Tutup lapak",
+        "lead": "Kurang dari dua menit di malam hari, dan membuat saran besok makin tepat.",
+        "owner": false,
+        "steps": [
+          "Dari **Beranda**, klik **Tutup lapak**.",
+          "Hitung sisa tiap bahan dan isi kolom **Dihitung**. Kalau sama dengan catatan, klik **Pakai stok tercatat**.",
+          "Untuk tiap bahan, pilih **Simpan** (dibawa ke besok) atau **Buang**.",
+          "Tambahkan catatan kalau perlu, misalnya \"hujan sejak sore\", lalu klik **Tutup lapak**."
+        ],
+        "tips": [
+          "Selisih antara stok tercatat dan hitungan dicatat sebagai biaya selisih stok.",
+          "Bahan yang tidak boleh dibawa ke besok hanya bisa dibuang.",
+          "Lupa menutup? Sistem menutup sendiri 30 menit setelah jam tutup memakai stok tercatat.",
+          "Data sesi tidak bisa diubah lagi setelah lapak ditutup."
+        ]
+      },
+      {
+        "title": "Membaca ringkasan dan saran belanja",
+        "lead": "Begitu lapak ditutup, hasil hari itu dan saran untuk besok langsung muncul di Beranda.",
+        "owner": false,
+        "steps": [
+          "Lihat **Ringkasan hari ini** di Beranda: omzet, HPP, laba, dan sisa yang dibawa ke besok.",
+          "Lihat **Saran belanja** untuk besok, lengkap dengan kisaran dan alasannya. Klik **Kenapa sebanyak ini?** untuk melihat hitungannya.",
+          "Mau evaluasi dalam bahasa sehari-hari? Klik **Buat insight**."
+        ],
+        "tips": [
+          "Saran makin tepat setelah beberapa hari data. Di awal, saran memakai perkiraan dari resepmu.",
+          "Insight hanya menerima angka ringkasan, tanpa nama atau email, dan jumlah percobaannya dibatasi per sesi."
+        ]
+      },
+      {
+        "title": "Laporan, tren, dan Excel",
+        "lead": "Untuk melihat detail per hari atau perkembangan beberapa minggu.",
+        "owner": true,
+        "steps": [
+          "Buka **Laporan harian** untuk melihat laba, penjualan per jam, metode bayar, produk, dan stok. Pakai panah tanggal untuk pindah hari.",
+          "Klik **Lihat tren** untuk melihat omzet dan laba dalam rentang tanggal, per hari atau per minggu.",
+          "Klik **Unduh Excel** untuk mengunduh data penjualan hari atau rentang yang sedang dilihat."
+        ],
+        "tips": [
+          "Laporan hanya ada untuk hari yang lapaknya sudah ditutup.",
+          "Rentang tren paling lama 366 hari."
+        ]
+      },
+      {
+        "title": "Mengelola bahan dan produk",
+        "lead": "Ubah daftar bahan, resep, dan harga kapan saja.",
+        "owner": true,
+        "steps": [
+          "Buka **Bahan** untuk menambah, mengubah, atau menonaktifkan bahan.",
+          "Buka **Produk dan resep** untuk mengubah resep dan harga jual. Lihat kolom HPP, margin, dan saran harga.",
+          "Bahan atau produk yang tidak dipakai lagi cukup dinonaktifkan. Riwayatnya tetap tersimpan."
+        ],
+        "tips": [
+          "Bahan yang masih dipakai di resep harus dihapus dari resep dulu sebelum dinonaktifkan.",
+          "Satuan bahan tidak bisa diganti setelah bahan itu pernah dipakai di sesi.",
+          "HPP bertanda Perkiraan berarti ada bahan yang belum pernah dibeli lewat Buka lapak."
+        ]
+      },
+      {
+        "title": "Akun kasir dan pengaturan",
+        "lead": "Tambah kasir, ganti bahasa, dan atur saran.",
+        "owner": true,
+        "steps": [
+          "Buka **Pengaturan**, lalu klik **Tambah kasir**. Isi nama, email, dan kata sandi, lalu berikan ke kasirmu.",
+          "Di bagian **Profil usaha**, ubah jam buka atau nama usaha. Perubahan jam berlaku mulai sesi berikutnya.",
+          "Buka **Pengaturan lanjutan** untuk mengubah cadangan saran stok, target margin, dan tanggal gajian."
+        ],
+        "tips": [
+          "Kasir hanya bisa membuka dan menutup lapak, mencatat penjualan, dan melihat transaksi hari itu.",
+          "Akun kasir yang dinonaktifkan langsung tidak bisa masuk. Riwayat transaksinya tetap disimpan.",
+          "Setiap akun bisa memilih bahasanya sendiri di Pengaturan."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "Saya lupa menutup lapak. Apa yang terjadi?",
+        "a": "Sistem menutup lapak otomatis 30 menit setelah jam tutup, memakai stok tercatat. Bahan yang boleh dibawa akan dibawa ke besok."
+      },
+      {
+        "q": "Bisa buka lapak dua kali sehari?",
+        "a": "Tidak. Satu hari satu sesi. Setelah ditutup, lapak baru bisa dibuka lagi besok."
+      },
+      {
+        "q": "Saya salah isi hitungan saat tutup lapak. Bisa diubah?",
+        "a": "Tidak. Data sesi final setelah ditutup. Selisihnya akan terkoreksi saat kamu memeriksa stok di Buka lapak berikutnya."
+      },
+      {
+        "q": "Kenapa saran belanja belum muncul?",
+        "a": "Saran dibuat setelah lapak ditutup. Tutup lapak hari ini, lalu cek Beranda."
+      },
+      {
+        "q": "Usaha saya buka sampai lewat tengah malam. Bisa dipakai?",
+        "a": "Belum. Jam tutup harus setelah jam buka di hari yang sama."
+      }
+    ],
+    "ctaTitle": "Sudah siap mencoba?",
+    "ctaText": "Daftar gratis, lalu ikuti panduan ini dari langkah pertama."
+  }
+}

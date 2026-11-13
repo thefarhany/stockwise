@@ -141,6 +141,61 @@ class OutletIntegrationTest {
 	}
 
 	@Test
+	void addressIsSavedTrimmedAndClearedWithTheProfile() throws Exception {
+		String token = JsonPath.read(register("addr@x.id", "A"), "$.data.accessToken");
+		String withAddress = PROFILE.replace("\"paydayDays\"", """
+				"address":{"full":" Jl. Kebon Sirih 12, Menteng ","street":"Jl. Kebon Sirih 12","village":"",
+				 "district":"Menteng","city":"Jakarta Pusat","province":"DKI Jakarta","postalCode":"10340"},"paydayDays\"""");
+		mvc.perform(auth(put("/api/v1/outlet"), token, withAddress)).andExpect(status().isOk())
+				.andExpect(jsonPath("$.data.address.full").value("Jl. Kebon Sirih 12, Menteng"))
+				.andExpect(jsonPath("$.data.address.village").doesNotExist())
+				.andExpect(jsonPath("$.data.address.postalCode").value("10340"));
+		mvc.perform(auth(get("/api/v1/outlet"), token, "")).andExpect(jsonPath("$.data.address.city").value("Jakarta Pusat"));
+
+		// tanpa address (atau semuanya kosong) = alamat dihapus, sama seperti latitude/longitude
+		mvc.perform(auth(put("/api/v1/outlet"), token, PROFILE)).andExpect(status().isOk())
+				.andExpect(jsonPath("$.data.address").doesNotExist());
+		mvc.perform(auth(put("/api/v1/outlet"), token, withAddress.replace("10340", "12345678901")))
+				.andExpect(status().isBadRequest()).andExpect(jsonPath("$.details.fields['address.postalCode']").exists());
+	}
+
+	@Test
+	void locationIsSavedFromAPickedPlaceAndCanBeCleared() throws Exception {
+		String token = JsonPath.read(register("loc@x.id", "A"), "$.data.accessToken");
+		mvc.perform(auth(put("/api/v1/outlet/location"), token, """
+				{"latitude":-6.1834567,"longitude":106.8271234,"address":{"full":"Jl. Kebon Sirih 12, Menteng",
+				 "city":"Jakarta Pusat","province":"DKI Jakarta"}}"""))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$.data.latitude").value(-6.183457))
+				.andExpect(jsonPath("$.data.address.city").value("Jakarta Pusat"));
+
+		// tanpa alamat = dicari lewat Mapbox; token kosong di profil test -> 503 dan lokasi lama tetap
+		mvc.perform(auth(put("/api/v1/outlet/location"), token, "{\"latitude\":-7.25,\"longitude\":112.75}"))
+				.andExpect(status().isServiceUnavailable())
+				.andExpect(jsonPath("$.errorCode").value("GEOCODING_UNAVAILABLE"));
+		mvc.perform(auth(get("/api/v1/outlet"), token, "")).andExpect(jsonPath("$.data.address.city").value("Jakarta Pusat"));
+
+		mvc.perform(auth(put("/api/v1/outlet/location"), token, "{\"latitude\":-95}"))
+				.andExpect(status().isBadRequest()).andExpect(jsonPath("$.details.fields.longitude").exists());
+
+		mvc.perform(auth(delete("/api/v1/outlet/location"), token, "")).andExpect(status().isOk())
+				.andExpect(jsonPath("$.data.latitude").doesNotExist())
+				.andExpect(jsonPath("$.data.address").doesNotExist());
+	}
+
+	@Test
+	void geocodingValidatesInputAndReportsMissingToken() throws Exception {
+		String token = JsonPath.read(register("geo@x.id", "A"), "$.data.accessToken");
+		mvc.perform(auth(get("/api/v1/geo/reverse?latitude=-95&longitude=106.8"), token, ""))
+				.andExpect(status().isBadRequest()).andExpect(jsonPath("$.errorCode").value("VALIDATION_ERROR"));
+		mvc.perform(auth(get("/api/v1/geo/search?q=ab"), token, ""))
+				.andExpect(status().isBadRequest()).andExpect(jsonPath("$.errorCode").value("VALIDATION_ERROR"));
+		// token kosong di profil test
+		mvc.perform(auth(get("/api/v1/geo/reverse?latitude=-6.2&longitude=106.8"), token, ""))
+				.andExpect(status().isServiceUnavailable()).andExpect(jsonPath("$.errorCode").value("GEOCODING_UNAVAILABLE"));
+	}
+
+	@Test
 	void updateRejectsBadHoursAndBadFields() throws Exception {
 		String token = JsonPath.read(register("o2@x.id", "A"), "$.data.accessToken");
 		mvc.perform(auth(put("/api/v1/outlet"), token, PROFILE.replace("21:00", "09:00")))
@@ -156,6 +211,37 @@ class OutletIntegrationTest {
 	}
 
 	@Test
+	void currencyDefaultsToRupiahAndLocksOnceTheStallHasOpened() throws Exception {
+		String reg = register("o6@x.id", "Kopi Kita");
+		String token = JsonPath.read(reg, "$.data.accessToken");
+		String outletId = JsonPath.read(reg, "$.data.outlet.id");
+		assertThat(JsonPath.<String>read(reg, "$.data.outlet.currency")).isEqualTo("IDR");
+		mvc.perform(auth(get("/api/v1/outlet"), token, ""))
+				.andExpect(jsonPath("$.data.currency").value("IDR"))
+				.andExpect(jsonPath("$.data.currencyLocked").value(false));
+
+		String usd = PROFILE.replace("{", "{\"currency\":\"USD\",");
+		mvc.perform(auth(put("/api/v1/outlet"), token, usd)).andExpect(status().isOk())
+				.andExpect(jsonPath("$.data.currency").value("USD"));
+		// tanpa currency = tidak diubah
+		mvc.perform(auth(put("/api/v1/outlet"), token, PROFILE)).andExpect(jsonPath("$.data.currency").value("USD"));
+		mvc.perform(auth(get("/api/v1/me"), token, "")).andExpect(jsonPath("$.data.outlet.currency").value("USD"));
+		mvc.perform(auth(put("/api/v1/outlet"), token, PROFILE.replace("{", "{\"currency\":\"JPY\",")))
+				.andExpect(status().isBadRequest());
+
+		String userId = JsonPath.read(reg, "$.data.user.id");
+		seedCatalog(outletId);
+		seedHistory(outletId, userId);
+		mvc.perform(auth(get("/api/v1/outlet"), token, "")).andExpect(jsonPath("$.data.currencyLocked").value(true));
+		mvc.perform(auth(put("/api/v1/outlet"), token, usd.replace("USD", "EUR")))
+				.andExpect(status().isConflict())
+				.andExpect(jsonPath("$.errorCode").value("CURRENCY_LOCKED"));
+		// mata uang yang sama tetap boleh dikirim, profil lain tetap tersimpan
+		mvc.perform(auth(put("/api/v1/outlet"), token, usd.replace("Geprek Pak Budi", "Kopi Kita 2")))
+				.andExpect(status().isOk()).andExpect(jsonPath("$.data.name").value("Kopi Kita 2"));
+	}
+
+	@Test
 	void cashierCannotTouchOutlet() throws Exception {
 		String token = JsonPath.read(register("o3@x.id", "A"), "$.data.accessToken");
 		mvc.perform(auth(post("/api/v1/users"), token,
@@ -167,6 +253,7 @@ class OutletIntegrationTest {
 		mvc.perform(auth(get("/api/v1/outlet"), ct, "")).andExpect(status().isForbidden());
 		mvc.perform(auth(put("/api/v1/outlet"), ct, PROFILE)).andExpect(status().isForbidden());
 		mvc.perform(auth(delete("/api/v1/outlet"), ct, "{\"confirmName\":\"A\"}")).andExpect(status().isForbidden());
+		mvc.perform(auth(get("/api/v1/geo/reverse?latitude=-6.2&longitude=106.8"), ct, "")).andExpect(status().isForbidden());
 	}
 
 	@Test

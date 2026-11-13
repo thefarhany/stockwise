@@ -5,6 +5,7 @@ import com.thefarhany.stockwise.dto.auth.UpdateUserRequest;
 import com.thefarhany.stockwise.dto.auth.UserInfo;
 import com.thefarhany.stockwise.exception.BusinessException;
 import com.thefarhany.stockwise.model.auth.AppUser;
+import com.thefarhany.stockwise.model.auth.Language;
 import com.thefarhany.stockwise.model.auth.Role;
 import com.thefarhany.stockwise.repository.auth.AppUserRepository;
 import com.thefarhany.stockwise.repository.auth.RefreshTokenRepository;
@@ -51,6 +52,7 @@ public class UserService {
 		}
 		AppUser cashier = users.save(new AppUser(outlets.getReferenceById(outletId), r.name().trim(), email,
 				encoder.encode(r.password()), Role.CASHIER));
+		cashier.setLanguage(Language.ID); // kasir mulai dalam Bahasa Indonesia; bisa diganti sendiri setelah login
 		return UserInfo.from(cashier);
 	}
 

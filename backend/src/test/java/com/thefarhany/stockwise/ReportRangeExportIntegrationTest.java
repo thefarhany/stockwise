@@ -4,6 +4,7 @@ import static com.thefarhany.stockwise.ShopFixture.as;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -161,6 +162,7 @@ class ReportRangeExportIntegrationTest {
 	@Test
 	void exportProducesTheThreeSheetWorkbook() throws Exception {
 		Shop s = threeDays();
+		mvc.perform(as(put("/api/v1/me/language"), s.owner(), "{\"language\":\"ID\"}")).andExpect(status().isOk());
 		byte[] file = mvc.perform(as(get("/api/v1/exports/sales?from=2026-11-01&to=2026-11-30"), s.owner(), ""))
 				.andExpect(status().isOk())
 				.andExpect(header().string("Content-Type",
@@ -183,6 +185,23 @@ class ReportRangeExportIntegrationTest {
 				"Ayam Goreng");
 		String harian = xlsx.get("xl/worksheets/sheet3.xml");
 		assertThat(harian).contains(">39000<", ">26000<", ">13000<", ">15600<", ">10400<", ">5200<");
+	}
+
+	@Test
+	void exportFollowsTheAccountLanguage() throws Exception {
+		Shop s = threeDays();
+		mvc.perform(as(put("/api/v1/me/language"), s.owner(), "{\"language\":\"EN\"}")).andExpect(status().isOk());
+		byte[] file = mvc.perform(as(get("/api/v1/exports/sales?from=2026-11-01&to=2026-11-30"), s.owner(), ""))
+				.andExpect(status().isOk())
+				.andExpect(header().string("Content-Disposition",
+						"attachment; filename=\"sales-2026-11-01_2026-11-30.xlsx\""))
+				.andReturn().getResponse().getContentAsByteArray();
+
+		Map<String, String> xlsx = unzip(file);
+		assertThat(xlsx.get("xl/workbook.xml")).contains("name=\"Transactions\"", "name=\"Items\"", "name=\"Daily\"");
+		String text = xlsx.getOrDefault("xl/sharedStrings.xml", "") + xlsx.get("xl/worksheets/sheet1.xml");
+		assertThat(text).contains("Receipt no.", "Void reason", "Voided", "Completed", "Cash")
+				.doesNotContain("Nomor struk", "Tunai");
 	}
 
 	@Test

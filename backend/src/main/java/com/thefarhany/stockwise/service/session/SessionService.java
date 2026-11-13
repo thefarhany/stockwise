@@ -5,6 +5,7 @@ import com.thefarhany.stockwise.dto.session.AddStockRequest;
 import com.thefarhany.stockwise.dto.session.CloseItemRequest;
 import com.thefarhany.stockwise.dto.session.CloseSessionRequest;
 import com.thefarhany.stockwise.dto.session.OpenSessionRequest;
+import com.thefarhany.stockwise.dto.session.OpeningStockResponse;
 import com.thefarhany.stockwise.dto.session.SessionResponse;
 import com.thefarhany.stockwise.dto.session.StockLevelResponse;
 import com.thefarhany.stockwise.dto.session.StockLineRequest;
@@ -286,26 +287,40 @@ public class SessionService {
 		return true;
 	}
 
-	/** Sisa dari sesi tutup terakhir menjadi stok awal (jumlah, umur +1 hari, nilai). */
-	private Map<UUID, SessionStock> openRows(DailySession session, AppUser user, Instant now) {
-		Map<UUID, StockItem> items = new LinkedHashMap<>();
-		stockItems.findByOutletIdAndActiveTrueOrderByName(session.getOutlet().getId())
-				.forEach(i -> items.put(i.getId(), i));
+	/** Pratinjau stok awal sebelum lapak dibuka: semua bahan aktif plus sisa yang akan dibawa ke sesi baru. */
+	@Transactional(readOnly = true)
+	public List<OpeningStockResponse> openingStock(AuthPrincipal me) {
+		return openingItems(me.outletId()).entrySet().stream()
+				.map(e -> OpeningStockResponse.of(e.getKey(), e.getValue())).toList();
+	}
+
+	/**
+	 * Bahan yang masuk sesi baru, masing-masing dengan baris sesi tutup terakhir bila sisanya dibawa (null bila tidak):
+	 * semua bahan aktif, plus bahan nonaktif yang masih punya sisa.
+	 */
+	private Map<StockItem, SessionStock> openingItems(UUID outletId) {
 		Map<UUID, SessionStock> previous = sessions
-				.findFirstByOutletIdAndStatusOrderByBusinessDateDesc(session.getOutlet().getId(), SessionStatus.CLOSED)
+				.findFirstByOutletIdAndStatusOrderByBusinessDateDesc(outletId, SessionStatus.CLOSED)
 				.map(p -> stocks.findBySessionIdOrderByStockItemName(p.getId()).stream()
+						.filter(r -> r.getCarriedOverQty() != null && r.getCarriedOverQty().signum() > 0)
 						.collect(Collectors.toMap(r -> r.getStockItem().getId(), Function.identity())))
 				.orElse(Map.of());
+		Map<UUID, StockItem> items = new LinkedHashMap<>();
+		stockItems.findByOutletIdAndActiveTrueOrderByName(outletId).forEach(i -> items.put(i.getId(), i));
 		// bahan yang sudah dinonaktifkan tetapi masih ada sisanya tidak boleh hilang diam-diam
-		previous.values().stream().filter(r -> r.getCarriedOverQty() != null && r.getCarriedOverQty().signum() > 0)
-				.forEach(r -> items.putIfAbsent(r.getStockItem().getId(), r.getStockItem()));
+		previous.values().forEach(r -> items.putIfAbsent(r.getStockItem().getId(), r.getStockItem()));
+		Map<StockItem, SessionStock> out = new LinkedHashMap<>();
+		items.values().forEach(i -> out.put(i, previous.get(i.getId())));
+		return out;
+	}
 
+	/** Sisa dari sesi tutup terakhir menjadi stok awal (jumlah, umur +1 hari, nilai). */
+	private Map<UUID, SessionStock> openRows(DailySession session, AppUser user, Instant now) {
 		Map<UUID, SessionStock> rows = new LinkedHashMap<>();
 		List<StockMovement> opening = new ArrayList<>();
-		for (StockItem item : items.values()) {
+		openingItems(session.getOutlet().getId()).forEach((item, prev) -> {
 			SessionStock row = new SessionStock(session, item);
-			SessionStock prev = previous.get(item.getId());
-			if (prev != null && prev.getCarriedOverQty() != null && prev.getCarriedOverQty().signum() > 0) {
+			if (prev != null) {
 				row.setOpeningQty(prev.getCarriedOverQty());
 				row.setOpeningAgeDays((short) (prev.getOpeningAgeDays() + 1));
 				row.setOpeningValue(prev.getCarriedValue());
@@ -313,7 +328,7 @@ public class SessionService {
 						null, user, now));
 			}
 			rows.put(item.getId(), stocks.save(row));
-		}
+		});
 		movements.saveAll(opening);
 		return rows;
 	}

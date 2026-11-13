@@ -33,7 +33,7 @@ class AuthRateLimitFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws ServletException, IOException {
-		// IP dari koneksi langsung; di belakang proxy perlu forward-headers-strategy yang benar (lihat TASKS.md)
+		// getRemoteAddr sudah IP klien asli: RemoteIpValve membacanya dari X-Forwarded-For (application.properties)
 		long retryAfter = limiter.tryAcquire(request.getRemoteAddr() + request.getRequestURI());
 		if (retryAfter == 0) {
 			chain.doFilter(request, response);

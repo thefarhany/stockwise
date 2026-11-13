@@ -10,6 +10,7 @@ import com.thefarhany.stockwise.dto.auth.UserInfo;
 import com.thefarhany.stockwise.exception.BusinessException;
 import com.thefarhany.stockwise.model.auth.AppUser;
 import com.thefarhany.stockwise.model.auth.RefreshToken;
+import com.thefarhany.stockwise.model.auth.Language;
 import com.thefarhany.stockwise.model.auth.Role;
 import com.thefarhany.stockwise.model.outlet.Outlet;
 import com.thefarhany.stockwise.repository.auth.AppUserRepository;
@@ -64,6 +65,9 @@ public class AuthService {
 		Outlet outlet = outlets.save(new Outlet(req.outletName().trim()));
 		AppUser owner = users.save(new AppUser(outlet, req.name().trim(), email, encoder.encode(req.password()),
 				Role.OWNER));
+		if (req.language() != null) {
+			owner.setLanguage(req.language());
+		}
 		return authResponse(owner);
 	}
 
@@ -104,6 +108,13 @@ public class AuthService {
 	public ProfileResponse profile(UUID userId) {
 		return users.findById(userId).filter(AppUser::isActive).map(ProfileResponse::from)
 				.orElseThrow(() -> unauthorized("Perlu login."));
+	}
+
+	@Transactional
+	public ProfileResponse setLanguage(UUID userId, Language language) {
+		AppUser user = users.findById(userId).filter(AppUser::isActive).orElseThrow(() -> unauthorized("Perlu login."));
+		user.setLanguage(language);
+		return ProfileResponse.from(user);
 	}
 
 	private AuthResponse authResponse(AppUser user) {

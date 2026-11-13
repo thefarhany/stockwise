@@ -58,9 +58,9 @@ public class ProductService {
 		boolean showCost = me.role() == Role.OWNER;
 		Map<UUID, BigDecimal> cost = averageCost(me.outletId(), showCost);
 		Map<UUID, BigDecimal> available = sessionService.availableStock(me.outletId()).orElse(null);
-		BigDecimal margin = targetMargin(me.outletId(), showCost);
+		Outlet pricing = pricing(me.outletId(), showCost);
 		return found.stream().map(p -> ProductResponse.from(p, byProduct.getOrDefault(p.getId(), List.of()), showCost,
-				cost, available, margin)).toList();
+				cost, available, pricing)).toList();
 	}
 
 	@Transactional
@@ -86,7 +86,7 @@ public class ProductService {
 			product.setActive(r.active());
 		}
 		return ProductResponse.from(product, recipes.findByProductId(id), true, averageCost(outletId, true),
-				sessionService.availableStock(outletId).orElse(null), targetMargin(outletId, true));
+				sessionService.availableStock(outletId).orElse(null), pricing(outletId, true));
 	}
 
 	/** DELETE = nonaktifkan; riwayat penjualan tetap utuh. */
@@ -115,9 +115,9 @@ public class ProductService {
 		return new RecipeResponse(productId, saved.stream().map(RecipeItemResponse::from).toList());
 	}
 
-	/** Target margin usaha untuk saran harga jual; hanya Owner yang melihat angka biaya. */
-	private BigDecimal targetMargin(UUID outletId, boolean showCost) {
-		return showCost ? outlets.findById(outletId).map(Outlet::getTargetMarginPct).orElse(null) : null;
+	/** Usaha untuk saran harga jual (target margin, mata uang); hanya Owner yang melihat angka biaya. */
+	private Outlet pricing(UUID outletId, boolean showCost) {
+		return showCost ? outlets.findById(outletId).orElse(null) : null;
 	}
 
 	/** Harga rata-rata hanya dibutuhkan (dan boleh dilihat) Owner. */

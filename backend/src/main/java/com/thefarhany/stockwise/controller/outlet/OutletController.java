@@ -3,6 +3,7 @@ package com.thefarhany.stockwise.controller.outlet;
 import com.thefarhany.stockwise.common.ApiResponse;
 import com.thefarhany.stockwise.dto.outlet.DeleteOutletRequest;
 import com.thefarhany.stockwise.dto.outlet.OutletResponse;
+import com.thefarhany.stockwise.dto.outlet.SetLocationRequest;
 import com.thefarhany.stockwise.dto.outlet.UpdateOutletRequest;
 import com.thefarhany.stockwise.security.AuthPrincipal;
 import com.thefarhany.stockwise.service.outlet.OutletService;
@@ -36,6 +37,18 @@ class OutletController {
 	ApiResponse<OutletResponse> update(@AuthenticationPrincipal AuthPrincipal me,
 			@Valid @RequestBody UpdateOutletRequest request) {
 		return ApiResponse.ok(outletService.update(me.outletId(), request));
+	}
+
+	/** Lokasi usaha: koordinat saja = alamat dicari lewat Mapbox; koordinat + alamat = disimpan apa adanya. */
+	@PutMapping("/location")
+	ApiResponse<OutletResponse> setLocation(@AuthenticationPrincipal AuthPrincipal me,
+			@Valid @RequestBody SetLocationRequest request) {
+		return ApiResponse.ok(outletService.setLocation(me.outletId(), request));
+	}
+
+	@DeleteMapping("/location")
+	ApiResponse<OutletResponse> clearLocation(@AuthenticationPrincipal AuthPrincipal me) {
+		return ApiResponse.ok(outletService.clearLocation(me.outletId()));
 	}
 
 	@DeleteMapping

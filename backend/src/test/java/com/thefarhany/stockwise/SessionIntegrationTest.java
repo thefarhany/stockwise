@@ -315,6 +315,12 @@ class SessionIntegrationTest {
 
 		// hari berikutnya: sisa dan nilainya jadi stok awal, umur naik
 		clock.set(DAY2_OPEN);
+		// pratinjau (Cashier juga boleh) sama dengan yang nanti dicatat sesi; bahan tanpa sisa tetap tampil dengan 0
+		String preview = json(as(get("/api/v1/sessions/opening-stock"), s.cashier, ""));
+		assertThat(JsonPath.<List<Object>>read(preview, "$.data[?(@.name=='Ayam')].quantity")).containsExactly(10.0);
+		assertThat(JsonPath.<List<Object>>read(preview, "$.data[?(@.name=='Ayam')].ageDays")).containsExactly(1);
+		assertThat(JsonPath.<List<Object>>read(preview, "$.data[?(@.name=='Tepung')].quantity")).containsExactly(12000.0);
+		assertThat(JsonPath.<List<Object>>read(preview, "$.data[?(@.name=='Sambal')].quantity")).containsExactly(0);
 		String day2 = json(as(post("/api/v1/sessions/open"), s.owner,
 				open(line(s.ayam, "10", "\"totalCost\":80000"))));
 		assertThat(num(day2, "Ayam", "openingQty")).isEqualTo(10.0);

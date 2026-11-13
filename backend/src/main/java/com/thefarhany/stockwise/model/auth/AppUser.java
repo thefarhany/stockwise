@@ -39,6 +39,9 @@ public class AppUser extends Auditable {
 
 	private boolean active = true;
 
+	@Enumerated(EnumType.STRING)
+	private Language language = Language.EN;
+
 	protected AppUser() {
 	}
 
@@ -48,6 +51,14 @@ public class AppUser extends Auditable {
 		this.email = email;
 		this.passwordHash = passwordHash;
 		this.role = role;
+	}
+
+	public Language getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(Language language) {
+		this.language = language;
 	}
 
 	public boolean isActive() {

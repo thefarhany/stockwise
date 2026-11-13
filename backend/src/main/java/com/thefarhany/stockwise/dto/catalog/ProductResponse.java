@@ -3,6 +3,7 @@ package com.thefarhany.stockwise.dto.catalog;
 import com.thefarhany.stockwise.model.catalog.Product;
 import com.thefarhany.stockwise.model.catalog.RecipeItem;
 import com.thefarhany.stockwise.model.catalog.StockMode;
+import com.thefarhany.stockwise.model.outlet.Outlet;
 import com.thefarhany.stockwise.utils.catalog.PriceSuggester;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -23,10 +24,10 @@ public record ProductResponse(UUID id, String name, String category, long price,
 	/**
 	 * @param averageCost harga rata-rata terbaru per bahan (per satuan bahan); bahan yang belum ada = pakai harga perkiraan
 	 * @param available stok tersedia per bahan di sesi terbuka; null bila tidak ada sesi terbuka
-	 * @param targetMarginPct target margin usaha untuk saran harga jual
+	 * @param pricing usaha (target margin dan mata uang) untuk saran harga jual; null = tanpa saran harga
 	 */
 	public static ProductResponse from(Product p, List<RecipeItem> recipe, boolean showCost,
-			Map<UUID, BigDecimal> averageCost, Map<UUID, BigDecimal> available, BigDecimal targetMarginPct) {
+			Map<UUID, BigDecimal> averageCost, Map<UUID, BigDecimal> available, Outlet pricing) {
 		Long hpp = null;
 		Long margin = null;
 		Boolean estimated = null;
@@ -56,7 +57,7 @@ public record ProductResponse(UUID id, String name, String category, long price,
 			isAvailable = maxPortions > 0;
 		}
 		return new ProductResponse(p.getId(), p.getName(), p.getCategory(), p.getPrice(), p.getStockMode(), hpp,
-				estimated, margin, PriceSuggester.suggest(hpp, targetMarginPct), isAvailable, maxPortions, p.isActive(),
+				estimated, margin, pricing == null ? null : PriceSuggester.suggest(hpp, pricing.getTargetMarginPct(), pricing.getCurrency()), isAvailable, maxPortions, p.isActive(),
 				recipe.stream().map(RecipeItemResponse::from).toList());
 	}
 

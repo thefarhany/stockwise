@@ -1,5 +1,6 @@
 package com.thefarhany.stockwise.security;
 
+import com.thefarhany.stockwise.repository.auth.AppUserRepository;
 import com.thefarhany.stockwise.service.auth.JwtService;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
@@ -19,9 +20,11 @@ class JwtAuthFilter extends OncePerRequestFilter {
 	static final String EXPIRED_ATTR = "jwt.expired";
 
 	private final JwtService jwtService;
+	private final AppUserRepository users;
 
-	JwtAuthFilter(JwtService jwtService) {
+	JwtAuthFilter(JwtService jwtService, AppUserRepository users) {
 		this.jwtService = jwtService;
+		this.users = users;
 	}
 
 	@Override
@@ -30,10 +33,12 @@ class JwtAuthFilter extends OncePerRequestFilter {
 		String header = request.getHeader("Authorization");
 		if (header != null && header.startsWith("Bearer ")) {
 			try {
-				// shortcut: akun yang dinonaktifkan masih lolos sampai access token habis (15 menit)
 				AuthPrincipal principal = jwtService.parse(header.substring(7));
-				SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(
-						principal, null, List.of(new SimpleGrantedAuthority("ROLE_" + principal.role()))));
+				// Akun yang dinonaktifkan atau dihapus langsung ditolak, tidak menunggu access token habis (satu query PK).
+				if (users.existsByIdAndActiveTrue(principal.userId())) {
+					SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(
+							principal, null, List.of(new SimpleGrantedAuthority("ROLE_" + principal.role()))));
+				}
 			}
 			catch (ExpiredJwtException ex) {
 				request.setAttribute(EXPIRED_ATTR, true);

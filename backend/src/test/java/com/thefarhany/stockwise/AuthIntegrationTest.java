@@ -1,5 +1,6 @@
 package com.thefarhany.stockwise;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -105,6 +106,30 @@ class AuthIntegrationTest {
 		mvc.perform(get("/api/v1/me")).andExpect(status().isUnauthorized())
 				.andExpect(jsonPath("$.errorCode").value("UNAUTHORIZED"));
 		mvc.perform(bearer(get("/api/v1/me"), "bukan.token.valid")).andExpect(status().isUnauthorized());
+	}
+
+	@Test
+	void languageIsPerAccountAndEachUserChangesTheirOwn() throws Exception {
+		String owner = call(json(post("/api/v1/auth/register"), register("lang@x.id", "Warung")));
+		assertThat(read(owner, "$.data.user.language")).isEqualTo("EN"); // tanpa language = English
+		String ownerToken = read(owner, "$.data.accessToken");
+		String id = call(json(post("/api/v1/auth/register"),
+				"{\"name\":\"B\",\"email\":\"lang2@x.id\",\"password\":\"rahasia123\",\"outletName\":\"W\",\"language\":\"ID\"}"));
+		assertThat(read(id, "$.data.user.language")).isEqualTo("ID");
+
+		mvc.perform(json(bearer(post("/api/v1/users"), ownerToken),
+				"{\"name\":\"Siti\",\"email\":\"siti-lang@x.id\",\"password\":\"kasir12345\"}"))
+				.andExpect(jsonPath("$.data.language").value("ID")); // kasir mulai dalam Bahasa Indonesia
+		String cashierToken = read(call(json(post("/api/v1/auth/login"),
+				"{\"email\":\"siti-lang@x.id\",\"password\":\"kasir12345\"}")), "$.data.accessToken");
+
+		mvc.perform(json(bearer(put("/api/v1/me/language"), cashierToken), "{\"language\":\"EN\"}"))
+				.andExpect(status().isOk()).andExpect(jsonPath("$.data.user.language").value("EN"));
+		mvc.perform(bearer(get("/api/v1/me"), cashierToken)).andExpect(jsonPath("$.data.user.language").value("EN"));
+		mvc.perform(bearer(get("/api/v1/me"), ownerToken)).andExpect(jsonPath("$.data.user.language").value("EN"));
+		mvc.perform(json(bearer(put("/api/v1/me/language"), cashierToken), "{\"language\":\"FR\"}"))
+				.andExpect(status().isBadRequest());
+		mvc.perform(json(bearer(put("/api/v1/me/language"), cashierToken), "{}")).andExpect(status().isBadRequest());
 	}
 
 	@Test

@@ -12,5 +12,16 @@ services:
     volumes:
       - stockwise-db:/var/lib/mysql
 
+  phpmyadmin:
+    image: phpmyadmin:5
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db # nama service di atas, lewat jaringan internal Docker
+      PMA_PORT: 3306
+      UPLOAD_LIMIT: 64M
+    ports:
+      - "127.0.0.1:8082:80" # hanya dari mesin ini; 8080 backend, 8081 sering dipakai Adminer
+
 volumes:
   stockwise-db:

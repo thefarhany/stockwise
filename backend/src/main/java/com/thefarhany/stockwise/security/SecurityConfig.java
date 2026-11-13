@@ -1,6 +1,7 @@
 package com.thefarhany.stockwise.security;
 
 import com.thefarhany.stockwise.common.ApiResponse;
+import com.thefarhany.stockwise.repository.auth.AppUserRepository;
 import com.thefarhany.stockwise.service.auth.JwtService;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -28,7 +29,7 @@ class SecurityConfig {
 
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http, JwtService jwtService, RateLimiter rateLimiter,
-			ObjectMapper mapper) throws Exception {
+			ObjectMapper mapper, AppUserRepository users) throws Exception {
 		return http
 				.csrf(csrf -> csrf.disable())
 				.sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -39,7 +40,7 @@ class SecurityConfig {
 						.requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
 						.anyRequest().authenticated())
 				.addFilterBefore(new AuthRateLimitFilter(rateLimiter, mapper), UsernamePasswordAuthenticationFilter.class)
-				.addFilterBefore(new JwtAuthFilter(jwtService), UsernamePasswordAuthenticationFilter.class)
+				.addFilterBefore(new JwtAuthFilter(jwtService, users), UsernamePasswordAuthenticationFilter.class)
 				.exceptionHandling(e -> e
 						.authenticationEntryPoint((req, res, ex) -> {
 							boolean expired = req.getAttribute(JwtAuthFilter.EXPIRED_ATTR) != null;
