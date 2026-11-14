@@ -100,7 +100,14 @@
     "dashboard": "Dasbor",
     "openStall": "Buka lapak",
     "closeStall": "Tutup lapak",
-    "docs": "Panduan"
+    "docs": "Panduan",
+    "tabs": {
+      "home": "Beranda",
+      "cashier": "Kasir",
+      "transactions": "Transaksi",
+      "reports": "Laporan",
+      "more": "Lainnya"
+    }
   },
   "onboarding": {
     "steps": {

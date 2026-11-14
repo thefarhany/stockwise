@@ -273,7 +273,7 @@ export function Cashier({
         {shown.length === 0 && <p className="mt-5 text-sm text-base-content/70">{t("noMatch")}</p>}
       </div>
 
-      <aside id="cart" aria-labelledby="cart-heading" className="flex scroll-mt-4 flex-col border-t border-base-300 bg-white/50 lg:sticky lg:top-0 lg:h-screen lg:border-t-0 lg:border-l">
+      <aside id="cart" aria-labelledby="cart-heading" className="flex scroll-mt-20 flex-col border-t border-base-300 bg-white/50 lg:sticky lg:top-0 lg:h-screen lg:border-t-0 lg:border-l">
         <div className="flex items-start justify-between gap-4 border-b border-base-300 px-4 py-5 sm:px-6">
           <div>
             <h2 id="cart-heading" className="text-xl font-semibold">{t("cart")}</h2>
@@ -371,7 +371,7 @@ export function Cashier({
       {portions > 0 && (
         <a
           href="#cart"
-          className="fixed inset-x-4 bottom-4 z-20 flex items-center justify-between gap-4 rounded-box bg-neutral px-5 py-3.5 text-neutral-content shadow-lg lg:hidden"
+          className="fixed inset-x-4 bottom-20 z-20 flex items-center justify-between gap-4 rounded-box bg-neutral px-5 py-3.5 text-neutral-content shadow-lg lg:hidden"
         >
           <span className="text-sm">{t("totalPortions", { count: portions })}</span>
           <span className="flex items-center gap-2 font-semibold">

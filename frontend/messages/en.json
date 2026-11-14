@@ -100,7 +100,14 @@
     "dashboard": "Dashboard",
     "openStall": "Open the stall",
     "closeStall": "Close the stall",
-    "docs": "Guide"
+    "docs": "Guide",
+    "tabs": {
+      "home": "Home",
+      "cashier": "Cashier",
+      "transactions": "Sales",
+      "reports": "Reports",
+      "more": "More"
+    }
   },
   "onboarding": {
     "steps": {
