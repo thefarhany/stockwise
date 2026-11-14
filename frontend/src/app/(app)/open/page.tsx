@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
+import type { StockItem } from "@/features/catalog/types";
 import { OpenForm } from "@/features/session/components/open-form";
 import type { OpeningStock, Recommendation, Session } from "@/features/session/types";
 import { getFormat } from "@/i18n/format-server";
@@ -15,11 +16,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function OpenPage() {
-  const [me, current, opening, rec] = await Promise.all([
+  const [me, current, opening, rec, items] = await Promise.all([
     getProfile(),
     coreGet<Session | null>("/sessions/current"),
     coreGet<OpeningStock[]>("/sessions/opening-stock"),
     coreGet<Recommendation>("/recommendations"),
+    coreGet<StockItem[]>("/stock-items"),
   ]);
   if (!me?.success || !current?.success || !opening?.success) redirect("/login");
   if (current.data) redirect("/dashboard");
@@ -49,6 +51,7 @@ export default async function OpenPage() {
         <OpenForm
           stock={opening.data}
           suggested={Object.fromEntries((recommendation?.items ?? []).map((i) => [i.stockItemId, i.recommendedQty]))}
+          prices={Object.fromEntries((items?.success ? items.data : []).map((i) => [i.id, i.unitCost ?? 0]))}
         />
       </div>
     </AppShell>

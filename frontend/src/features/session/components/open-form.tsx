@@ -14,13 +14,14 @@ import { parseCount } from "@/features/session/components/close-form";
 import type { OpeningStock, StockLine } from "@/features/session/types";
 import { useFormat } from "@/i18n/format";
 import { ApiError, errorMessage } from "@/lib/api-client";
-import { currencies, parseMoney, type Currency } from "@/lib/currency";
+import { lineCost } from "@/features/catalog/recipe-cost";
+import { currencies, formatAmount, parseMoney, type Currency } from "@/lib/currency";
 
 // Batas sama dengan backend dto/session/StockLineRequest (Money.MAX_AMOUNT).
 const MAX_PAID = 1_000_000_000_000;
 
 /** Isian tambahan satu bahan pagi ini: jumlah dan total bayar (teks dalam mata uang usaha, mis. "50.000" atau "12.50"). */
-export type AddRow = { qty: string; unit: StockUnit; paid: string };
+export type AddRow = { qty: string; unit: StockUnit; paid: string; /** true = total bayar dihitung dari harga bahan. */ auto?: boolean };
 /** message = kunci pesan di messages open.*. */
 type RowError = { field: "qty" | "paid"; message: "qtyInvalid" | "paidRequired" | "paidTooLarge" };
 
@@ -46,7 +47,17 @@ export function toStockLine(stock: OpeningStock, row: AddRow, currency: Currency
 const round3 = (n: number) => Math.round(n * 1000) / 1000;
 
 /** Buka lapak dua langkah: lihat stok semua bahan dan isi tambahan pagi ini, lalu periksa dan buka. */
-export function OpenForm({ stock, suggested }: { stock: OpeningStock[]; /** Saran belanja per bahan (satuan bahan). */ suggested: Record<string, number> }) {
+export function OpenForm({
+  stock,
+  suggested,
+  prices,
+}: {
+  stock: OpeningStock[];
+  /** Saran belanja per bahan (satuan bahan). */
+  suggested: Record<string, number>;
+  /** Harga perkiraan per satuan bahan dari halaman Bahan; kosong untuk Cashier. */
+  prices: Record<string, number>;
+}) {
   const money = useMoney();
   const currency = useCurrency();
   const t = useTranslations("open");
@@ -57,14 +68,33 @@ export function OpenForm({ stock, suggested }: { stock: OpeningStock[]; /** Sara
     (a, b) => Number(b.isPrimary) - Number(a.isPrimary) || Number(b.active) - Number(a.active) || a.name.localeCompare(b.name),
   );
 
+  const priceOf = (id: string) => (prices[id] ?? 0) > 0 ? prices[id] : 0;
+  const byId = new Map(items.map((s) => [s.stockItemId, s]));
+
   const [step, setStep] = useState(0);
   const [rows, setRows] = useState<Record<string, AddRow>>(() =>
-    Object.fromEntries(items.map((s) => [s.stockItemId, { qty: "", unit: s.unit, paid: "" }])),
+    Object.fromEntries(items.map((s) => [s.stockItemId, { qty: "", unit: s.unit, paid: "", auto: priceOf(s.stockItemId) > 0 }])),
   );
   const [checked, setChecked] = useState(false);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const update = (id: string, patch: Partial<AddRow>) => setRows((r) => ({ ...r, [id]: { ...r[id], ...patch } }));
+  /** Total bayar dari harga bahan: jumlah (dikonversi ke satuan bahan) × harga per satuan. */
+  const estimate = (id: string, row: AddRow) => {
+    const qty = parseCount(row.qty);
+    const s = byId.get(id);
+    if (!s || !qty) return "";
+    return formatAmount(lineCost(round3(convertQuantity(qty, row.unit, s.unit)), priceOf(id)), currency);
+  };
+  const withEstimate = (id: string, row: AddRow): AddRow => (row.auto ? { ...row, paid: estimate(id, row) } : row);
+  // Total bayar otomatis dari harga tersimpan; toggle "Harga baru" membuka isian manual (mulai dari angka otomatis).
+  const update = (id: string, patch: Partial<AddRow>) =>
+    setRows((r) => {
+      const row = { ...r[id], ...patch };
+      if ("paid" in patch) row.auto = false;
+      return { ...r, [id]: withEstimate(id, row) };
+    });
+  const toggleAuto = (id: string, on: boolean) =>
+    setRows((r) => ({ ...r, [id]: on ? withEstimate(id, { ...r[id], auto: true }) : { ...r[id], auto: false } }));
 
   const parsed = items.map((s) => {
     const row = rows[s.stockItemId];
@@ -84,7 +114,7 @@ export function OpenForm({ stock, suggested }: { stock: OpeningStock[]; /** Sara
       const next = { ...r };
       for (const s of items) {
         const qty = suggested[s.stockItemId] ?? 0;
-        if (qty > 0 && s.active && next[s.stockItemId].qty === "") next[s.stockItemId] = { ...next[s.stockItemId], qty: String(qty), unit: s.unit };
+        if (qty > 0 && s.active && next[s.stockItemId].qty === "") next[s.stockItemId] = withEstimate(s.stockItemId, { ...next[s.stockItemId], qty: String(qty), unit: s.unit });
       }
       return next;
     });
@@ -171,7 +201,7 @@ export function OpenForm({ stock, suggested }: { stock: OpeningStock[]; /** Sara
                   const sug = suggested[id] ?? 0;
                   const perUnit = line?.totalCost && added > 0 ? line.totalCost / added : null;
                   return (
-                    <tr key={id} className={`align-top max-sm:grid max-sm:grid-cols-2 max-sm:gap-x-3 max-sm:gap-y-3 max-sm:px-4 max-sm:py-4 ${added > 0 ? "bg-base-200/40" : ""}`}>
+                    <tr key={id} className={`align-middle max-sm:grid max-sm:grid-cols-2 max-sm:gap-x-3 max-sm:gap-y-3 max-sm:px-4 max-sm:py-4 ${added > 0 ? "bg-base-200/40" : ""}`}>
                       <td className="py-4 pr-3 pl-6 max-sm:col-span-2 max-sm:p-0 max-sm:font-semibold">
                         {s.name}
                         {s.isPrimary && <span className="ml-2 whitespace-nowrap rounded-full bg-base-200 px-2 py-0.5 text-xs">{t("mainItem")}</span>}
@@ -218,20 +248,52 @@ export function OpenForm({ stock, suggested }: { stock: OpeningStock[]; /** Sara
                           <td className="px-3 py-3 sm:text-center max-sm:p-0">
                             <>
                                 <span aria-hidden className="mb-1 block text-xs font-normal text-base-content/60 sm:hidden">{t("colPaid")}</span>
-                                <div className="mx-auto flex w-36 items-center rounded-field border border-base-300 bg-white has-aria-invalid:border-error max-sm:w-full">
-                                  <span className="pl-3 text-xs text-base-content/60">{currencies[currency].symbol}</span>
-                                  <label className="sr-only" htmlFor={`paid-${id}`}>{t("paidFor", { name: s.name })}</label>
-                                  <input
-                                    id={`paid-${id}`}
-                                    {...moneyInputProps(currency)}
-                                    aria-invalid={shown?.field === "paid" ? true : undefined}
-                                    className="w-full min-w-0 bg-transparent py-1.5 pr-3 pl-1.5 outline-none"
-                                    value={row.paid}
-                                    onChange={(e) => update(id, { paid: typeMoney(e, currency) })}
-                                  />
+                                <div className="flex flex-col-reverse items-center gap-2 max-sm:items-start">
+                                  {/* Bahan berharga: mati = total dari harga tersimpan, nyala = isi harga baru. Toggle di bawah isian. */}
+                                  <label
+                                    className={`flex shrink-0 cursor-pointer items-center gap-1.5 text-xs leading-none text-base-content/70 ${
+                                      priceOf(id) > 0 ? "" : "hidden"
+                                    } ${row.auto && row.paid === "" ? "min-h-[2.375rem]" : "py-1"}`}
+                                  >
+                                    <input
+                                      type="checkbox"
+                                      className="toggle toggle-xs"
+                                      checked={!row.auto}
+                                      disabled={!(priceOf(id) > 0)}
+                                      aria-label={t("newPriceFor", { name: s.name })}
+                                      onChange={(e) => toggleAuto(id, !e.target.checked)}
+                                    />
+                                    {t("newPrice")}
+                                    {!row.auto && perUnit !== null && (
+                                      <span className="text-base-content/50">· {money(Math.round(perUnit))} / {f.unit(s.unit)}</span>
+                                    )}
+                                  </label>
+                                  {row.auto ? (
+                                    row.paid !== "" && (
+                                      <p
+                                        className="w-36 rounded-field border border-transparent py-1.5 text-center font-semibold max-sm:w-full max-sm:pl-3 max-sm:text-left"
+                                        title={t("savedPrice", { price: money(priceOf(id)), unit: f.unit(s.unit) })}
+                                      >
+                                        {money(parseMoney(row.paid, currency))}
+                                      </p>
+                                    )
+                                  ) : (
+                                    <div className="flex w-36 items-center rounded-field border border-base-300 bg-white has-aria-invalid:border-error max-sm:w-full">
+                                      <span className="pl-3 text-xs text-base-content/60">{currencies[currency].symbol}</span>
+                                      <label className="sr-only" htmlFor={`paid-${id}`}>{t("paidFor", { name: s.name })}</label>
+                                      <input
+                                        id={`paid-${id}`}
+                                        {...moneyInputProps(currency)}
+                                        aria-invalid={shown?.field === "paid" ? true : undefined}
+                                        className="w-full min-w-0 bg-transparent py-1.5 pr-3 pl-1.5 outline-none"
+                                        value={row.paid}
+                                        onChange={(e) => update(id, { paid: typeMoney(e, currency) })}
+                                      />
+                                    </div>
+                                  )}
                                 </div>
                                 {shown?.field === "paid" && <p className="mt-1 max-w-36 text-xs text-error sm:mx-auto">{t(shown.message)}</p>}
-                                {perUnit !== null && (
+                                {!(priceOf(id) > 0) && perUnit !== null && (
                                   <p className="mt-1 text-xs text-base-content/60">{money(Math.round(perUnit))} / {f.unit(s.unit)}</p>
                                 )}
                             </>
